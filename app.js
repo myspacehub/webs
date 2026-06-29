@@ -1615,6 +1615,23 @@ function buildMindMap(subjectIndex, volumeIndex, unitIndex) {
   const subject = COURSE[subjectIndex];
   const volume = subject.volumes[volumeIndex];
   const unit = volume.units[unitIndex];
+  const specificBranches =
+    typeof window !== "undefined" && typeof window.createSpecificMindMapBranches === "function"
+      ? window.createSpecificMindMapBranches({
+          subjectName: subject.name,
+          volumeName: volume.name,
+          unitName: unit,
+        })
+      : null;
+
+  if (specificBranches && specificBranches.length) {
+    return {
+      title: unit,
+      subtitle: `${subject.name} · ${volume.name}`,
+      branches: specificBranches,
+    };
+  }
+
   const key = normalizeSubjectKey(subject.name);
   const guide = SUBJECT_GUIDES[key] || SUBJECT_GUIDES.语文;
   const keywordBranches = matchedKeywordBranches(guide, subject, volume, unit);
