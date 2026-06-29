@@ -626,6 +626,216 @@ h1 {
   font-size: 14px;
 }
 
+.subject-network {
+  display: grid;
+  gap: 18px;
+}
+
+.subject-network-hero,
+.subject-network-section {
+  border: 1px solid rgba(37, 99, 235, 0.14);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 0 0, rgba(37, 99, 235, 0.1), transparent 22rem),
+    rgba(255, 255, 255, 0.84);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+}
+
+.subject-network-hero {
+  padding: 22px 24px;
+}
+
+.subject-network-hero h3 {
+  margin: 12px 0 8px;
+  font-size: clamp(22px, 3vw, 34px);
+  letter-spacing: -0.03em;
+}
+
+.subject-network-hero p,
+.subject-network-section__head p,
+.relation-card__head p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.subject-network-section {
+  overflow: hidden;
+}
+
+.subject-network-section__head {
+  padding: 18px 20px;
+  border-bottom: 1px solid rgba(26, 45, 80, 0.08);
+  background: rgba(248, 250, 252, 0.68);
+}
+
+.subject-network-section__head h3 {
+  margin: 0 0 6px;
+  font-size: 20px;
+}
+
+.volume-roadmap,
+.relation-grid,
+.topic-grid,
+.lattice-grid {
+  display: grid;
+  gap: 14px;
+  padding: 16px;
+}
+
+.volume-roadmap__item,
+.topic-card,
+.relation-card,
+.lattice-card {
+  border: 1px solid rgba(26, 45, 80, 0.1);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.volume-roadmap__item summary,
+.topic-card summary,
+.relation-units summary {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  padding: 15px 16px;
+  list-style: none;
+  cursor: pointer;
+}
+
+.volume-roadmap__item summary::-webkit-details-marker,
+.topic-card summary::-webkit-details-marker,
+.relation-units summary::-webkit-details-marker {
+  display: none;
+}
+
+.volume-roadmap__item summary span,
+.topic-card summary span,
+.relation-units summary {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 850;
+}
+
+.network-units {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0 16px 16px;
+}
+
+.network-unit {
+  display: inline-grid;
+  gap: 3px;
+  max-width: 100%;
+  border: 1px solid rgba(37, 99, 235, 0.14);
+  border-radius: 14px;
+  padding: 9px 11px;
+  color: var(--ink);
+  text-align: left;
+  background: linear-gradient(180deg, #fff, rgba(239, 246, 255, 0.78));
+  transition:
+    transform 0.16s ease,
+    border-color 0.16s ease,
+    box-shadow 0.16s ease;
+}
+
+.network-unit:hover {
+  border-color: rgba(37, 99, 235, 0.4);
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.12);
+  transform: translateY(-1px);
+}
+
+.network-unit span {
+  font-size: 13px;
+  font-weight: 850;
+}
+
+.network-unit small {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 750;
+}
+
+.relation-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.relation-card {
+  overflow: hidden;
+}
+
+.relation-card__head {
+  padding: 16px;
+}
+
+.relation-card__head h4,
+.lattice-card h4 {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+.relation-chain {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0 16px 14px;
+}
+
+.relation-chain span {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 0 11px;
+  border-radius: 999px;
+  color: #7c2d12;
+  font-size: 12px;
+  font-weight: 900;
+  background: rgba(255, 237, 213, 0.92);
+}
+
+.relation-chain span:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  right: -13px;
+  color: rgba(124, 45, 18, 0.48);
+}
+
+.relation-units {
+  border-top: 1px solid rgba(26, 45, 80, 0.08);
+}
+
+.topic-grid,
+.lattice-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.network-points {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0 18px 16px 34px;
+}
+
+.network-points li {
+  color: #263247;
+  line-height: 1.68;
+}
+
+.network-points li::marker {
+  color: var(--primary);
+}
+
+.lattice-card {
+  padding: 16px;
+}
+
+.lattice-card .network-points {
+  padding: 0 0 0 18px;
+}
+
 @media (max-width: 820px) {
   .app-shell {
     width: min(100% - 20px, 680px);
@@ -747,5 +957,16 @@ h1 {
   .mindmap-branch::before {
     left: -20px;
     width: 20px;
+  }
+
+  .relation-grid,
+  .topic-grid,
+  .lattice-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .network-units {
+    display: grid;
+    grid-template-columns: 1fr;
   }
 }

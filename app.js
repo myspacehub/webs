@@ -1383,6 +1383,207 @@ const SUBJECT_GUIDES = {
   },
 };
 
+const SUBJECT_RELATIONS = {
+  语文: [
+    {
+      title: "阅读能力纵向链",
+      nodes: ["现代文阅读", "文学类文本", "实用性阅读", "科学与文化论著", "外国作家作品"],
+      note: "从信息获取、结构分析、语言赏析到跨文化比较，逐步升级阅读深度。",
+    },
+    {
+      title: "古代诗文与传统文化链",
+      nodes: ["古代诗文", "中华传统文化", "整本书阅读", "文化传承", "写作"],
+      note: "文言基础支撑诗文赏析，传统文化积累最终迁移到议论文和文化类写作。",
+    },
+    {
+      title: "革命传统与时代精神链",
+      nodes: ["中国革命传统", "家国情怀", "人物精神", "现实表达"],
+      note: "把历史语境、人物行动、精神品质和当代青年责任连成价值表达链。",
+    },
+    {
+      title: "思辨表达与写作链",
+      nodes: ["思辨性阅读", "概念界定", "论证结构", "材料整合", "写作单元"],
+      note: "先读懂观点和逻辑，再完成审题立意、分层论证和材料扣合。",
+    },
+  ],
+  数学: [
+    {
+      title: "集合—函数—导数主线",
+      nodes: ["集合", "函数", "指数函数", "对数函数", "三角函数", "导数"],
+      note: "集合语言提供定义域与逻辑基础，函数图像和性质最终在导数应用中综合。",
+    },
+    {
+      title: "几何代数化主线",
+      nodes: ["平面向量", "立体几何", "空间向量", "直线", "圆", "圆锥曲线"],
+      note: "从几何直观进入向量和坐标表达，用代数方法处理空间与曲线问题。",
+    },
+    {
+      title: "离散与统计决策链",
+      nodes: ["计数原理", "概率", "随机变量", "统计", "成对数据"],
+      note: "从计数到概率模型，再到随机变量和统计推断，形成数据分析能力。",
+    },
+    {
+      title: "数列—函数—不等式综合链",
+      nodes: ["数列", "函数的应用", "导数", "最值", "参数"],
+      note: "数列递推、函数单调和导数最值经常在压轴题中互相嵌套。",
+    },
+  ],
+  英语: [
+    {
+      title: "人与自我主题链",
+      nodes: ["Friendship", "Sports", "Morals", "Healthy Lifestyle", "Career"],
+      note: "从个人成长、健康生活到职业规划，构成应用文和读后续写的人物发展线。",
+    },
+    {
+      title: "文化理解主题链",
+      nodes: ["Travelling", "Cultural Heritage", "History", "Festivals", "Cultures", "Attractions"],
+      note: "文化遗产、节日、历史传统和旅行介绍共享文化解释与推荐表达。",
+    },
+    {
+      title: "科技未来主题链",
+      nodes: ["Internet", "Space Exploration", "Scientists", "Future", "Science Fiction"],
+      note: "科技说明文、未来生活和科学人物主题共享问题—方案—影响的语篇结构。",
+    },
+    {
+      title: "环境与公共安全链",
+      nodes: ["Natural Disasters", "Wildlife", "Environmental Protection", "First Aid", "Sharing"],
+      note: "灾害、环保、急救与公益服务可迁移到倡议信、说明文和社会责任表达。",
+    },
+  ],
+  物理: [
+    {
+      title: "运动—力—能量—动量主线",
+      nodes: ["运动", "力", "牛顿", "抛体", "圆周", "机械能", "动量"],
+      note: "运动描述提供状态量，力解释状态改变，能量和动量用于多过程综合。",
+    },
+    {
+      title: "振动—波—光链",
+      nodes: ["机械振动", "机械波", "光", "干涉", "衍射"],
+      note: "简谐振动是波动基础，波动思想迁移到声、光和电磁波理解。",
+    },
+    {
+      title: "电场—电路—磁场—电磁感应链",
+      nodes: ["静电场", "电路", "电能", "磁场", "电磁感应", "交变电流"],
+      note: "从场的作用进入电路能量，再到磁场受力和电磁感应能量转化。",
+    },
+    {
+      title: "热学—原子核微观链",
+      nodes: ["分子动理论", "热力学", "物态变化", "原子结构", "原子核"],
+      note: "用微观模型解释宏观热现象，并延伸到近代物理的能级与核能。",
+    },
+  ],
+  化学: [
+    {
+      title: "实验—物质分类—元素化合物链",
+      nodes: ["实验", "化学物质", "金属", "非金属", "元素周期律"],
+      note: "实验方法支撑物质鉴别，分类观帮助建立元素化合物转化网络。",
+    },
+    {
+      title: "结构决定性质链",
+      nodes: ["原子结构", "分子结构", "晶体结构", "元素周期律", "有机结构"],
+      note: "微观结构解释物理性质、化学性质和材料性能，是选修二与有机的桥梁。",
+    },
+    {
+      title: "反应原理综合链",
+      nodes: ["热效应", "速率", "平衡", "离子反应", "氧化还原", "电化学"],
+      note: "化学反应从能量、快慢、限度、微粒和电子转移多个角度综合分析。",
+    },
+    {
+      title: "有机合成与材料链",
+      nodes: ["有机化合物", "烃", "烃的衍生物", "生物大分子", "合成高分子"],
+      note: "官能团转化、碳骨架构建和聚合反应共同支撑有机合成路线。",
+    },
+  ],
+  生物: [
+    {
+      title: "细胞结构—代谢—生命历程链",
+      nodes: ["走近细胞", "组成细胞", "细胞结构", "物质输入", "能量供应", "生命历程"],
+      note: "结构决定功能，物质和能量代谢支撑细胞增殖、分化和生命活动。",
+    },
+    {
+      title: "遗传信息—变异—进化链",
+      nodes: ["遗传因子", "染色体", "基因本质", "基因表达", "变异", "进化"],
+      note: "从遗传规律到分子机制，再到变异来源和生物进化过程。",
+    },
+    {
+      title: "稳态调节系统链",
+      nodes: ["内环境", "神经调节", "体液调节", "免疫调节", "植物激素"],
+      note: "动物和植物都通过信息传递与反馈调节维持生命活动稳定。",
+    },
+    {
+      title: "生态—工程—安全伦理链",
+      nodes: ["种群", "群落", "生态系统", "生态保护", "发酵工程", "细胞工程", "基因工程"],
+      note: "生态规律支撑环境治理，生物技术应用必须同时考虑效率、安全和伦理。",
+    },
+  ],
+  历史: [
+    {
+      title: "中国制度变迁链",
+      nodes: ["古代中国政治制度", "官员选拔", "法律与教化", "基层治理", "社会保障"],
+      note: "从国家权力组织到社会治理机制，理解中国国家治理传统与现代转型。",
+    },
+    {
+      title: "世界文明—资本主义—全球化链",
+      nodes: ["古代文明", "中古时期", "走向整体的世界", "资本主义制度", "工业革命", "世界殖民体系"],
+      note: "世界联系由区域文明走向全球体系，资本主义扩张重塑国际秩序。",
+    },
+    {
+      title: "革命与现代国家建构链",
+      nodes: ["反侵略", "社会主义", "现代中国政治建设", "祖国统一", "对外关系"],
+      note: "近现代中国历史以民族独立、国家建设、制度探索和国际关系展开。",
+    },
+    {
+      title: "经济社会生活与文化交流链",
+      nodes: ["食物生产", "生产工具", "商业贸易", "交通", "医疗", "文化交流", "文化保护"],
+      note: "经济生活变化推动社会结构调整，文化交流塑造认同与文明互鉴。",
+    },
+  ],
+  地理: [
+    {
+      title: "地球运动—大气—水—地貌自然链",
+      nodes: ["宇宙中的地球", "地球的运动", "大气", "水", "地表形态", "植被", "土壤"],
+      note: "地球运动决定能量分布，大气水文地貌共同塑造自然环境格局。",
+    },
+    {
+      title: "人口—城镇—产业—交通人文链",
+      nodes: ["人口", "乡村", "城镇", "产业", "交通运输", "区域发展"],
+      note: "人口流动、城镇化、产业布局和交通网络共同决定区域发展路径。",
+    },
+    {
+      title: "区域认知与协调发展链",
+      nodes: ["区域", "区域发展", "区域协调", "生态环境建设"],
+      note: "区域差异是分析起点，协调发展和生态修复是治理目标。",
+    },
+    {
+      title: "资源环境与国家安全链",
+      nodes: ["自然资源", "生态保护", "环境治理", "全球环境治理", "国家安全"],
+      note: "资源供给、生态底线和环境治理共同构成国家安全的重要基础。",
+    },
+  ],
+  思想政治: [
+    {
+      title: "中国特色社会主义历史逻辑链",
+      nodes: ["科学社会主义", "救中国", "发展中国", "新时代"],
+      note: "从理论源流、革命实践到改革发展和新时代，建立政治认同主线。",
+    },
+    {
+      title: "经济制度—市场—发展—分配链",
+      nodes: ["生产资料所有制", "社会主义市场经济", "经济发展", "收入分配", "社会保障"],
+      note: "基本经济制度、市场与政府关系、高质量发展和共同富裕相互支撑。",
+    },
+    {
+      title: "党的领导—人民民主—依法治国链",
+      nodes: ["中国共产党的领导", "人民当家作主", "全面依法治国", "民族区域自治"],
+      note: "政治与法治内容共同构成中国特色社会主义政治制度框架。",
+    },
+    {
+      title: "哲学方法—文化传承—逻辑思维链",
+      nodes: ["世界本质", "规律", "认识", "价值选择", "文化创新", "逻辑思维"],
+      note: "哲学提供世界观和方法论，文化与逻辑模块用于提升判断和表达能力。",
+    },
+  ],
+};
+
 function normalizeSubjectKey(subjectName) {
   return Object.keys(SUBJECT_GUIDES).find((key) =>
     SUBJECT_GUIDES[key].aliases.some((alias) => subjectName.includes(alias)),
@@ -1463,6 +1664,70 @@ function countAllKnowledgeNodes() {
         0,
       ),
     0,
+  );
+}
+
+function allUnitsForSubject(subjectIndex) {
+  const subject = COURSE[subjectIndex];
+  return subject.volumes.flatMap((volume, volumeIndex) =>
+    volume.units.map((unit, unitIndex) => ({
+      subjectIndex,
+      volumeIndex,
+      unitIndex,
+      volumeName: volume.name,
+      unit,
+      text: `${subject.name} ${volume.name} ${unit}`,
+    })),
+  );
+}
+
+function relationMatches(subjectIndex, keywords) {
+  return allUnitsForSubject(subjectIndex).filter((item) =>
+    keywords.some((keyword) => item.text.toLowerCase().includes(String(keyword).toLowerCase())),
+  );
+}
+
+function topicGroupsForSubject(subjectIndex) {
+  const subject = COURSE[subjectIndex];
+  const guideKey = normalizeSubjectKey(subject.name);
+  const guide = SUBJECT_GUIDES[guideKey] || SUBJECT_GUIDES.语文;
+  return guide.keywords
+    .map((topic) => ({
+      title: topic.title,
+      keywords: topic.match,
+      units: relationMatches(subjectIndex, topic.match),
+      points: fillPoints(topic.points, subject, { name: "全册贯通" }, subject.name),
+    }))
+    .filter((topic) => topic.units.length);
+}
+
+function subjectRelations(subjectIndex) {
+  const subject = COURSE[subjectIndex];
+  const guideKey = normalizeSubjectKey(subject.name);
+  const relations = SUBJECT_RELATIONS[guideKey] || [];
+  return relations.map((relation) => ({
+    ...relation,
+    units: relationMatches(subjectIndex, relation.nodes),
+  }));
+}
+
+function countSubjectNetworkNodes(subjectIndex) {
+  const subject = COURSE[subjectIndex];
+  const guideKey = normalizeSubjectKey(subject.name);
+  const guide = SUBJECT_GUIDES[guideKey] || SUBJECT_GUIDES.语文;
+  const unitCount = allUnitsForSubject(subjectIndex).length;
+  const relationCount = subjectRelations(subjectIndex).reduce((sum, relation) => sum + 1 + relation.nodes.length + relation.units.length, 0);
+  const topicCount = topicGroupsForSubject(subjectIndex).reduce((sum, topic) => sum + 1 + topic.units.length + topic.points.length, 0);
+  return (
+    1 +
+    subject.volumes.length +
+    unitCount +
+    relationCount +
+    topicCount +
+    guide.core.length +
+    guide.methods.length +
+    guide.exam.length +
+    guide.errors.length
   );
 }
 
@@ -1690,11 +1955,199 @@ function mindMapListHTML(subjectIndex, volumeIndex, matchedUnits = null) {
   `;
 }
 
+function networkUnitChipHTML(item) {
+  return `
+    <button
+      class="network-unit"
+      type="button"
+      data-go-unit="${item.subjectIndex}-${item.volumeIndex}-${item.unitIndex}"
+      title="${escapeHTML(item.volumeName)}"
+    >
+      <span>${highlight(item.unit)}</span>
+      <small>${escapeHTML(item.volumeName)}</small>
+    </button>
+  `;
+}
+
+function compactPointListHTML(points) {
+  return `
+    <ul class="network-points">
+      ${points.map((point) => `<li>${highlight(point)}</li>`).join("")}
+    </ul>
+  `;
+}
+
+function subjectVolumeMapHTML(subjectIndex) {
+  const subject = COURSE[subjectIndex];
+  return `
+    <section class="subject-network-section">
+      <div class="subject-network-section__head">
+        <h3>分册—章节全量节点图</h3>
+        <p>覆盖本学科所有册别与全部章节，作为跨册关系的底图。</p>
+      </div>
+      <div class="volume-roadmap">
+        ${subject.volumes
+          .map(
+            (volume, volumeIndex) => `
+              <details class="volume-roadmap__item"${volumeIndex < 2 ? " open" : ""}>
+                <summary>
+                  <strong>${highlight(volume.name)}</strong>
+                  <span>${volume.units.length} 个节点</span>
+                </summary>
+                <div class="network-units">
+                  ${volume.units
+                    .map((unit, unitIndex) =>
+                      networkUnitChipHTML({
+                        subjectIndex,
+                        volumeIndex,
+                        unitIndex,
+                        volumeName: volume.name,
+                        unit,
+                      }),
+                    )
+                    .join("")}
+                </div>
+              </details>
+            `,
+          )
+          .join("")}
+      </div>
+    </section>
+  `;
+}
+
+function subjectRelationHTML(subjectIndex) {
+  const relations = subjectRelations(subjectIndex);
+  return `
+    <section class="subject-network-section">
+      <div class="subject-network-section__head">
+        <h3>跨章节 / 跨分册关联链</h3>
+        <p>把先修知识、方法迁移和综合考点连成可复习的路径。</p>
+      </div>
+      <div class="relation-grid">
+        ${relations
+          .map(
+            (relation) => `
+              <article class="relation-card">
+                <div class="relation-card__head">
+                  <h4>${highlight(relation.title)}</h4>
+                  <p>${highlight(relation.note)}</p>
+                </div>
+                <div class="relation-chain" aria-label="${escapeHTML(relation.title)}关键词链">
+                  ${relation.nodes.map((node) => `<span>${highlight(node)}</span>`).join("")}
+                </div>
+                <details class="relation-units" open>
+                  <summary>关联章节 ${relation.units.length} 个</summary>
+                  <div class="network-units">
+                    ${
+                      relation.units.length
+                        ? relation.units.map((item) => networkUnitChipHTML(item)).join("")
+                        : `<p class="mindmap-empty-note">当前目录中没有直接命中节点，可作为方法迁移线索使用。</p>`
+                    }
+                  </div>
+                </details>
+              </article>
+            `,
+          )
+          .join("")}
+      </div>
+    </section>
+  `;
+}
+
+function subjectTopicGroupsHTML(subjectIndex) {
+  const topics = topicGroupsForSubject(subjectIndex);
+  return `
+    <section class="subject-network-section">
+      <div class="subject-network-section__head">
+        <h3>跨册专题群</h3>
+        <p>按专题关键词聚合不同册别中的同类知识点，适合二轮复习和综合训练。</p>
+      </div>
+      <div class="topic-grid">
+        ${topics
+          .map(
+            (topic) => `
+              <details class="topic-card">
+                <summary>
+                  <strong>${highlight(topic.title)}</strong>
+                  <span>${topic.units.length} 个章节</span>
+                </summary>
+                ${compactPointListHTML(topic.points)}
+                <div class="network-units">
+                  ${topic.units.map((item) => networkUnitChipHTML(item)).join("")}
+                </div>
+              </details>
+            `,
+          )
+          .join("")}
+      </div>
+    </section>
+  `;
+}
+
+function subjectMethodLatticeHTML(subjectIndex) {
+  const subject = COURSE[subjectIndex];
+  const guideKey = normalizeSubjectKey(subject.name);
+  const guide = SUBJECT_GUIDES[guideKey] || SUBJECT_GUIDES.语文;
+  const blocks = [
+    ["学科主线", guide.core],
+    ["方法迁移", guide.methods],
+    ["综合题型", guide.exam],
+    ["易错诊断", guide.errors],
+  ];
+  return `
+    <section class="subject-network-section">
+      <div class="subject-network-section__head">
+        <h3>方法与能力贯通层</h3>
+        <p>这些不是某一章独有的点，而是贯穿整门学科的通用能力。</p>
+      </div>
+      <div class="lattice-grid">
+        ${blocks
+          .map(
+            ([title, points]) => `
+              <article class="lattice-card">
+                <h4>${highlight(title)}</h4>
+                ${compactPointListHTML(points)}
+              </article>
+            `,
+          )
+          .join("")}
+      </div>
+    </section>
+  `;
+}
+
+function subjectNetworkHTML(subjectIndex) {
+  const subject = COURSE[subjectIndex];
+  const unitCount = allUnitsForSubject(subjectIndex).length;
+  const relationCount = subjectRelations(subjectIndex).length;
+  const topicCount = topicGroupsForSubject(subjectIndex).length;
+  return `
+    <div class="subject-network">
+      <article class="subject-network-hero">
+        <span class="mindmap-root__tag">跨章节 · 跨分册 · 学科总图</span>
+        <h3>${highlight(subject.name)}全册知识关系网</h3>
+        <p>
+          覆盖 ${subject.volumes.length} 个册别、${unitCount} 个章节节点、${relationCount} 条跨册主链、
+          ${topicCount} 个专题群，共 ${countSubjectNetworkNodes(subjectIndex)} 个总图节点。
+        </p>
+      </article>
+      ${subjectVolumeMapHTML(subjectIndex)}
+      ${subjectRelationHTML(subjectIndex)}
+      ${subjectTopicGroupsHTML(subjectIndex)}
+      ${subjectMethodLatticeHTML(subjectIndex)}
+    </div>
+  `;
+}
+
 function renderCurrentVolume() {
   renderBreadcrumb();
-  renderVolumeTabs();
+  volumeTabs.hidden = state.mode === "subjectMap";
+  if (state.mode !== "subjectMap") renderVolumeTabs();
   unitList.innerHTML =
-    state.mode === "mindmap"
+    state.mode === "subjectMap"
+      ? subjectNetworkHTML(state.subjectIndex)
+      : state.mode === "mindmap"
       ? mindMapListHTML(state.subjectIndex, state.volumeIndex)
       : volumeCardHTML(state.subjectIndex, state.volumeIndex);
 }
@@ -1772,11 +2225,39 @@ function renderSearch() {
     .join("");
 }
 
+function renderSubjectMapSearch() {
+  const groups = getSearchResults();
+  const subjectIndexes = [...new Set(groups.map((group) => group.subjectIndex))];
+  volumeTabs.hidden = true;
+  breadcrumb.innerHTML = `
+    <div>
+      <h2>跨册总图搜索</h2>
+      <p>关键词「${escapeHTML(state.query)}」命中 ${subjectIndexes.length} 个学科，将展示对应学科的全册知识关系网。</p>
+    </div>
+  `;
+
+  if (!subjectIndexes.length) {
+    unitList.innerHTML = `
+      <div class="empty">
+        <div>
+          <strong>没有找到匹配学科总图</strong>
+          <p>可以换一个关键词，例如“函数”“电磁感应”“生态”“法治”。</p>
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  unitList.innerHTML = subjectIndexes.map((subjectIndex) => subjectNetworkHTML(subjectIndex)).join("");
+}
+
 function render() {
   renderStats();
   renderModeSwitch();
   renderSubjects();
-  if (state.query.trim()) {
+  if (state.query.trim() && state.mode === "subjectMap") {
+    renderSubjectMapSearch();
+  } else if (state.query.trim()) {
     renderSearch();
   } else {
     renderCurrentVolume();
@@ -1805,6 +2286,20 @@ modeSwitch.addEventListener("click", (event) => {
   if (!button) return;
   state.mode = button.dataset.mode;
   render();
+});
+
+unitList.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-go-unit]");
+  if (!button) return;
+  const [subjectIndex, volumeIndex, unitIndex] = button.dataset.goUnit.split("-").map(Number);
+  state.subjectIndex = subjectIndex;
+  state.volumeIndex = volumeIndex;
+  state.mode = "mindmap";
+  state.query = "";
+  searchInput.value = "";
+  render();
+  const target = document.querySelector(".content-panel");
+  if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
 unitList.addEventListener("change", (event) => {
