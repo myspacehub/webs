@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>福建省高中全科学习 H5</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero">
+        <div class="hero__copy">
+          <p class="eyebrow">Fujian Senior High School Learning</p>
+          <h1>福建省高中全科学习 H5</h1>
+          <p class="hero__desc">九大学科 · 册别导航 · 单元检索 · 详细知识思维导图 · 本地学习进度记录</p>
+        </div>
+        <div class="hero__badge" aria-label="高中全科">
+          <span>全科</span>
+          <strong>H5</strong>
+        </div>
+      </section>
+
+      <section class="toolbar" aria-label="学习目录工具栏">
+        <label class="search-box">
+          <span>搜索</span>
+          <input id="searchInput" type="search" placeholder="输入学科 / 册别 / 单元关键词" autocomplete="off" />
+        </label>
+        <div id="modeSwitch" class="mode-switch" role="tablist" aria-label="视图切换">
+          <button class="mode-btn is-active" type="button" data-mode="catalog">目录</button>
+          <button class="mode-btn" type="button" data-mode="mindmap">思维导图</button>
+        </div>
+        <button id="resetBtn" class="ghost-btn" type="button">重置</button>
+      </section>
+
+      <section id="stats" class="stats" aria-label="课程统计"></section>
+
+      <section class="layout">
+        <aside class="subject-panel" aria-label="学科列表">
+          <div class="panel-title">
+            <span>学科</span>
+            <small id="subjectCount"></small>
+          </div>
+          <div id="subjectList" class="subject-list"></div>
+        </aside>
+
+        <section class="content-panel" aria-live="polite">
+          <div id="breadcrumb" class="breadcrumb"></div>
+          <div id="volumeTabs" class="volume-tabs"></div>
+          <div id="unitList" class="unit-list"></div>
+        </section>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
