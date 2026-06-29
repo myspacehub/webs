@@ -15,6 +15,7 @@
   --radius-xl: 28px;
   --radius-lg: 20px;
   --radius-md: 14px;
+  --page-font: clamp(14px, 3.7vw, 16px);
 }
 
 * {
@@ -23,16 +24,21 @@
 
 html {
   min-height: 100%;
+  overflow-x: hidden;
   background:
     radial-gradient(circle at 18% 8%, rgba(37, 99, 235, 0.18), transparent 30rem),
     radial-gradient(circle at 88% 18%, rgba(249, 115, 22, 0.16), transparent 26rem),
     linear-gradient(180deg, #eef5ff 0%, var(--bg) 42%, #eef2f7 100%);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
   min-height: 100%;
+  overflow-x: hidden;
   color: var(--ink);
+  font-size: var(--page-font);
   font-family:
     -apple-system,
     BlinkMacSystemFont,
@@ -52,8 +58,49 @@ button {
   cursor: pointer;
 }
 
+main,
+section,
+article,
+aside,
+div,
+label,
+button {
+  min-width: 0;
+}
+
+.app-shell,
+.hero,
+.toolbar,
+.stats,
+.layout,
+.subject-panel,
+.content-panel,
+.volume-card,
+.mindmap-card,
+.subject-network,
+.subject-network-hero,
+.subject-network-section {
+  max-width: 100%;
+}
+
+.unit__title,
+.mindmap-root h3,
+.mindmap-root p,
+.mindmap-points li,
+.subject-network-hero h3,
+.subject-network-hero p,
+.subject-network-section__head h3,
+.subject-network-section__head p,
+.relation-card__head h4,
+.relation-card__head p,
+.network-unit span,
+.network-points li {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
 .app-shell {
-  width: min(1180px, calc(100% - 28px));
+  width: min(1180px, calc(100vw - 28px));
   margin: 0 auto;
   padding: max(22px, env(safe-area-inset-top)) 0 42px;
 }
@@ -116,7 +163,7 @@ button {
 
 h1 {
   margin: 0;
-  font-size: clamp(30px, 5vw, 56px);
+  font-size: clamp(26px, 8vw, 56px);
   line-height: 1.05;
   letter-spacing: -0.04em;
 }
@@ -158,12 +205,13 @@ h1 {
 
 .toolbar {
   display: flex;
+  flex-wrap: wrap;
   gap: 12px;
   align-items: stretch;
 }
 
 .search-box {
-  flex: 1;
+  flex: 1 1 280px;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -204,6 +252,8 @@ h1 {
   display: flex;
   gap: 6px;
   align-items: center;
+  min-width: 0;
+  overflow-x: auto;
   padding: 6px;
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
@@ -212,6 +262,8 @@ h1 {
 }
 
 .mode-btn {
+  flex: 0 0 auto;
+  min-width: 0;
   border: 0;
   border-radius: 14px;
   padding: 12px 14px;
@@ -244,7 +296,7 @@ h1 {
 
 .stat-card strong {
   display: block;
-  font-size: 28px;
+  font-size: clamp(20px, 6vw, 28px);
   line-height: 1;
 }
 
@@ -339,6 +391,7 @@ h1 {
 
 .content-panel {
   min-height: 620px;
+  overflow: hidden;
   padding: 22px;
 }
 
@@ -382,6 +435,7 @@ h1 {
 }
 
 .volume-tabs {
+  max-width: 100%;
   display: flex;
   gap: 10px;
   overflow-x: auto;
@@ -422,6 +476,7 @@ h1 {
 
 .volume-card__head {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   gap: 14px;
   align-items: center;
@@ -838,7 +893,7 @@ h1 {
 
 @media (max-width: 820px) {
   .app-shell {
-    width: min(100% - 20px, 680px);
+    width: min(100vw - 20px, 680px);
     padding-bottom: 24px;
   }
 
@@ -876,6 +931,7 @@ h1 {
   .subject-list {
     display: flex;
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
     padding-bottom: 16px;
   }
 
@@ -892,20 +948,47 @@ h1 {
 }
 
 @media (max-width: 560px) {
+  :root {
+    --radius-xl: 22px;
+    --radius-lg: 16px;
+    --page-font: clamp(13px, 3.9vw, 15px);
+  }
+
+  .app-shell {
+    width: calc(100vw - 14px);
+    padding-top: max(12px, env(safe-area-inset-top));
+  }
+
   .hero {
     display: block;
+    padding: 18px;
+  }
+
+  h1 {
+    font-size: clamp(23px, 8.2vw, 34px);
+    letter-spacing: -0.03em;
+  }
+
+  .hero__desc {
+    font-size: clamp(12px, 3.8vw, 15px);
+    line-height: 1.55;
   }
 
   .hero__badge {
-    margin-top: 22px;
+    width: 68px;
+    height: 68px;
+    margin-top: 18px;
+    border-radius: 20px;
   }
 
   .toolbar {
     display: grid;
     grid-template-columns: 1fr;
+    gap: 10px;
   }
 
   .search-box {
+    min-height: 48px;
     padding: 0 14px;
   }
 
@@ -915,18 +998,54 @@ h1 {
 
   .stats {
     grid-template-columns: 1fr 1fr;
+    gap: 8px;
   }
 
   .mode-switch {
     justify-content: stretch;
+    width: 100%;
+    padding: 5px;
   }
 
   .mode-btn {
-    flex: 1;
+    flex: 1 1 0;
+    padding: 10px 8px;
+    font-size: 13px;
   }
 
   .stat-card {
-    padding: 15px;
+    padding: 12px;
+  }
+
+  .stat-card span {
+    font-size: 12px;
+    line-height: 1.35;
+  }
+
+  .layout {
+    gap: 12px;
+  }
+
+  .panel-title {
+    padding: 16px 16px 10px;
+  }
+
+  .subject-list {
+    padding: 0 10px 12px;
+  }
+
+  .subject-btn {
+    min-width: 102px;
+    padding: 12px;
+  }
+
+  .subject-btn b {
+    font-size: 14px;
+  }
+
+  .content-panel {
+    min-height: 420px;
+    padding: 12px;
   }
 
   .breadcrumb {
@@ -936,27 +1055,141 @@ h1 {
   .progress-ring {
     display: inline-block;
     margin-top: 14px;
+    min-width: 82px;
+    padding: 10px;
+  }
+
+  .progress-ring strong {
+    font-size: 21px;
+  }
+
+  .volume-tabs {
+    gap: 8px;
+    padding-bottom: 10px;
+  }
+
+  .volume-tab {
+    padding: 9px 11px;
+    font-size: 13px;
+  }
+
+  .volume-card__head {
+    padding: 13px 14px;
+  }
+
+  .volume-card__head h3 {
+    font-size: 16px;
   }
 
   .unit {
     grid-template-columns: auto minmax(0, 1fr);
+    gap: 9px;
+    padding: 13px 14px;
   }
 
   .unit__meta {
     grid-column: 2;
+    white-space: normal;
   }
 
   .mindmap-card::before {
-    left: 18px;
+    left: 14px;
+    top: 112px;
+  }
+
+  .mindmap-root {
+    padding: 18px 16px 14px;
+  }
+
+  .mindmap-root__tag {
+    min-height: 24px;
+    font-size: 11px;
+  }
+
+  .mindmap-root h3 {
+    font-size: clamp(18px, 6vw, 24px);
   }
 
   .mindmap-branches {
-    padding-left: 40px;
+    gap: 10px;
+    padding: 14px 12px 16px 32px;
   }
 
   .mindmap-branch::before {
-    left: -20px;
-    width: 20px;
+    left: -18px;
+    width: 18px;
+  }
+
+  .mindmap-branch summary {
+    padding: 13px 14px;
+    font-size: 15px;
+  }
+
+  .mindmap-points {
+    gap: 8px;
+    padding: 0 14px 14px 30px;
+  }
+
+  .mindmap-points li {
+    line-height: 1.62;
+  }
+
+  .subject-network {
+    gap: 12px;
+  }
+
+  .subject-network-hero {
+    padding: 18px 16px;
+  }
+
+  .subject-network-hero h3 {
+    font-size: clamp(19px, 6.4vw, 26px);
+  }
+
+  .subject-network-section__head {
+    padding: 15px 14px;
+  }
+
+  .subject-network-section__head h3 {
+    font-size: 17px;
+  }
+
+  .volume-roadmap,
+  .relation-grid,
+  .topic-grid,
+  .lattice-grid {
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .volume-roadmap__item summary,
+  .topic-card summary,
+  .relation-units summary {
+    align-items: flex-start;
+    padding: 13px;
+  }
+
+  .relation-card__head,
+  .lattice-card {
+    padding: 13px;
+  }
+
+  .relation-card__head h4,
+  .lattice-card h4 {
+    font-size: 16px;
+  }
+
+  .relation-chain {
+    padding: 0 13px 12px;
+  }
+
+  .relation-chain span {
+    min-height: 28px;
+    font-size: 11px;
+  }
+
+  .relation-chain span:not(:last-child)::after {
+    display: none;
   }
 
   .relation-grid,
@@ -968,5 +1201,57 @@ h1 {
   .network-units {
     display: grid;
     grid-template-columns: 1fr;
+    gap: 7px;
+    padding: 0 13px 13px;
+  }
+
+  .network-unit {
+    width: 100%;
+    padding: 9px 10px;
+  }
+
+  .network-points {
+    padding: 0 14px 14px 28px;
+  }
+}
+
+@media (max-width: 380px) {
+  .app-shell {
+    width: calc(100vw - 10px);
+  }
+
+  .hero,
+  .content-panel {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: clamp(21px, 8vw, 29px);
+  }
+
+  .mode-btn {
+    padding: 9px 5px;
+    font-size: 12px;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .subject-btn {
+    min-width: 92px;
+  }
+
+  .mindmap-branches {
+    padding-left: 26px;
+  }
+
+  .mindmap-card::before {
+    left: 11px;
+  }
+
+  .mindmap-branch::before {
+    left: -14px;
+    width: 14px;
   }
 }
