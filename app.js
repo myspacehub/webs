@@ -1878,6 +1878,113 @@ const WRONG_QUESTION_TEMPLATE = [
   "复盘节奏：当天整理，隔天翻看，周末集中复盘并找同类题验证",
 ];
 
+const BILIBILI_VIDEO_RESOURCES = [
+  {
+    subject: "语文",
+    curator: "戴建业老师",
+    role: "古诗文 / 文学阅读主推",
+    homepage: "https://search.bilibili.com/upuser?keyword=%E6%88%B4%E5%BB%BA%E4%B8%9A%E8%80%81%E5%B8%88",
+    collection: biliSearchUrl("戴建业 高中语文 古诗文 文言文 合集"),
+    why: "适合补古诗词鉴赏、文言文语感和文学常识；先看诗词人物与作品解读，再回到课内篇目做迁移。",
+    watchOrder: ["古诗词人物故事", "课内诗文背景", "手法与情感赏析", "文言文翻译与表达迁移"],
+    keywords: ["古诗文", "文言文", "诗词鉴赏", "文学阅读", "作文素材"],
+    note: "文学素养型资源，搭配课本篇目和真题使用。",
+  },
+  {
+    subject: "数学（人教A版）",
+    curator: "一数",
+    role: "高中数学系统课 / 压轴题思路主推",
+    homepage: "https://space.bilibili.com/14229967",
+    collection: biliSearchUrl("一数 高中数学 必修 选择性必修 合集"),
+    why: "适合函数、导数、圆锥曲线、数列等高中主干内容；先用系统课补框架，再用专题课训练模型。",
+    watchOrder: ["集合与函数基础", "三角函数与向量", "解析几何与圆锥曲线", "数列与导数综合"],
+    keywords: ["函数", "导数", "圆锥曲线", "数列", "压轴题"],
+    note: "偏体系化和方法模型，适合章节复习与拔高。",
+  },
+  {
+    subject: "英语",
+    curator: "英语兔",
+    role: "语法体系 / 长难句主推",
+    homepage: "https://search.bilibili.com/upuser?keyword=%E8%8B%B1%E8%AF%AD%E5%85%94",
+    collection: biliSearchUrl("英语兔 高中英语 语法 长难句 合集"),
+    why: "适合把零散语法串成体系，尤其是从句、非谓语、时态语态和长难句分析。",
+    watchOrder: ["句子成分", "时态语态", "三大从句", "非谓语动词", "长难句拆解"],
+    keywords: ["语法", "长难句", "从句", "非谓语", "阅读理解"],
+    note: "语法框架型资源，看完要回到课文、完形、阅读长句中验证。",
+  },
+  {
+    subject: "物理",
+    curator: "李永乐老师官方",
+    role: "物理概念 / 数理模型主推",
+    homepage: "https://space.bilibili.com/9458053",
+    collection: biliSearchUrl("李永乐 高中物理 力学 电磁学 合集"),
+    why: "适合理解力学、电磁学、能量守恒等核心概念；把公式背后的物理图像讲清楚。",
+    watchOrder: ["运动和力", "能量与动量", "电场与电路", "磁场与电磁感应", "近代物理拓展"],
+    keywords: ["力学", "电磁学", "能量", "动量", "物理模型"],
+    note: "概念理解很强，刷题前先用来补物理图像。",
+  },
+  {
+    subject: "化学",
+    curator: "毕导 / 毕的二阶导",
+    role: "化学原理 / 科学思维补充",
+    homepage: "https://space.bilibili.com/254463269",
+    collection: biliSearchUrl("毕导 高中化学 化学原理 反应 合集"),
+    why: "适合把化学反应、实验现象和微观解释连接起来；用于提升兴趣和原理理解。",
+    watchOrder: ["实验现象观察", "微观结构解释", "反应原理迁移", "生活化学与材料"],
+    keywords: ["化学反应", "实验", "结构性质", "反应原理", "科普"],
+    note: "科普拓展型资源，考试复习仍要对照教材和真题体系。",
+  },
+  {
+    subject: "生物",
+    curator: "无穷小亮的科普日常",
+    role: "生命科学 / 生态与进化补充",
+    homepage: "https://search.bilibili.com/upuser?keyword=%E6%97%A0%E7%A9%B7%E5%B0%8F%E4%BA%AE%E7%9A%84%E7%A7%91%E6%99%AE%E6%97%A5%E5%B8%B8",
+    collection: biliSearchUrl("无穷小亮 高中生物 生态 进化 生物鉴定 合集"),
+    why: "适合把细胞、生态、进化、分类学等知识放到真实生命现象中理解，增强生物学直觉。",
+    watchOrder: ["生物分类与鉴定", "生态关系", "进化适应", "人与自然专题"],
+    keywords: ["生态", "进化", "分类", "生命科学", "生物多样性"],
+    note: "现象理解和学科兴趣很强，可作为教材知识的真实案例库。",
+  },
+  {
+    subject: "历史",
+    curator: "小约翰可汗",
+    role: "世界史 / 人物史专题主推",
+    homepage: "https://space.bilibili.com/23947287",
+    collection: biliSearchUrl("小约翰可汗 世界史 历史人物 合集"),
+    why: "适合补世界史人物、国家兴衰、制度变迁与国际关系背景；增强历史叙事和时空观。",
+    watchOrder: ["世界近现代人物", "国家制度与变迁", "战争与国际秩序", "材料题背景迁移"],
+    keywords: ["世界史", "人物史", "国际关系", "制度变迁", "历史背景"],
+    note: "叙事型资源，要回到教材时间线和史料题设问中整理。",
+  },
+  {
+    subject: "地理",
+    curator: "星球研究所",
+    role: "自然地理 / 区域地理可视化主推",
+    homepage: "https://search.bilibili.com/upuser?keyword=%E6%98%9F%E7%90%83%E7%A0%94%E7%A9%B6%E6%89%80",
+    collection: biliSearchUrl("星球研究所 高中地理 自然地理 区域地理 合集"),
+    why: "适合用地图、地貌、气候、区域案例理解自然环境和人地关系，尤其适合地理图像题。",
+    watchOrder: ["地貌与水文", "气候与植被", "中国区域地理", "资源环境与国家安全"],
+    keywords: ["自然地理", "区域地理", "地图", "气候", "人地关系"],
+    note: "视觉案例很强，建议配合地图册和高考图表题复盘。",
+  },
+  {
+    subject: "思想政治",
+    curator: "罗翔说刑法 + 共青团中央",
+    role: "法治模块 / 时政素材主推",
+    homepage: "https://space.bilibili.com/517327498",
+    collection: biliSearchUrl("罗翔说刑法 高中政治 法律生活 法治 合集"),
+    secondary: {
+      name: "共青团中央",
+      url: "https://space.bilibili.com/20165629",
+      reason: "用于积累时政素材、青年责任、国家治理和价值表达案例。",
+    },
+    why: "适合法律与生活、政治与法治模块；用真实案例理解权利义务、法治精神和公共议题。",
+    watchOrder: ["法治案例", "权利义务", "社会热点", "青年责任与价值表达"],
+    keywords: ["法治", "法律生活", "权利义务", "时政", "公共参与"],
+    note: "政治学科必须结合教材术语作答，视频用于案例理解和素材积累。",
+  },
+];
+
 const $ = (selector) => document.querySelector(selector);
 const subjectList = $("#subjectList");
 const volumeTabs = $("#volumeTabs");
@@ -1944,6 +2051,10 @@ function containsQuery(...fields) {
   return fields.some((field) => String(field).toLowerCase().includes(q));
 }
 
+function biliSearchUrl(keyword) {
+  return `https://search.bilibili.com/all?keyword=${encodeURIComponent(keyword)}`;
+}
+
 function progressForSubject(subjectIndex) {
   const subject = COURSE[subjectIndex];
   const total = subject.volumes.reduce((sum, volume) => sum + volume.units.length, 0);
@@ -1965,6 +2076,7 @@ function renderStats() {
     ["单元 / 章节 / 课", totals.units],
     ["知识导图节点", totals.knowledgeNodes],
     ["学习方法", `${LEARNING_METHODS.length} 板块`],
+    ["B站资源", `${BILIBILI_VIDEO_RESOURCES.length} 科`],
     ["完成进度", `${percent}%`],
   ]
     .map(
@@ -1988,7 +2100,10 @@ function renderSubjects() {
   subjectCount.textContent = `${COURSE.length} 科`;
   subjectList.innerHTML = COURSE.map((subject, subjectIndex) => {
     const progress = progressForSubject(subjectIndex);
-    const active = subjectIndex === state.subjectIndex && !state.query && state.mode !== "methods" ? " is-active" : "";
+    const active =
+      subjectIndex === state.subjectIndex && state.mode !== "methods" && (state.mode === "videos" || !state.query)
+        ? " is-active"
+        : "";
     return `
       <button class="subject-btn${active}" type="button" data-subject-index="${subjectIndex}">
         <b>${escapeHTML(subject.name)}</b>
@@ -2026,6 +2141,11 @@ function renderVolumeTabs() {
       `;
     })
     .join("");
+}
+
+function hideVolumeTabs() {
+  volumeTabs.hidden = true;
+  volumeTabs.innerHTML = "";
 }
 
 function unitHTML(subjectIndex, volumeIndex, unit, unitIndex, volumeName) {
@@ -2425,7 +2545,7 @@ function learningMethodsHTML(blocks) {
 
 function renderLearningMethods() {
   const blocks = LEARNING_METHODS.filter(methodMatches);
-  volumeTabs.hidden = true;
+  hideVolumeTabs();
   breadcrumb.innerHTML = `
     <div>
       <h2>学习方法</h2>
@@ -2452,9 +2572,258 @@ function renderLearningMethods() {
   unitList.innerHTML = learningMethodsHTML(blocks);
 }
 
+function videoResourceSearchFields(resource) {
+  return [
+    resource.subject,
+    resource.curator,
+    resource.role,
+    resource.why,
+    resource.note,
+    ...(resource.watchOrder || []),
+    ...(resource.keywords || []),
+    ...videoResourceSyllabusFields(resource),
+    resource.secondary?.name || "",
+    resource.secondary?.reason || "",
+  ];
+}
+
+function videoResourceMatches(resource) {
+  return containsQuery(...videoResourceSearchFields(resource));
+}
+
+function videoResourceForSubject(subjectIndex) {
+  return BILIBILI_VIDEO_RESOURCES.find((resource) => subjectIndexForVideoResource(resource) === subjectIndex);
+}
+
+function subjectIndexForVideoResource(resource) {
+  const exactIndex = COURSE.findIndex((subject) => subject.name === resource.subject);
+  if (exactIndex >= 0) return exactIndex;
+  return COURSE.findIndex(
+    (subject) => subject.name.includes(resource.subject) || resource.subject.includes(subject.name),
+  );
+}
+
+function videoResourceSyllabusFields(resource) {
+  const subjectIndex = subjectIndexForVideoResource(resource);
+  if (subjectIndex < 0) return [];
+  const subject = COURSE[subjectIndex];
+  return [
+    subject.name,
+    ...subject.volumes.flatMap((volume) => [volume.name, ...volume.units]),
+  ];
+}
+
+function orderedVideoResources(resources) {
+  return [...resources].sort((left, right) => {
+    const leftIndex = subjectIndexForVideoResource(left);
+    const rightIndex = subjectIndexForVideoResource(right);
+    return (leftIndex < 0 ? 999 : leftIndex) - (rightIndex < 0 ? 999 : rightIndex);
+  });
+}
+
+function compactVideoSubjectName(subjectName) {
+  return subjectName.replace(/（.*?）/g, "");
+}
+
+function videoSearchKeyword(resource, volumeName, unitName) {
+  const curator = resource.curator.replace(/\s*[+/]\s*/g, " ");
+  const subject = compactVideoSubjectName(resource.subject);
+  return [curator, `高中${subject}`, volumeName, unitName].filter(Boolean).join(" ");
+}
+
+function videoVolumeSearchUrl(resource, volumeIndex = state.volumeIndex) {
+  const subjectIndex = subjectIndexForVideoResource(resource);
+  const subject = subjectIndex >= 0 ? COURSE[subjectIndex] : null;
+  const volume = subject?.volumes[volumeIndex] || subject?.volumes[0];
+  return biliSearchUrl(videoSearchKeyword(resource, volume?.name || "", ""));
+}
+
+function videoVolumeMatchesQuery(resource, subject, volume, unit) {
+  const q = state.query.trim();
+  if (!q) return true;
+  return containsQuery(
+    resource.subject,
+    resource.curator,
+    resource.role,
+    resource.why,
+    resource.note,
+    subject.name,
+    volume.name,
+    unit,
+    ...(resource.watchOrder || []),
+    ...(resource.keywords || []),
+  );
+}
+
+function videoSyllabusLinksHTML(resource, volumeIndex = state.volumeIndex) {
+  const subjectIndex = subjectIndexForVideoResource(resource);
+  if (subjectIndex < 0) return "";
+  const subject = COURSE[subjectIndex];
+  const safeVolumeIndex = Math.min(Math.max(volumeIndex, 0), subject.volumes.length - 1);
+  const volume = subject.volumes[safeVolumeIndex];
+  const units = volume.units.filter((unit) => videoVolumeMatchesQuery(resource, subject, volume, unit));
+  return `
+    <section class="video-syllabus">
+      <h4>按教材顺序找视频</h4>
+      <p>当前内容跟随上方分册按钮：${highlight(subject.name)} · ${highlight(volume.name)}。点击章节标题会用当前推荐 UP、学科、分册和章节名在 B站检索。</p>
+      <div class="video-syllabus__volumes">
+        <details open>
+          <summary>
+            <b>${highlight(volume.name)}</b>
+            <span>${units.length}/${volume.units.length} 项</span>
+          </summary>
+          <div class="video-unit-links">
+            ${
+              units.length
+                ? units
+                    .map((unit) => {
+                      const keyword = videoSearchKeyword(resource, volume.name, unit);
+                      return `
+                        <a href="${escapeHTML(biliSearchUrl(keyword))}" target="_blank" rel="noopener noreferrer">
+                          ${highlight(unit)}
+                        </a>
+                      `;
+                    })
+                    .join("")
+                : `
+                  <div class="video-empty">
+                    当前分册没有匹配「${escapeHTML(state.query)}」的章节，可清空搜索或切换分册。
+                  </div>
+                `
+            }
+          </div>
+        </details>
+      </div>
+    </section>
+  `;
+}
+
+function resourceTagsHTML(keywords) {
+  return `
+    <div class="video-tags">
+      ${(keywords || []).map((keyword) => `<span>${highlight(keyword)}</span>`).join("")}
+    </div>
+  `;
+}
+
+function resourceWatchOrderHTML(steps) {
+  return `
+    <ol class="video-watch-order">
+      ${(steps || []).map((step) => `<li>${highlight(step)}</li>`).join("")}
+    </ol>
+  `;
+}
+
+function videoResourceCardHTML(resource, volumeIndex = state.volumeIndex) {
+  return `
+    <article class="video-card">
+      <div class="video-card__head">
+        <span class="mindmap-root__tag">${highlight(resource.subject)}</span>
+        <h3>${highlight(resource.curator)}</h3>
+        <p class="video-card__role">${highlight(resource.role)}</p>
+      </div>
+      <div class="video-card__body">
+        <p>${highlight(resource.why)}</p>
+        ${resourceTagsHTML(resource.keywords)}
+        <section class="video-watch">
+          <h4>建议观看顺序</h4>
+          ${resourceWatchOrderHTML(resource.watchOrder)}
+        </section>
+        ${videoSyllabusLinksHTML(resource, volumeIndex)}
+        ${
+          resource.secondary
+            ? `
+              <aside class="video-secondary">
+                <strong>补充资源：${highlight(resource.secondary.name)}</strong>
+                <p>${highlight(resource.secondary.reason)}</p>
+                <a href="${escapeHTML(resource.secondary.url)}" target="_blank" rel="noopener noreferrer">打开补充 UP 主页</a>
+              </aside>
+            `
+            : ""
+        }
+        <p class="video-card__note">${highlight(resource.note)}</p>
+      </div>
+      <div class="video-card__actions">
+        <a href="${escapeHTML(resource.homepage)}" target="_blank" rel="noopener noreferrer">UP主页</a>
+        <a href="${escapeHTML(videoVolumeSearchUrl(resource, volumeIndex))}" target="_blank" rel="noopener noreferrer">当前分册检索</a>
+      </div>
+    </article>
+  `;
+}
+
+function bilibiliVideosHTML(resource, volumeIndex = state.volumeIndex) {
+  const subjectIndex = subjectIndexForVideoResource(resource);
+  const subject = subjectIndex >= 0 ? COURSE[subjectIndex] : null;
+  const volume = subject?.volumes[volumeIndex] || subject?.volumes[0];
+  return `
+    <div class="bilibili-resources">
+      <article class="video-hero">
+        <span class="mindmap-root__tag">Bilibili 学科视频集</span>
+        <h3>${subject ? `${escapeHTML(subject.name)} · ${escapeHTML(volume.name)}` : "优质 UP / 视频集入口"}</h3>
+        <p>
+          上方分册按钮与本学科真实目录保持一致，下方章节检索入口只对应当前分册。
+          点击后会跳转到 B站原页面，适合按教材进度做课外补充、概念重建和素材积累。
+        </p>
+      </article>
+      <section class="video-guide">
+        <article>
+          <strong>怎么用</strong>
+          <p>先看当前章节对应专题，再回到 H5 的知识导图和错题复盘，不要把视频当成被动刷剧。</p>
+        </article>
+        <article>
+          <strong>怎么筛</strong>
+          <p>优先选择播放量高、弹幕/评论反馈好、合集结构完整、更新较稳定的视频集。</p>
+        </article>
+        <article>
+          <strong>怎么复盘</strong>
+          <p>每看完 1 个视频，用 3 句话写出“学到什么、对应课本哪里、能解哪类题”。</p>
+        </article>
+      </section>
+      <section class="video-grid">
+        ${videoResourceCardHTML(resource, volumeIndex)}
+      </section>
+    </div>
+  `;
+}
+
+function renderBilibiliVideos() {
+  const subject = COURSE[state.subjectIndex];
+  const resource = videoResourceForSubject(state.subjectIndex);
+  renderVolumeTabs();
+  breadcrumb.innerHTML = `
+    <div>
+      <h2>${escapeHTML(subject.name)} · B站视频资源</h2>
+      <p>${subject.volumes[state.volumeIndex]?.name || subject.volumes[0]?.name || "当前分册"} · ${state.query.trim() ? `按关键词「${escapeHTML(state.query)}」筛选章节` : "分册按钮与实际课程目录一致"}</p>
+    </div>
+    <div class="progress-ring">
+      <strong>${subject.volumes.length}</strong>
+      <span>册别</span>
+    </div>
+  `;
+
+  if (!resource) {
+    unitList.innerHTML = `
+      <div class="empty">
+        <div>
+          <strong>当前学科还没有配置 B站视频资源</strong>
+          <p>可以先切换到其他学科，或后续为该学科补充 UP / 视频集入口。</p>
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  unitList.innerHTML = bilibiliVideosHTML(resource, state.volumeIndex);
+}
+
 function renderCurrentVolume() {
   if (state.mode === "methods") {
     renderLearningMethods();
+    return;
+  }
+
+  if (state.mode === "videos") {
+    renderBilibiliVideos();
     return;
   }
 
@@ -2574,6 +2943,8 @@ function render() {
   renderSubjects();
   if (state.mode === "methods") {
     renderLearningMethods();
+  } else if (state.mode === "videos") {
+    renderBilibiliVideos();
   } else if (state.query.trim() && state.mode === "subjectMap") {
     renderSubjectMapSearch();
   } else if (state.query.trim()) {
@@ -2646,104 +3017,4 @@ resetBtn.addEventListener("click", () => {
   searchInput.focus();
 });
 
-render();
-
-/* ============================================================
-   ✨ 优化增强模块 — 深色模式 / 页面加载 / UI 细节
-   ============================================================ */
-
-// ── 深色模式 ────────────────────────────────────────────────
-const DARK_KEY = "fujian-h5-dark-v1";
-
-function applyDark(dark) {
-  document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
-  const btn = document.getElementById("darkToggle");
-  if (btn) btn.textContent = dark ? "☀️" : "🌙";
-  try { localStorage.setItem(DARK_KEY, dark ? "1" : "0"); } catch {}
-}
-
-(function initDark() {
-  const stored = (() => { try { return localStorage.getItem(DARK_KEY); } catch { return null; } })();
-  const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-  applyDark(stored !== null ? stored === "1" : prefersDark);
-})();
-
-document.getElementById("darkToggle")?.addEventListener("click", () => {
-  const isDark = document.documentElement.getAttribute("data-theme") === "dark";
-  applyDark(!isDark);
-});
-
-// ── 页面加载遮罩 ─────────────────────────────────────────────
-(function hideLoader() {
-  const loader = document.getElementById("pageLoader");
-  if (!loader) return;
-  // 等动画完成后淡出
-  setTimeout(() => {
-    loader.classList.add("is-hidden");
-    loader.addEventListener("transitionend", () => loader.remove(), { once: true });
-  }, 1000);
-})();
-
-// ── 学科按钮增强 — 注入进度条 ────────────────────────────────
-const _origRenderSubjects = renderSubjects;
-// 覆盖 renderSubjects，加入进度条
-function renderSubjects() {
-  subjectCount.textContent = `${COURSE.length} 科`;
-  subjectList.innerHTML = COURSE.map((subject, subjectIndex) => {
-    const progress = progressForSubject(subjectIndex);
-    const active = subjectIndex === state.subjectIndex && !state.query && state.mode !== "methods" ? " is-active" : "";
-    const pct = Math.max(4, progress.percent); // 最少显示 4% 宽度
-    return `
-      <button class="subject-btn${active}" type="button" data-subject-index="${subjectIndex}">
-        <b>${escapeHTML(subject.name)}</b>
-        <div class="subject-progress">
-          <div class="subject-prog-bar"><div class="subject-prog-bar__fill" style="width:${pct}%"></div></div>
-          <span>${progress.done}/${progress.total}</span>
-        </div>
-      </button>
-    `;
-  }).join("");
-}
-
-// ── 统计卡片动画数字 ─────────────────────────────────────────
-function animateNumber(el, target, duration = 600) {
-  if (!el) return;
-  const start = performance.now();
-  const from = 0;
-  function step(now) {
-    const t = Math.min(1, (now - start) / duration);
-    const ease = 1 - Math.pow(1 - t, 3);
-    const val = Math.round(from + (target - from) * ease);
-    el.textContent = val.toLocaleString("zh-CN");
-    if (t < 1) requestAnimationFrame(step);
-  }
-  requestAnimationFrame(step);
-}
-
-const _origRenderStats = renderStats;
-function renderStats() {
-  const totals = courseTotals();
-  const percent = totals.units ? Math.round((totals.done / totals.units) * 100) : 0;
-  const items = [
-    ["学科", totals.subjects, "📚"],
-    ["册别", totals.volumes, "📖"],
-    ["单元 / 章节", totals.units, "📝"],
-    ["知识导图节点", totals.knowledgeNodes, "🧠"],
-    ["学习方法", LEARNING_METHODS.length, "✏️"],
-    ["完成进度", `${percent}%`, "🏆"],
-  ];
-  stats.innerHTML = items.map(([label, value, icon]) => `
-    <article class="stat-card">
-      <strong data-target="${typeof value === "number" ? value : ""}">${typeof value === "number" ? 0 : value}</strong>
-      <span>${icon} ${label}</span>
-    </article>
-  `).join("");
-  // 触发数字动画
-  stats.querySelectorAll("strong[data-target]").forEach(el => {
-    const t = parseInt(el.dataset.target, 10);
-    if (!isNaN(t) && t > 0) animateNumber(el, t, 700);
-  });
-}
-
-// ── 重新运行 render 以应用增强版函数 ─────────────────────────
 render();
