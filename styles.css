@@ -116,6 +116,8 @@ button {
 .video-card h3,
 .video-card p,
 .video-card li,
+.video-up-card strong,
+.video-up-card p,
 .video-syllabus summary b,
 .video-unit-links a,
 .video-tags span {
@@ -949,6 +951,7 @@ h1 {
 .video-guide strong,
 .video-watch h4,
 .video-syllabus h4,
+.video-up-section h4,
 .video-secondary strong {
   display: block;
   margin-bottom: 8px;
@@ -961,6 +964,7 @@ h1 {
 .video-card__body p,
 .video-card li,
 .video-syllabus p,
+.video-up-card p,
 .video-secondary p {
   margin: 0;
   color: #243047;
@@ -1020,6 +1024,67 @@ h1 {
   border: 1px dashed rgba(37, 99, 235, 0.25);
   border-radius: 18px;
   background: rgba(219, 234, 254, 0.28);
+}
+
+.video-up-section {
+  padding: 14px;
+  border: 1px solid rgba(37, 99, 235, 0.13);
+  border-radius: 18px;
+  background: rgba(239, 246, 255, 0.54);
+}
+
+.video-up-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.video-up-card {
+  display: grid;
+  gap: 9px;
+  padding: 13px;
+  border: 1px solid rgba(26, 45, 80, 0.1);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.86);
+}
+
+.video-up-card__head {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.video-up-card__head strong {
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 950;
+}
+
+.video-up-card__head span {
+  flex: 0 0 auto;
+  max-width: 46%;
+  padding: 5px 8px;
+  border-radius: 999px;
+  color: var(--primary-dark);
+  font-size: 11px;
+  font-weight: 950;
+  line-height: 1.3;
+  text-align: center;
+  background: rgba(219, 234, 254, 0.82);
+}
+
+.video-up-card b {
+  color: var(--primary-dark);
+}
+
+.video-up-card a {
+  justify-self: start;
+  margin-top: 2px;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 950;
+  text-decoration: none;
 }
 
 .video-syllabus {
@@ -1572,15 +1637,27 @@ h1 {
   }
 
   .video-guide,
-  .video-grid {
+  .video-grid,
+  .video-up-grid {
     grid-template-columns: 1fr;
   }
 
   .video-guide article,
   .video-watch,
+  .video-up-section,
   .video-syllabus,
   .video-secondary {
     padding: 12px;
+  }
+
+  .video-up-card__head {
+    display: grid;
+    justify-content: stretch;
+  }
+
+  .video-up-card__head span {
+    max-width: none;
+    justify-self: start;
   }
 
   .video-syllabus summary {
@@ -1756,7 +1833,9 @@ h1 {
   .weekly-grid article,
   .video-guide article,
   .video-card__body,
+  .video-up-card,
   .video-watch,
+  .video-up-section,
   .video-syllabus,
   .video-secondary {
     padding: 12px;

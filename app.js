@@ -1881,107 +1881,344 @@ const WRONG_QUESTION_TEMPLATE = [
 const BILIBILI_VIDEO_RESOURCES = [
   {
     subject: "语文",
-    curator: "戴建业老师",
-    role: "古诗文 / 文学阅读主推",
-    homepage: "https://search.bilibili.com/upuser?keyword=%E6%88%B4%E5%BB%BA%E4%B8%9A%E8%80%81%E5%B8%88",
-    collection: biliSearchUrl("戴建业 高中语文 古诗文 文言文 合集"),
-    why: "适合补古诗词鉴赏、文言文语感和文学常识；先看诗词人物与作品解读，再回到课内篇目做迁移。",
-    watchOrder: ["古诗词人物故事", "课内诗文背景", "手法与情感赏析", "文言文翻译与表达迁移"],
-    keywords: ["古诗文", "文言文", "诗词鉴赏", "文学阅读", "作文素材"],
-    note: "文学素养型资源，搭配课本篇目和真题使用。",
+    curator: "学过石油的语文老师",
+    role: "基础预习 / 应试提分主推",
+    homepage: biliUpSearchUrl("学过石油的语文老师"),
+    collection: biliSearchUrl("学过石油的语文老师"),
+    why: "语文先抓踩分点：文言文、现代文阅读和作文模板要能落到答题纸上；基础弱先用应试向资源快速建立题型意识。",
+    watchOrder: ["文言文实词虚词与翻译", "现代文阅读题型", "作文审题立意", "古诗文鉴赏与素材积累"],
+    keywords: ["文言文", "现代文阅读", "作文模板", "古诗词", "文学素养"],
+    note: "基础弱先看应试拆解，瓶颈期再补文本深读和文学素养。",
+    recommendations: [
+      {
+        name: "学过石油的语文老师",
+        level: "基础 / 预习 / 提分",
+        focus: "文言文、现代文阅读、作文答题模板",
+        fit: "基础弱、初高衔接、高一高二同步预习和快速抓踩分点。",
+        summary: "接地气应试向，适配新教材，阅读和作文拆解完整，容易照着做。",
+      },
+      {
+        name: "国家玮",
+        level: "拔高 / 文学思维",
+        focus: "文本深度解读、大阅读难题、语文格局",
+        fit: "语文瓶颈、高三二轮、想提升文本理解深度的同学。",
+        summary: "重文学思维和文本纵深，适合从“会答题”升级到“读得深”。",
+      },
+      {
+        name: "中文系五匪子",
+        level: "作文专项",
+        focus: "议论文立意、结构模板、高考阅卷标准",
+        fit: "作文跑题、无话可写、结构混乱的同学。",
+        summary: "专攻议论文写作，直接对标高考作文评分和结构表达。",
+      },
+      {
+        name: "高盛元",
+        level: "古诗文素养",
+        focus: "唐诗宋词、诗词鉴赏、古诗文底蕴",
+        fit: "古诗文鉴赏失分多、语感薄弱、需要碎片化积累的同学。",
+        summary: "适合日常补诗词语感和文学背景，提升鉴赏题底层素材。",
+      },
+    ],
   },
   {
     subject: "数学（人教A版）",
     curator: "一数",
     role: "高中数学系统课 / 压轴题思路主推",
     homepage: "https://space.bilibili.com/14229967",
-    collection: biliSearchUrl("一数 高中数学 必修 选择性必修 合集"),
-    why: "适合函数、导数、圆锥曲线、数列等高中主干内容；先用系统课补框架，再用专题课训练模型。",
+    collection: biliSearchUrl("一数"),
+    why: "数学先补体系，再做模型归类。基础薄弱先跟一数完整过课本，中等生再用专题课突破解析几何、导数和压轴题。",
     watchOrder: ["集合与函数基础", "三角函数与向量", "解析几何与圆锥曲线", "数列与导数综合"],
     keywords: ["函数", "导数", "圆锥曲线", "数列", "压轴题"],
-    note: "偏体系化和方法模型，适合章节复习与拔高。",
+    note: "零基础用系统课，中高分用专题模型和压轴题归类。",
+    recommendations: [
+      {
+        name: "一数",
+        level: "零基础 / 补基础",
+        focus: "初高衔接、必修、选择性必修、一轮二轮复习",
+        fit: "基础差、步骤容易断、需要完整免费体系的同学。",
+        summary: "板书细致，步骤无跳跃，错题易错点反复强调，适合作为主线课。",
+      },
+      {
+        name: "佟大大还是ETT",
+        level: "拔高 / 压轴",
+        focus: "解析几何、导数、立体几何模型技巧",
+        fit: "中等生突破压轴题、想提升高分段稳定性的同学。",
+        summary: "题型归类强，适合把复杂题拆成模型和套路。",
+      },
+      {
+        name: "赵显礼（显哥数学）",
+        level: "高三应试",
+        focus: "题型总结、押题思路、高考解题路径",
+        fit: "高三系统刷题复盘、需要高密度考点整理的同学。",
+        summary: "老牌应试名师，知识点密度高，适合总复习阶段提效率。",
+      },
+      {
+        name: "数学微课帮",
+        level: "同步 / 查漏补缺",
+        focus: "单章节专题、校内同步巩固",
+        fit: "某一章听不扎实、需要短视频补洞的高一高二学生。",
+        summary: "模块化讲解，适合用来补单点漏洞，不必从头刷整套课。",
+      },
+    ],
   },
   {
     subject: "英语",
     curator: "英语兔",
     role: "语法体系 / 长难句主推",
     homepage: "https://search.bilibili.com/upuser?keyword=%E8%8B%B1%E8%AF%AD%E5%85%94",
-    collection: biliSearchUrl("英语兔 高中英语 语法 长难句 合集"),
-    why: "适合把零散语法串成体系，尤其是从句、非谓语、时态语态和长难句分析。",
+    collection: biliSearchUrl("英语兔"),
+    why: "英语先搭语法和长难句底层框架，再专项训练阅读、完形、七选五和作文。听力口语可用外教资源做长期语感积累。",
     watchOrder: ["句子成分", "时态语态", "三大从句", "非谓语动词", "长难句拆解"],
     keywords: ["语法", "长难句", "从句", "非谓语", "阅读理解"],
-    note: "语法框架型资源，看完要回到课文、完形、阅读长句中验证。",
+    note: "语法框架要回到阅读长句中验证，应试题型要单独训练。",
+    recommendations: [
+      {
+        name: "英语兔",
+        level: "基础 / 语法入门",
+        focus: "语法、音标、词根词缀、长难句底层逻辑",
+        fit: "0基础、语法碎片化、看不懂长难句的同学。",
+        summary: "动画可视化讲解，逻辑简洁，适合从头搭英语框架。",
+      },
+      {
+        name: "Free高考英语",
+        level: "拔高 / 阅读题型",
+        focus: "长难句拆解、阅读逻辑、七选五、完形",
+        fit: "想精细化抠阅读题型、冲英语高分的同学。",
+        summary: "题型拆解细，适合高分段精修阅读和逻辑链。",
+      },
+      {
+        name: "李辉英语",
+        level: "高三应试 / 短期提分",
+        focus: "完形、阅读套路、作文万能句式",
+        fit: "高三冲刺、需要快速形成应试套路的同学。",
+        summary: "提分导向强，适合考前把题型和作文表达标准化。",
+      },
+      {
+        name: "瑞秋Rachel",
+        level: "听口 / 语感",
+        focus: "美式发音、听力口语、磨耳朵",
+        fit: "发音不准、听力弱、想长期积累语感的同学。",
+        summary: "外教发音资源，适合作为课外听口训练补充。",
+      },
+    ],
   },
   {
     subject: "物理",
-    curator: "李永乐老师官方",
-    role: "物理概念 / 数理模型主推",
-    homepage: "https://space.bilibili.com/9458053",
-    collection: biliSearchUrl("李永乐 高中物理 力学 电磁学 合集"),
-    why: "适合理解力学、电磁学、能量守恒等核心概念；把公式背后的物理图像讲清楚。",
+    curator: "黄夫人HuangFuRen",
+    role: "高一入门 / 基础救星",
+    homepage: biliUpSearchUrl("黄夫人HuangFuRen"),
+    collection: biliSearchUrl("黄夫人HuangFuRen"),
+    why: "物理要先把抽象模型生活化：受力分析、运动学、电磁学先听懂图像和过程，再进入综合题模型训练。",
     watchOrder: ["运动和力", "能量与动量", "电场与电路", "磁场与电磁感应", "近代物理拓展"],
     keywords: ["力学", "电磁学", "能量", "动量", "物理模型"],
-    note: "概念理解很强，刷题前先用来补物理图像。",
+    note: "高一听不懂先补黄夫人，中高分再上模型和大题专项。",
+    recommendations: [
+      {
+        name: "黄夫人HuangFuRen",
+        level: "基础 / 高一入门",
+        focus: "受力分析、运动学、电磁学生活化拆解",
+        fit: "刚上高中物理听不懂、力学模型混乱的同学。",
+        summary: "幽默通俗，力学板块口碑强，适合从“听不懂”救回来。",
+      },
+      {
+        name: "夏梦迪",
+        level: "拔高 / 中高分",
+        focus: "定理本质、模型、图像化、电磁和动量能量综合",
+        fit: "有基础但卡在电场磁场、动量能量综合大题的同学。",
+        summary: "重模型和本质，适合从会做基础题提升到会解综合题。",
+      },
+      {
+        name: "于总CEO",
+        level: "预习 / 整册框架",
+        focus: "整本书知识框架、知识点拆解",
+        fit: "想预习整册、梳理知识脉络、防止碎片化的同学。",
+        summary: "先搭大框架再拆知识点，适合开学前和章节前预习。",
+      },
+      {
+        name: "坤哥物理",
+        level: "专项 / 应试",
+        focus: "电学、实验题、计算大题技巧",
+        fit: "中等生专项突破电学、实验、计算类大题。",
+        summary: "题型套路清晰，适合刷题后做专项归纳。",
+      },
+    ],
   },
   {
     subject: "化学",
-    curator: "毕导 / 毕的二阶导",
-    role: "化学原理 / 科学思维补充",
-    homepage: "https://space.bilibili.com/254463269",
-    collection: biliSearchUrl("毕导 高中化学 化学原理 反应 合集"),
-    why: "适合把化学反应、实验现象和微观解释连接起来；用于提升兴趣和原理理解。",
+    curator: "李政化学",
+    role: "高三应试 / 二轮冲刺主推",
+    homepage: biliUpSearchUrl("李政化学"),
+    collection: biliSearchUrl("李政化学"),
+    why: "化学既要课本基础，也要大题方法论。高一高二先同步打基础，高三再上工业流程、有机、电化学和实验题套路。",
     watchOrder: ["实验现象观察", "微观结构解释", "反应原理迁移", "生活化学与材料"],
     keywords: ["化学反应", "实验", "结构性质", "反应原理", "科普"],
-    note: "科普拓展型资源，考试复习仍要对照教材和真题体系。",
+    note: "同步基础、体系复盘、二轮冲刺和兴趣实验要分开选课。",
+    recommendations: [
+      {
+        name: "李政化学",
+        level: "高三应试 / 冲刺",
+        focus: "工业流程、有机化学、电化学、实验大题",
+        fit: "高三二轮、考前突击、想快速掌握大题方法论的同学。",
+        summary: "口诀和解题方法论密集，考点深挖，冲刺提分强。",
+      },
+      {
+        name: "一化儿",
+        level: "零基础 / 同步课本",
+        focus: "课本逐课精讲、方程式记忆、基础知识拆解",
+        fit: "高一高二同步上课、补基础短板的同学。",
+        summary: "讲解简单易懂，适合先把课本和方程式过扎实。",
+      },
+      {
+        name: "化学超人",
+        level: "一轮体系 / 刷题",
+        focus: "一轮复习、PPT讲义、考点分类刷题",
+        fit: "自主一轮系统复盘、想按考点分类刷题的同学。",
+        summary: "体系完整，适合把零散知识整理成一轮复习框架。",
+      },
+      {
+        name: "真·凤舞九天",
+        level: "兴趣 / 实验理解",
+        focus: "趣味化学实验、反应现象、原理直观化",
+        fit: "想培养兴趣、理解抽象反应过程的同学。",
+        summary: "用实验现象帮助理解化学反应，不替代考试体系。",
+      },
+    ],
   },
   {
     subject: "生物",
-    curator: "无穷小亮的科普日常",
-    role: "生命科学 / 生态与进化补充",
-    homepage: "https://search.bilibili.com/upuser?keyword=%E6%97%A0%E7%A9%B7%E5%B0%8F%E4%BA%AE%E7%9A%84%E7%A7%91%E6%99%AE%E6%97%A5%E5%B8%B8",
-    collection: biliSearchUrl("无穷小亮 高中生物 生态 进化 生物鉴定 合集"),
-    why: "适合把细胞、生态、进化、分类学等知识放到真实生命现象中理解，增强生物学直觉。",
+    curator: "汉水丑生侯伟",
+    role: "课本知识点 / 基础体系主推",
+    homepage: biliUpSearchUrl("汉水丑生侯伟"),
+    collection: biliSearchUrl("汉水丑生侯伟"),
+    why: "生物先回到教材原文、图表和概念边界，再用题目绑定考点。基础薄弱先逐句梳理课本，高三再训练话术和主观题表达。",
     watchOrder: ["生物分类与鉴定", "生态关系", "进化适应", "人与自然专题"],
     keywords: ["生态", "进化", "分类", "生命科学", "生物多样性"],
-    note: "现象理解和学科兴趣很强，可作为教材知识的真实案例库。",
+    note: "教材是生物提分核心，考前再做高频考点和话术压缩。",
+    recommendations: [
+      {
+        name: "汉水丑生侯伟",
+        level: "基础 / 课本体系",
+        focus: "教材逐句梳理、图文思维导图、必修与选择性必修",
+        fit: "需要扎实过课本、概念边界总混的同学。",
+        summary: "课本知识点天花板，很多老师备课也会参考，打基础优先看。",
+      },
+      {
+        name: "李林生物（德叔）",
+        level: "一轮 / 边学边练",
+        focus: "知识点 + 《李林1000题》刷题讲解",
+        fit: "高三一轮、想学完马上练题巩固的同学。",
+        summary: "风趣易懂，知识点和习题绑定，适合复习闭环。",
+      },
+      {
+        name: "万猛生物",
+        level: "考前 / 话术",
+        focus: "高频考点、主观题答题话术、快速背诵复盘",
+        fit: "考前冲刺、主观题表达不规范的同学。",
+        summary: "适合压缩高频考点，抓规范得分话术。",
+      },
+    ],
   },
   {
     subject: "历史",
-    curator: "小约翰可汗",
-    role: "世界史 / 人物史专题主推",
-    homepage: "https://space.bilibili.com/23947287",
-    collection: biliSearchUrl("小约翰可汗 世界史 历史人物 合集"),
-    why: "适合补世界史人物、国家兴衰、制度变迁与国际关系背景；增强历史叙事和时空观。",
+    curator: "历史老师定哥",
+    role: "体系速通 / 答题模板主推",
+    homepage: biliUpSearchUrl("历史老师定哥"),
+    collection: biliSearchUrl("历史老师定哥"),
+    why: "历史要先有时间线和通史框架，再补因果逻辑和材料题答题模板。体系薄弱先搭框架，兴趣资源用于预习和减压。",
     watchOrder: ["世界近现代人物", "国家制度与变迁", "战争与国际秩序", "材料题背景迁移"],
     keywords: ["世界史", "人物史", "国际关系", "制度变迁", "历史背景"],
-    note: "叙事型资源，要回到教材时间线和史料题设问中整理。",
+    note: "看完视频要回到教材时间线和史料题设问里整理。",
+    recommendations: [
+      {
+        name: "历史老师定哥",
+        level: "体系 / 应试",
+        focus: "思维导图、时间线、答题模板、《13天通关高中历史》",
+        fit: "缺通史框架、想快速搭建历史体系的同学。",
+        summary: "干货密集，适合速通中外通史；语速偏快可倍速/降速观看。",
+      },
+      {
+        name: "讲历史的张老师",
+        level: "理解 / 专题",
+        focus: "朝代模块、专题模块、事件因果逻辑",
+        fit: "不想死记时间线、想理解历史背景和因果的同学。",
+        summary: "逻辑梳理清晰，适合理解事件为什么发生、怎样发展。",
+      },
+      {
+        name: "段sir是懂王",
+        level: "兴趣 / 预习",
+        focus: "趣味化历史事件、预习、缓解背诵压力",
+        fit: "历史兴趣弱、背诵压力大、需要先建立画面感的同学。",
+        summary: "适合预习和兴趣导入，再回到课本做体系化记忆。",
+      },
+    ],
   },
   {
     subject: "地理",
-    curator: "星球研究所",
-    role: "自然地理 / 区域地理可视化主推",
-    homepage: "https://search.bilibili.com/upuser?keyword=%E6%98%9F%E7%90%83%E7%A0%94%E7%A9%B6%E6%89%80",
-    collection: biliSearchUrl("星球研究所 高中地理 自然地理 区域地理 合集"),
-    why: "适合用地图、地貌、气候、区域案例理解自然环境和人地关系，尤其适合地理图像题。",
+    curator: "安迎老师",
+    role: "地理原理 / 老牌名师主推",
+    homepage: biliUpSearchUrl("安迎老师"),
+    collection: biliSearchUrl("安迎老师"),
+    why: "地理要从底层原理和图像题入手：等值线、气候、地貌、区域地理先吃透，再用真题模板标准化表达。",
     watchOrder: ["地貌与水文", "气候与植被", "中国区域地理", "资源环境与国家安全"],
     keywords: ["自然地理", "区域地理", "地图", "气候", "人地关系"],
-    note: "视觉案例很强，建议配合地图册和高考图表题复盘。",
+    note: "自然地理重原理，人文地理重模板，区域地理要配合地图册。",
+    recommendations: [
+      {
+        name: "安迎老师",
+        level: "基础原理 / 系统",
+        focus: "课本核心原理、等值线、区域地理",
+        fit: "想吃透地理底层逻辑、摆脱死记硬背的同学。",
+        summary: "逻辑严谨，老牌名师，适合把自然地理原理讲透。",
+      },
+      {
+        name: "张艳平地理",
+        level: "高考应试 / 大题",
+        focus: "高考真题、大题模板、自然地理和人文地理答题思路",
+        fit: "高三提分、材料题和综合题表达不规范的同学。",
+        summary: "真题拆解和模板化表达强，应试针对性高。",
+      },
+      {
+        name: "羊羊的地理教室",
+        level: "同步 / 查漏补缺",
+        focus: "高一高二同步、细碎知识点归纳",
+        fit: "零碎知识点容易漏、需要同步巩固的同学。",
+        summary: "适合补小知识点和日常同步，不必等到总复习才看。",
+      },
+    ],
   },
   {
     subject: "思想政治",
-    curator: "罗翔说刑法 + 共青团中央",
-    role: "法治模块 / 时政素材主推",
-    homepage: "https://space.bilibili.com/517327498",
-    collection: biliSearchUrl("罗翔说刑法 高中政治 法律生活 法治 合集"),
-    secondary: {
-      name: "共青团中央",
-      url: "https://space.bilibili.com/20165629",
-      reason: "用于积累时政素材、青年责任、国家治理和价值表达案例。",
-    },
-    why: "适合法律与生活、政治与法治模块；用真实案例理解权利义务、法治精神和公共议题。",
+    curator: "刘勖雯",
+    role: "政治应试 / 主观题模板主推",
+    homepage: biliUpSearchUrl("刘勖雯"),
+    collection: biliSearchUrl("刘勖雯"),
+    why: "政治要先过教材原文，再把选择题排除和主观题分题型模板练熟；高三后期要结合年度时政热点做材料题。",
     watchOrder: ["法治案例", "权利义务", "社会热点", "青年责任与价值表达"],
     keywords: ["法治", "法律生活", "权利义务", "时政", "公共参与"],
-    note: "政治学科必须结合教材术语作答，视频用于案例理解和素材积累。",
+    note: "政治必须用教材术语作答，模板和时政都要服务于材料分析。",
+    recommendations: [
+      {
+        name: "刘勖雯",
+        level: "应试 / 模板",
+        focus: "选择题排除技巧、主观题万能模板、新教材必修梳理",
+        fit: "主观题没话说、选择题总纠结、需要直接套用话术的同学。",
+        summary: "应试性强，适合把题型和答题语言标准化。",
+      },
+      {
+        name: "朱法垚",
+        level: "时政 / 高三后期",
+        focus: "年度时政热点、材料分析大题",
+        fit: "高三后期时政专题复习、材料题结合热点困难的同学。",
+        summary: "擅长把时政热点拆成考题逻辑和答题角度。",
+      },
+      {
+        name: "咕噜咕噜将",
+        level: "基础 / 教材串讲",
+        focus: "教材原文逐课串讲、知识框架",
+        fit: "基础薄弱、需要先把课本知识点过一遍的同学。",
+        summary: "框架清晰，适合先打底，再进入模板和热点训练。",
+      },
+    ],
   },
 ];
 
@@ -2062,6 +2299,10 @@ function containsQuery(...fields) {
 
 function biliSearchUrl(keyword) {
   return `https://search.bilibili.com/all?keyword=${encodeURIComponent(keyword)}`;
+}
+
+function biliUpSearchUrl(keyword) {
+  return `https://search.bilibili.com/upuser?keyword=${encodeURIComponent(keyword)}`;
 }
 
 function progressForSubject(subjectIndex) {
@@ -2591,6 +2832,7 @@ function videoResourceSearchFields(resource) {
     ...(resource.watchOrder || []),
     ...(resource.keywords || []),
     ...videoResourceSyllabusFields(resource),
+    ...upRecommendationFields(resource),
     resource.secondary?.name || "",
     resource.secondary?.reason || "",
   ];
@@ -2620,6 +2862,16 @@ function videoResourceSyllabusFields(resource) {
     subject.name,
     ...subject.volumes.flatMap((volume) => [volume.name, ...volume.units]),
   ];
+}
+
+function upRecommendationFields(resource) {
+  return (resource.recommendations || []).flatMap((item) => [
+    item.name,
+    item.level,
+    item.focus,
+    item.fit,
+    item.summary,
+  ]);
 }
 
 function orderedVideoResources(resources) {
@@ -2655,6 +2907,7 @@ function videoVolumeMatchesQuery(resource, subject, volume, unit) {
     unit,
     ...(resource.watchOrder || []),
     ...(resource.keywords || []),
+    ...upRecommendationFields(resource),
   );
 }
 
@@ -2717,6 +2970,34 @@ function resourceWatchOrderHTML(steps) {
   `;
 }
 
+function upRecommendationsHTML(resource) {
+  const items = resource.recommendations || [];
+  if (!items.length) return "";
+  return `
+    <section class="video-up-section">
+      <h4>分档 UP 推荐</h4>
+      <div class="video-up-grid">
+        ${items
+          .map(
+            (item) => `
+              <article class="video-up-card">
+                <div class="video-up-card__head">
+                  <strong>${highlight(item.name)}</strong>
+                  <span>${highlight(item.level)}</span>
+                </div>
+                <p><b>主攻：</b>${highlight(item.focus)}</p>
+                <p><b>适合：</b>${highlight(item.fit)}</p>
+                <p>${highlight(item.summary)}</p>
+                <a href="${escapeHTML(biliUpSearchUrl(item.name))}" target="_blank" rel="noopener noreferrer">搜索 UP</a>
+              </article>
+            `,
+          )
+          .join("")}
+      </div>
+    </section>
+  `;
+}
+
 function videoResourceCardHTML(resource, volumeIndex = state.volumeIndex) {
   return `
     <article class="video-card">
@@ -2728,6 +3009,7 @@ function videoResourceCardHTML(resource, volumeIndex = state.volumeIndex) {
       <div class="video-card__body">
         <p>${highlight(resource.why)}</p>
         ${resourceTagsHTML(resource.keywords)}
+        ${upRecommendationsHTML(resource)}
         <section class="video-watch">
           <h4>建议观看顺序</h4>
           ${resourceWatchOrderHTML(resource.watchOrder)}
