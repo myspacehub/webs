@@ -2630,14 +2630,8 @@ function orderedVideoResources(resources) {
   });
 }
 
-function compactVideoSubjectName(subjectName) {
-  return subjectName.replace(/（.*?）/g, "");
-}
-
 function videoSearchKeyword(resource, volumeName, unitName) {
-  const curator = resource.curator.replace(/\s*[+/]\s*/g, " ");
-  const subject = compactVideoSubjectName(resource.subject);
-  return [curator, `高中${subject}`, volumeName, unitName].filter(Boolean).join(" ");
+  return (unitName || volumeName || resource.subject).trim();
 }
 
 function videoVolumeSearchUrl(resource, volumeIndex = state.volumeIndex) {
@@ -2674,7 +2668,7 @@ function videoSyllabusLinksHTML(resource, volumeIndex = state.volumeIndex) {
   return `
     <section class="video-syllabus">
       <h4>按教材顺序找视频</h4>
-      <p>当前内容跟随上方分册按钮：${highlight(subject.name)} · ${highlight(volume.name)}。点击章节标题会用当前推荐 UP、学科、分册和章节名在 B站检索。</p>
+      <p>当前内容跟随上方分册按钮：${highlight(subject.name)} · ${highlight(volume.name)}。点击章节标题时只用该章节 / 单元标题在 B站检索，避免关键词过长导致找不到视频。</p>
       <div class="video-syllabus__volumes">
         <details open>
           <summary>
