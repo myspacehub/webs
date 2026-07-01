@@ -2011,6 +2011,15 @@ function saveProgress() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify([...doneSet]));
 }
 
+function hidePageLoader() {
+  const loader = document.querySelector("#pageLoader");
+  if (!loader) return;
+  loader.classList.add("is-hidden");
+  window.setTimeout(() => {
+    loader.remove();
+  }, 500);
+}
+
 function courseTotals() {
   const volumes = COURSE.reduce((sum, subject) => sum + subject.volumes.length, 0);
   const units = COURSE.reduce(
@@ -3017,4 +3026,8 @@ resetBtn.addEventListener("click", () => {
   searchInput.focus();
 });
 
-render();
+try {
+  render();
+} finally {
+  hidePageLoader();
+}

@@ -3,58 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="theme-color" content="#2563eb" />
-    <meta name="description" content="福建省高中全科学习平台，涵盖九大学科目录、单元检索、知识思维导图和学习方法。" />
     <title>福建省高中全科学习 H5</title>
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>" />
   </head>
   <body>
-    <div id="pageLoader" class="page-loader" aria-hidden="true">
-      <div class="loader-inner">
-        <div class="loader-logo">📚</div>
-        <div class="loader-bar"><div class="loader-bar__fill"></div></div>
-        <p class="loader-text">正在加载课程数据…</p>
-      </div>
-    </div>
-
     <main class="app-shell">
       <section class="hero">
         <div class="hero__copy">
-          <p class="eyebrow">Fujian Senior High School · All Subjects</p>
-          <h1>福建省高中<br /><span class="hero__gradient-text">全科学习</span></h1>
-          <p class="hero__desc">九大学科 · 册别导航 · 单元检索 · 详细知识思维导图 · 学霸高效学习方法</p>
-          <div class="hero__tags">
-            <span class="hero__tag">📖 语文</span>
-            <span class="hero__tag">🔢 数学</span>
-            <span class="hero__tag">🌐 英语</span>
-            <span class="hero__tag">⚛️ 物理</span>
-            <span class="hero__tag">🧪 化学</span>
-            <span class="hero__tag">+4 科</span>
-          </div>
+          <p class="eyebrow">Fujian Senior High School Learning</p>
+          <h1>福建省高中全科学习 H5</h1>
+          <p class="hero__desc">九大学科 · 册别导航 · 单元检索 · 详细知识思维导图 · 学霸方法 · B站视频资源</p>
         </div>
         <div class="hero__badge" aria-label="高中全科">
-          <div class="hero__badge-inner">
-            <span>全科</span>
-            <strong>H5</strong>
-            <small>福建版</small>
-          </div>
+          <span>全科</span>
+          <strong>H5</strong>
         </div>
       </section>
 
       <section class="toolbar" aria-label="学习目录工具栏">
         <label class="search-box">
-          <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-          <input id="searchInput" type="search" placeholder="搜索学科 / 册别 / 单元关键词…" autocomplete="off" />
+          <span>搜索</span>
+          <input id="searchInput" type="search" placeholder="输入学科 / 册别 / 单元关键词" autocomplete="off" />
         </label>
         <div id="modeSwitch" class="mode-switch" role="tablist" aria-label="视图切换">
-          <button class="mode-btn is-active" type="button" data-mode="catalog">📋 目录</button>
-          <button class="mode-btn" type="button" data-mode="mindmap">🧠 思维导图</button>
-          <button class="mode-btn" type="button" data-mode="subjectMap">🗺️ 跨册总图</button>
-          <button class="mode-btn" type="button" data-mode="methods">✏️ 学习方法</button>
+          <button class="mode-btn is-active" type="button" data-mode="catalog">目录</button>
+          <button class="mode-btn" type="button" data-mode="mindmap">思维导图</button>
+          <button class="mode-btn" type="button" data-mode="subjectMap">跨册总图</button>
+          <button class="mode-btn" type="button" data-mode="methods">学习方法</button>
+          <button class="mode-btn" type="button" data-mode="videos">B站视频</button>
         </div>
-        <button id="resetBtn" class="ghost-btn" type="button" title="重置搜索">↺ 重置</button>
-        <button id="darkToggle" class="ghost-btn dark-toggle" type="button" title="切换深色模式" aria-label="切换深色模式">🌙</button>
+        <button id="resetBtn" class="ghost-btn" type="button">重置</button>
       </section>
 
       <section id="stats" class="stats" aria-label="课程统计"></section>
@@ -74,10 +52,6 @@
           <div id="unitList" class="unit-list"></div>
         </section>
       </section>
-
-      <footer class="site-footer">
-        <p>福建省高中全科学习 H5 · 涵盖九大学科 · 数据仅供参考，请以最新教材为准</p>
-      </footer>
     </main>
 
     <script src="./knowledge-profiles.js"></script>
