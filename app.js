@@ -2647,3 +2647,103 @@ resetBtn.addEventListener("click", () => {
 });
 
 render();
+
+/* ============================================================
+   ✨ 优化增强模块 — 深色模式 / 页面加载 / UI 细节
+   ============================================================ */
+
+// ── 深色模式 ────────────────────────────────────────────────
+const DARK_KEY = "fujian-h5-dark-v1";
+
+function applyDark(dark) {
+  document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+  const btn = document.getElementById("darkToggle");
+  if (btn) btn.textContent = dark ? "☀️" : "🌙";
+  try { localStorage.setItem(DARK_KEY, dark ? "1" : "0"); } catch {}
+}
+
+(function initDark() {
+  const stored = (() => { try { return localStorage.getItem(DARK_KEY); } catch { return null; } })();
+  const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  applyDark(stored !== null ? stored === "1" : prefersDark);
+})();
+
+document.getElementById("darkToggle")?.addEventListener("click", () => {
+  const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+  applyDark(!isDark);
+});
+
+// ── 页面加载遮罩 ─────────────────────────────────────────────
+(function hideLoader() {
+  const loader = document.getElementById("pageLoader");
+  if (!loader) return;
+  // 等动画完成后淡出
+  setTimeout(() => {
+    loader.classList.add("is-hidden");
+    loader.addEventListener("transitionend", () => loader.remove(), { once: true });
+  }, 1000);
+})();
+
+// ── 学科按钮增强 — 注入进度条 ────────────────────────────────
+const _origRenderSubjects = renderSubjects;
+// 覆盖 renderSubjects，加入进度条
+function renderSubjects() {
+  subjectCount.textContent = `${COURSE.length} 科`;
+  subjectList.innerHTML = COURSE.map((subject, subjectIndex) => {
+    const progress = progressForSubject(subjectIndex);
+    const active = subjectIndex === state.subjectIndex && !state.query && state.mode !== "methods" ? " is-active" : "";
+    const pct = Math.max(4, progress.percent); // 最少显示 4% 宽度
+    return `
+      <button class="subject-btn${active}" type="button" data-subject-index="${subjectIndex}">
+        <b>${escapeHTML(subject.name)}</b>
+        <div class="subject-progress">
+          <div class="subject-prog-bar"><div class="subject-prog-bar__fill" style="width:${pct}%"></div></div>
+          <span>${progress.done}/${progress.total}</span>
+        </div>
+      </button>
+    `;
+  }).join("");
+}
+
+// ── 统计卡片动画数字 ─────────────────────────────────────────
+function animateNumber(el, target, duration = 600) {
+  if (!el) return;
+  const start = performance.now();
+  const from = 0;
+  function step(now) {
+    const t = Math.min(1, (now - start) / duration);
+    const ease = 1 - Math.pow(1 - t, 3);
+    const val = Math.round(from + (target - from) * ease);
+    el.textContent = val.toLocaleString("zh-CN");
+    if (t < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+const _origRenderStats = renderStats;
+function renderStats() {
+  const totals = courseTotals();
+  const percent = totals.units ? Math.round((totals.done / totals.units) * 100) : 0;
+  const items = [
+    ["学科", totals.subjects, "📚"],
+    ["册别", totals.volumes, "📖"],
+    ["单元 / 章节", totals.units, "📝"],
+    ["知识导图节点", totals.knowledgeNodes, "🧠"],
+    ["学习方法", LEARNING_METHODS.length, "✏️"],
+    ["完成进度", `${percent}%`, "🏆"],
+  ];
+  stats.innerHTML = items.map(([label, value, icon]) => `
+    <article class="stat-card">
+      <strong data-target="${typeof value === "number" ? value : ""}">${typeof value === "number" ? 0 : value}</strong>
+      <span>${icon} ${label}</span>
+    </article>
+  `).join("");
+  // 触发数字动画
+  stats.querySelectorAll("strong[data-target]").forEach(el => {
+    const t = parseInt(el.dataset.target, 10);
+    if (!isNaN(t) && t > 0) animateNumber(el, t, 700);
+  });
+}
+
+// ── 重新运行 render 以应用增强版函数 ─────────────────────────
+render();
