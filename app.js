@@ -1755,6 +1755,129 @@ const state = {
   mode: "catalog",
 };
 
+const LEARNING_METHODS = [
+  {
+    title: "知识学习：闭环式学习",
+    tag: "拒绝死记硬背 · 吃透、锁牢、会用",
+    summary: "把“听懂了”变成“讲得出、用得上”。每一节课按预习、课堂、复盘三步闭环，减少知识漏洞。",
+    steps: [
+      {
+        name: "轻量预习",
+        time: "课前 15–30 分钟",
+        action: "只做预习三问：这节课学什么？哪些一看就懂？哪些完全不懂？",
+        tips: ["圈课本关键词和疑难点", "不啃难题、不背全文", "带着问题进课堂，专注找答案"],
+      },
+      {
+        name: "专注课堂",
+        time: "45 分钟主战场",
+        action: "听老师的逻辑和方法，不追求把笔记抄满；当堂问题当堂标记、当堂解决。",
+        tips: ["优先听知识框架、解题方法、易错点", "老师反复强调处用星号标记", "课上没听懂，课后立刻问，不让漏洞过夜"],
+      },
+      {
+        name: "费曼复盘",
+        time: "课后 5–10 分钟",
+        action: "合上书，用大白话把知识点讲给零基础同学听；讲不顺的地方就是盲区。",
+        tips: ["必须讲原理、用法、易错点", "卡顿处回书本/笔记补洞", "一章结束后再讲一次完整主线"],
+      },
+    ],
+    checklist: ["我今天是否带着问题听课？", "今天有没有一个疑问当堂清零？", "我能否不用术语讲清一个新知识点？"],
+  },
+  {
+    title: "刷题提分：精准高效刷题",
+    tag: "学一道 · 会一类 · 通一片",
+    summary: "刷题不拼数量，拼选题质量和复盘深度。题海战术换成核心题型、错题复盘和知识体系。",
+    steps: [
+      {
+        name: "精准选题",
+        time: "每天先选再刷",
+        action: "只抓三类题：课本例题/课后经典题、作业高频错题、考试高频考点题。",
+        tips: ["基础弱先刷基础题", "基础稳再刷中档题和变式题", "偏题怪题超纲题先放弃"],
+      },
+      {
+        name: "错题复盘",
+        time: "做题时间的一半",
+        action: "错题本不抄题海，写清考点、错因、标准套路和避坑提醒。",
+        tips: ["错因分成知识不会、思路不对、审题粗心、计算失误", "当天整理，隔天翻看，周末集中复盘", "同类题再找 1–2 道验证是否真会"],
+      },
+      {
+        name: "知识体系",
+        time: "每周 20–30 分钟",
+        action: "用一张简图串联本周知识点、考点、题型、易错点。",
+        tips: ["不追求漂亮，追求关系清楚", "把错题挂到对应知识点下", "考试前按图快速调取方法"],
+      },
+    ],
+    checklist: ["我今天刷的是核心题型吗？", "每道错题是否写了真实错因？", "本周知识点是否已经连成一张图？"],
+  },
+  {
+    title: "时间管理：规律换高效",
+    tag: "不靠熬夜内卷 · 只算有效专注时长",
+    summary: "稳定作息、碎片时间和番茄钟，解决“坐很久但没学进去”的假努力。",
+    steps: [
+      {
+        name: "三段式节奏",
+        time: "每天固定",
+        action: "早读背记忆类，晚间攻数理化和深度题，睡前 10 分钟复盘当天漏洞和明日任务。",
+        tips: ["周末假期只微调，不极端摆烂也不爆学", "让身体形成学习惯性", "睡前只复盘和计划，不再硬刷难题"],
+      },
+      {
+        name: "碎片时间",
+        time: "课间/自习/午休空档",
+        action: "在校优先完成基础作业，把晚上留给复盘、刷题、补短板。",
+        tips: ["课间可背 3 个单词/1 个公式/1 首古诗关键句", "自习课先清书面作业", "晚上不再被作业追着跑"],
+      },
+      {
+        name: "番茄钟专注法",
+        time: "25 + 5 分钟",
+        action: "25 分钟只做一件事，不碰手机；5 分钟休息眼睛和身体，再开下一轮。",
+        tips: ["每轮只设一个小目标", "手机离开桌面", "休息时站起来、远眺、喝水，不刷短视频"],
+      },
+    ],
+    checklist: ["今天是否有一段完整 25 分钟无干扰学习？", "基础作业是否尽量在校完成？", "睡前是否做了 10 分钟复盘？"],
+  },
+  {
+    title: "身心调节：稳住状态",
+    tag: "长期提分的根基 · 少内耗，多行动",
+    summary: "成绩起伏常常不是智商问题，而是焦虑、透支和拖延。把状态稳住，学习才能长期有效。",
+    steps: [
+      {
+        name: "接纳不完美",
+        time: "每次考试后",
+        action: "考试不是审判，而是体检；只和昨天的自己比，找到漏洞就是收获。",
+        tips: ["把排名焦虑改成漏洞清单", "允许犯错，但不允许同错反复犯", "每天只追一个小进步"],
+      },
+      {
+        name: "劳逸结合",
+        time: "每天都要有",
+        action: "用运动和短休息维护专注力，别用熬夜透支第二天课堂。",
+        tips: ["跑步、跳绳、拉伸都可以", "学习累了远眺 1–2 分钟", "困到低效时先休息，不硬撑假学"],
+      },
+      {
+        name: "拒绝拖延",
+        time: "从 10 分钟开始",
+        action: "不想学时先做 10 分钟；难题先拆第一步，一旦开始就会进入状态。",
+        tips: ["任务拆到小到不能再小", "完成后打勾积累成就感", "薄弱点每天碰一点，不让问题堆成山"],
+      },
+    ],
+    checklist: ["今天有没有把一次焦虑转成具体行动？", "今天是否运动或拉伸过？", "拖延任务是否至少启动了 10 分钟？"],
+  },
+];
+
+const DAILY_METHOD_FLOW = [
+  ["课前", "15–30 分钟轻量预习：标重点、圈疑问、带问题进课堂"],
+  ["课堂", "听逻辑、抓方法、记易错点；疑问当堂标记，当天清零"],
+  ["课后", "用费曼法讲一遍，讲不顺就回书本补洞"],
+  ["刷题", "只刷核心题型；错题写考点、错因、套路、避坑"],
+  ["睡前", "10 分钟复盘漏洞，安排明天最重要的 1–3 件事"],
+];
+
+const WRONG_QUESTION_TEMPLATE = [
+  "考点：这题到底考哪个知识点？",
+  "错因：知识不会 / 思路不对 / 审题粗心 / 计算失误 / 时间分配不当",
+  "标准套路：正确第一步是什么？关键公式、模型或答题结构是什么？",
+  "避坑提醒：下次看到什么信号要警惕？",
+  "复盘节奏：当天整理，隔天翻看，周末集中复盘并找同类题验证",
+];
+
 const $ = (selector) => document.querySelector(selector);
 const subjectList = $("#subjectList");
 const volumeTabs = $("#volumeTabs");
@@ -1841,6 +1964,7 @@ function renderStats() {
     ["册别", totals.volumes],
     ["单元 / 章节 / 课", totals.units],
     ["知识导图节点", totals.knowledgeNodes],
+    ["学习方法", `${LEARNING_METHODS.length} 板块`],
     ["完成进度", `${percent}%`],
   ]
     .map(
@@ -1864,7 +1988,7 @@ function renderSubjects() {
   subjectCount.textContent = `${COURSE.length} 科`;
   subjectList.innerHTML = COURSE.map((subject, subjectIndex) => {
     const progress = progressForSubject(subjectIndex);
-    const active = subjectIndex === state.subjectIndex && !state.query ? " is-active" : "";
+    const active = subjectIndex === state.subjectIndex && !state.query && state.mode !== "methods" ? " is-active" : "";
     return `
       <button class="subject-btn${active}" type="button" data-subject-index="${subjectIndex}">
         <b>${escapeHTML(subject.name)}</b>
@@ -2157,7 +2281,183 @@ function subjectNetworkHTML(subjectIndex) {
   `;
 }
 
+function methodSearchFields(block) {
+  return [
+    block.title,
+    block.tag,
+    block.summary,
+    ...block.steps.flatMap((step) => [step.name, step.time, step.action, ...step.tips]),
+    ...block.checklist,
+  ];
+}
+
+function methodMatches(block) {
+  return containsQuery(...methodSearchFields(block));
+}
+
+function methodStepHTML(step, index) {
+  return `
+    <article class="method-step">
+      <span class="method-step__num">${index + 1}</span>
+      <div>
+        <div class="method-step__head">
+          <h4>${highlight(step.name)}</h4>
+          <small>${highlight(step.time)}</small>
+        </div>
+        <p>${highlight(step.action)}</p>
+        <ul>
+          ${step.tips.map((tip) => `<li>${highlight(tip)}</li>`).join("")}
+        </ul>
+      </div>
+    </article>
+  `;
+}
+
+function learningMethodCardHTML(block, index) {
+  return `
+    <article class="method-card">
+      <div class="method-card__head">
+        <span class="mindmap-root__tag">方法 ${index + 1}</span>
+        <h3>${highlight(block.title)}</h3>
+        <p class="method-card__tagline">${highlight(block.tag)}</p>
+        <p>${highlight(block.summary)}</p>
+      </div>
+      <div class="method-steps">
+        ${block.steps.map((step, stepIndex) => methodStepHTML(step, stepIndex)).join("")}
+      </div>
+      <details class="method-checklist" open>
+        <summary>今天照着问自己的 3 个问题</summary>
+        <ul>
+          ${block.checklist.map((item) => `<li>${highlight(item)}</li>`).join("")}
+        </ul>
+      </details>
+    </article>
+  `;
+}
+
+function dailyFlowHTML() {
+  return `
+    <section class="method-section">
+      <div class="method-section__head">
+        <span class="mindmap-root__tag">可直接照搬</span>
+        <h3>普通学生每日执行流程</h3>
+        <p>不用一次变完美，先按这 5 步执行一周：预习有问题、课堂抓逻辑、课后讲出来、错题真复盘、睡前做收口。</p>
+      </div>
+      <div class="daily-flow">
+        ${DAILY_METHOD_FLOW.map(
+          ([time, action]) => `
+            <article>
+              <strong>${highlight(time)}</strong>
+              <span>${highlight(action)}</span>
+            </article>
+          `,
+        ).join("")}
+      </div>
+    </section>
+  `;
+}
+
+function wrongQuestionTemplateHTML() {
+  return `
+    <section class="method-section">
+      <div class="method-section__head">
+        <span class="mindmap-root__tag">提分快捷入口</span>
+        <h3>错题复盘极简模板</h3>
+        <p>错题本不要抄题抄答案，照下面 5 行写，目标是杜绝同错反复犯。</p>
+      </div>
+      <ol class="wrong-template">
+        ${WRONG_QUESTION_TEMPLATE.map((item) => `<li>${highlight(item)}</li>`).join("")}
+      </ol>
+    </section>
+  `;
+}
+
+function weeklyRhythmHTML() {
+  return `
+    <section class="method-section">
+      <div class="method-section__head">
+        <span class="mindmap-root__tag">稳定提分</span>
+        <h3>一周执行节奏</h3>
+        <p>把学习方法放进固定节奏里，才不会变成看完很燃、第二天忘光。</p>
+      </div>
+      <div class="weekly-grid">
+        <article>
+          <b>周一到周五</b>
+          <p>课前轻预习，课上当堂清，晚上用番茄钟完成复盘和核心题。</p>
+        </article>
+        <article>
+          <b>周三小检查</b>
+          <p>检查本周错题是否都写了错因；薄弱点先补 1 个，不贪多。</p>
+        </article>
+        <article>
+          <b>周末总复盘</b>
+          <p>整理一张本周知识框架图，集中翻看错题，再找同类题验证。</p>
+        </article>
+        <article>
+          <b>每次考试后</b>
+          <p>不急着看排名，先做漏洞清单：知识漏洞、方法漏洞、状态漏洞。</p>
+        </article>
+      </div>
+    </section>
+  `;
+}
+
+function learningMethodsHTML(blocks) {
+  return `
+    <div class="learning-methods">
+      <article class="method-hero">
+        <span class="mindmap-root__tag">学霸高效学习精髓</span>
+        <h3>不是拼天赋，是拼标准流程</h3>
+        <p>
+          把知识学习、刷题复盘、时间管理、身心调节做成可照搬的行动清单。
+          每个学生都能从“假努力”切换到“有反馈的有效学习”。
+        </p>
+      </article>
+      ${dailyFlowHTML()}
+      <section class="method-grid">
+        ${blocks.map((block, index) => learningMethodCardHTML(block, index)).join("")}
+      </section>
+      ${wrongQuestionTemplateHTML()}
+      ${weeklyRhythmHTML()}
+    </div>
+  `;
+}
+
+function renderLearningMethods() {
+  const blocks = LEARNING_METHODS.filter(methodMatches);
+  volumeTabs.hidden = true;
+  breadcrumb.innerHTML = `
+    <div>
+      <h2>学习方法</h2>
+      <p>${state.query.trim() ? `关键词「${escapeHTML(state.query)}」匹配 ${blocks.length} 个方法板块` : "知识学习 · 刷题复盘 · 时间管理 · 身心调节"}</p>
+    </div>
+    <div class="progress-ring">
+      <strong>${LEARNING_METHODS.length}</strong>
+      <span>方法板块</span>
+    </div>
+  `;
+
+  if (!blocks.length) {
+    unitList.innerHTML = `
+      <div class="empty">
+        <div>
+          <strong>没有找到匹配的方法</strong>
+          <p>可以搜索“预习”“错题”“番茄钟”“焦虑”“复盘”等关键词。</p>
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  unitList.innerHTML = learningMethodsHTML(blocks);
+}
+
 function renderCurrentVolume() {
+  if (state.mode === "methods") {
+    renderLearningMethods();
+    return;
+  }
+
   renderBreadcrumb();
   volumeTabs.hidden = state.mode === "subjectMap";
   if (state.mode !== "subjectMap") renderVolumeTabs();
@@ -2272,7 +2572,9 @@ function render() {
   renderStats();
   renderModeSwitch();
   renderSubjects();
-  if (state.query.trim() && state.mode === "subjectMap") {
+  if (state.mode === "methods") {
+    renderLearningMethods();
+  } else if (state.query.trim() && state.mode === "subjectMap") {
     renderSubjectMapSearch();
   } else if (state.query.trim()) {
     renderSearch();
@@ -2286,6 +2588,7 @@ subjectList.addEventListener("click", (event) => {
   if (!button) return;
   state.subjectIndex = Number(button.dataset.subjectIndex);
   state.volumeIndex = 0;
+  if (state.mode === "methods") state.mode = "catalog";
   state.query = "";
   searchInput.value = "";
   render();
