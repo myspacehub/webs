@@ -1755,6 +1755,110 @@ const state = {
   mode: "catalog",
 };
 
+const WORD_TRAINER_STORAGE_KEY = `${STORAGE_KEY}-english-word-trainer-v1`;
+
+const ENGLISH_WORD_BANK_FALLBACK = [
+  { word: "acquire", meaning: "获得；习得", phrase: "acquire knowledge", example: "Students acquire confidence through steady practice.", mnemonic: "a + quire 像“去取”：主动去取知识就是 acquire。", category: "高考核心" },
+  { word: "adapt", meaning: "适应；改编", phrase: "adapt to change", example: "We must adapt to a rapidly changing world.", mnemonic: "ad + apt：apt 有合适感，让自己变合适就是适应。", category: "高考核心" },
+  { word: "advocate", meaning: "提倡；支持者", phrase: "advocate reading", example: "The article advocates a balanced lifestyle.", mnemonic: "ad + voc 声音：把声音说出去支持某事。", category: "写作表达" },
+  { word: "ambition", meaning: "抱负；雄心", phrase: "a strong ambition", example: "Her ambition is to become a scientist.", mnemonic: "ambi 像“两边都想要”，目标很大就是雄心。", category: "人物品质" },
+  { word: "analyze", meaning: "分析", phrase: "analyze data", example: "The ability to analyze problems matters in exams.", mnemonic: "ana 分开 + lyze：把整体拆开看。", category: "学术阅读" },
+  { word: "approach", meaning: "方法；接近", phrase: "an effective approach", example: "This approach helps us memorize words faster.", mnemonic: "ap + proach 接近：接近目标的路就是方法。", category: "学术阅读" },
+  { word: "assume", meaning: "假定；承担", phrase: "assume responsibility", example: "Do not assume the answer before reading carefully.", mnemonic: "as + sume 拿起：先拿来当假设，也能拿起责任。", category: "熟词僻义" },
+  { word: "available", meaning: "可获得的；有空的", phrase: "available resources", example: "Online courses are available to most students.", mnemonic: "avail 有用 + able：能用得到的。", category: "高考核心" },
+  { word: "beneficial", meaning: "有益的", phrase: "be beneficial to", example: "Regular exercise is beneficial to learning efficiency.", mnemonic: "benefit 益处 + cial：有益性质。", category: "写作表达" },
+  { word: "challenge", meaning: "挑战；质疑", phrase: "face a challenge", example: "Every challenge can become a chance to grow.", mnemonic: "考试常写：challenge → chance，挑战变机会。", category: "写作表达" },
+  { word: "commit", meaning: "投入；承诺；犯", phrase: "commit oneself to", example: "He committed himself to improving his English.", mnemonic: "com 一起 + mit 送出：把自己送进去就是投入。", category: "高考核心" },
+  { word: "consequence", meaning: "结果；后果", phrase: "serious consequences", example: "Every choice has its consequence.", mnemonic: "con + sequence 顺序：顺着发生的结果。", category: "学术阅读" },
+  { word: "consistent", meaning: "持续一致的", phrase: "consistent effort", example: "Consistent review beats last-minute cramming.", mnemonic: "consist 组成稳定，行为稳定就是一致。", category: "写作表达" },
+  { word: "contribute", meaning: "贡献；导致", phrase: "contribute to society", example: "Reading contributes to better writing.", mnemonic: "con + tribute 给予：一起给予就是贡献。", category: "高考核心" },
+  { word: "crucial", meaning: "至关重要的", phrase: "a crucial factor", example: "Vocabulary is crucial for reading comprehension.", mnemonic: "crux 十字路口：关键路口就是 crucial。", category: "写作表达" },
+  { word: "demonstrate", meaning: "展示；证明", phrase: "demonstrate ability", example: "The experiment demonstrates the rule clearly.", mnemonic: "demo 展示 + strate：展示出来证明。", category: "学术阅读" },
+  { word: "determine", meaning: "决定；下定决心", phrase: "be determined to", example: "She is determined to master 20 words a day.", mnemonic: "term 边界：把边界定下来就是决定。", category: "高考核心" },
+  { word: "efficient", meaning: "高效的", phrase: "efficient learning", example: "A good plan makes vocabulary learning efficient.", mnemonic: "effect 效果 + ient：有效率的。", category: "写作表达" },
+  { word: "enhance", meaning: "提高；增强", phrase: "enhance memory", example: "Examples can enhance word memory.", mnemonic: "en 使 + hance 高：使变高，增强。", category: "写作表达" },
+  { word: "evaluate", meaning: "评价；评估", phrase: "evaluate progress", example: "We should evaluate our learning every week.", mnemonic: "value 价值：评估就是判断价值。", category: "学术阅读" },
+  { word: "evidence", meaning: "证据", phrase: "strong evidence", example: "Use evidence to support your opinion.", mnemonic: "evident 明显的；让观点明显的材料就是证据。", category: "学术阅读" },
+  { word: "expand", meaning: "扩大；拓展", phrase: "expand vocabulary", example: "Reading helps expand vocabulary naturally.", mnemonic: "ex 向外 + pand 展开：向外展开。", category: "高考核心" },
+  { word: "factor", meaning: "因素", phrase: "key factors", example: "Sleep is a key factor in learning.", mnemonic: "fact 事实：影响事实的要素。", category: "学术阅读" },
+  { word: "flexible", meaning: "灵活的", phrase: "a flexible plan", example: "A flexible schedule reduces stress.", mnemonic: "flex 弯曲：能弯能变就是灵活。", category: "写作表达" },
+  { word: "generate", meaning: "产生；生成", phrase: "generate ideas", example: "Discussion can generate new ideas.", mnemonic: "gen 产生：generate 就是生成。", category: "学术阅读" },
+  { word: "identify", meaning: "识别；确认", phrase: "identify the main idea", example: "First identify the topic sentence.", mnemonic: "identity 身份：确认身份就是识别。", category: "阅读题型" },
+  { word: "impact", meaning: "影响；冲击", phrase: "have an impact on", example: "Technology has a great impact on education.", mnemonic: "im + pact 碰撞：撞上就产生影响。", category: "写作表达" },
+  { word: "maintain", meaning: "维持；保持", phrase: "maintain balance", example: "Students need to maintain a healthy routine.", mnemonic: "main 手 + tain 拿住：一直拿住就是保持。", category: "高考核心" },
+  { word: "obtain", meaning: "获得", phrase: "obtain information", example: "We obtain information from reliable sources.", mnemonic: "ob + tain 拿到：正式获得。", category: "学术阅读" },
+  { word: "participate", meaning: "参与", phrase: "participate in activities", example: "Students should participate in class actively.", mnemonic: "part 部分：成为其中一部分就是参与。", category: "校园生活" },
+  { word: "perspective", meaning: "视角；观点", phrase: "from another perspective", example: "Try to see the problem from a new perspective.", mnemonic: "spect 看：看问题的角度。", category: "写作表达" },
+  { word: "potential", meaning: "潜力；潜在的", phrase: "realize one's potential", example: "Everyone has the potential to improve.", mnemonic: "potent 有力：还没释放出来的力就是潜力。", category: "人物品质" },
+  { word: "priority", meaning: "优先事项", phrase: "top priority", example: "Health should be a top priority.", mnemonic: "prior 在前：放在前面的事。", category: "写作表达" },
+  { word: "promote", meaning: "促进；推广", phrase: "promote development", example: "Reading promotes critical thinking.", mnemonic: "pro 向前 + mote 推：向前推动。", category: "写作表达" },
+  { word: "reliable", meaning: "可靠的", phrase: "reliable information", example: "Choose reliable sources when doing research.", mnemonic: "rely 依靠 + able：可依靠的。", category: "学术阅读" },
+  { word: "significant", meaning: "重要的；显著的", phrase: "a significant change", example: "Small habits can make a significant difference.", mnemonic: "sign 标志：有明显标志的就是显著的。", category: "写作表达" },
+  { word: "strategy", meaning: "策略", phrase: "learning strategies", example: "Spaced review is a useful strategy.", mnemonic: "strateg 像“战略”：学习也要有策略。", category: "学习方法" },
+  { word: "sufficient", meaning: "足够的", phrase: "sufficient time", example: "Sufficient sleep improves memory.", mnemonic: "suf 下面 + fic 做：做到足够。", category: "高考核心" },
+  { word: "transform", meaning: "转变；改造", phrase: "transform pressure into power", example: "Good habits transform effort into progress.", mnemonic: "trans 跨过 + form 形状：跨形态改变。", category: "写作表达" },
+  { word: "account", meaning: "账户；叙述；解释", phrase: "take account of", example: "We should take account of different opinions.", mnemonic: "count 是数，account 是把事情“数清楚、说清楚”。", category: "熟词僻义" },
+  { word: "achieve", meaning: "实现；取得", phrase: "achieve a goal", example: "You can achieve progress through daily review.", mnemonic: "a + chieve 像“去抵达”：抵达目标就是实现。", category: "写作表达" },
+  { word: "acknowledge", meaning: "承认；感谢", phrase: "acknowledge the truth", example: "We must acknowledge our mistakes before improving.", mnemonic: "a + knowledge：知道并说出来，就是承认。", category: "学术阅读" },
+  { word: "adequate", meaning: "足够的；合格的", phrase: "adequate preparation", example: "Adequate preparation reduces exam anxiety.", mnemonic: "ad + equate 相等：数量够到标准。", category: "高考核心" },
+  { word: "affect", meaning: "影响", phrase: "affect learning", example: "Sleep quality affects memory.", mnemonic: "effect 是结果，affect 是造成结果的动作。", category: "易混词" },
+  { word: "alternative", meaning: "可替代的；选择", phrase: "an alternative solution", example: "Online learning offers an alternative way to study.", mnemonic: "alter 改变：换一种选择。", category: "学术阅读" },
+  { word: "arrange", meaning: "安排；整理", phrase: "arrange a schedule", example: "Arrange your review time before the exam.", mnemonic: "range 排列范围：把事情排好。", category: "校园生活" },
+  { word: "aspect", meaning: "方面；层面", phrase: "every aspect of life", example: "Vocabulary affects every aspect of English learning.", mnemonic: "spect 看：从某个角度看就是方面。", category: "学术阅读" },
+  { word: "attitude", meaning: "态度", phrase: "a positive attitude", example: "A positive attitude makes learning sustainable.", mnemonic: "attitude 里有 altitude 高度：态度决定高度。", category: "人物品质" },
+  { word: "capacity", meaning: "能力；容量", phrase: "learning capacity", example: "Reading can increase your capacity for understanding.", mnemonic: "cap 装住：能装多少就是容量/能力。", category: "学术阅读" },
+  { word: "circumstance", meaning: "情况；环境", phrase: "under no circumstances", example: "Under no circumstances should we give up.", mnemonic: "circum 圆周：围绕人的情况。", category: "高考核心" },
+  { word: "combine", meaning: "结合", phrase: "combine theory with practice", example: "Combine word cards with reading practice.", mnemonic: "com 一起 + bine 绑：绑在一起。", category: "写作表达" },
+  { word: "complex", meaning: "复杂的", phrase: "a complex problem", example: "Break complex sentences into small parts.", mnemonic: "com + plex 编织：编在一起就复杂。", category: "阅读题型" },
+  { word: "conduct", meaning: "实施；行为", phrase: "conduct a survey", example: "The students conducted a survey on reading habits.", mnemonic: "con + duct 引导：引导一件事发生。", category: "学术阅读" },
+  { word: "confidence", meaning: "信心", phrase: "build confidence", example: "Small wins build confidence.", mnemonic: "confide 是信任，confidence 是对自己的信任。", category: "人物品质" },
+  { word: "confirm", meaning: "确认；证实", phrase: "confirm the information", example: "Confirm the answer with evidence from the text.", mnemonic: "firm 坚定：让信息变坚实。", category: "阅读题型" },
+  { word: "conflict", meaning: "冲突；矛盾", phrase: "solve a conflict", example: "The story shows a conflict between duty and desire.", mnemonic: "con 一起 + flict 打击：撞在一起。", category: "文学阅读" },
+  { word: "consider", meaning: "考虑；认为", phrase: "consider doing", example: "Consider reviewing mistakes before new exercises.", mnemonic: "sid 星：古人看星思考，consider 就是考虑。", category: "高考核心" },
+  { word: "creativity", meaning: "创造力", phrase: "develop creativity", example: "Art and science both need creativity.", mnemonic: "create 创造 + ity 名词：创造的能力。", category: "写作表达" },
+  { word: "decline", meaning: "下降；拒绝", phrase: "a sharp decline", example: "His scores declined because he stopped reviewing.", mnemonic: "de 向下 + cline 斜坡：沿坡下降。", category: "图表写作" },
+  { word: "define", meaning: "定义；界定", phrase: "define success", example: "Different people define success differently.", mnemonic: "fine 边界：划边界就是定义。", category: "学术阅读" },
+  { word: "demand", meaning: "要求；需求", phrase: "meet the demand", example: "Modern society demands lifelong learning.", mnemonic: "mand 命令：强烈要求。", category: "高考核心" },
+  { word: "desire", meaning: "渴望；愿望", phrase: "a desire to learn", example: "A strong desire can drive action.", mnemonic: "de + sire 像“点燃”：愿望像火。", category: "人物品质" },
+  { word: "emphasize", meaning: "强调", phrase: "emphasize the importance", example: "Teachers emphasize the importance of review.", mnemonic: "em + phase 阶段：把某一部分凸显出来。", category: "写作表达" },
+  { word: "enable", meaning: "使能够", phrase: "enable sb. to do", example: "Vocabulary enables us to understand more texts.", mnemonic: "en 使 + able 能：使能做。", category: "写作表达" },
+  { word: "encourage", meaning: "鼓励", phrase: "encourage sb. to do", example: "Parents should encourage children to read.", mnemonic: "en + courage 勇气：给勇气。", category: "校园生活" },
+  { word: "essential", meaning: "必要的；本质的", phrase: "be essential for", example: "Daily practice is essential for language learning.", mnemonic: "essence 本质：本质需要的就是必要的。", category: "写作表达" },
+  { word: "establish", meaning: "建立；确立", phrase: "establish a habit", example: "Establish a fixed review routine.", mnemonic: "stable 稳定：建立后变稳定。", category: "学习方法" },
+  { word: "financial", meaning: "金融的；财务的", phrase: "financial support", example: "Financial education helps students make wise choices.", mnemonic: "finance 财务 + ial 形容词。", category: "社会生活" },
+  { word: "ignore", meaning: "忽视", phrase: "ignore mistakes", example: "Never ignore repeated spelling mistakes.", mnemonic: "ignorant 无知：装不知道就是忽视。", category: "易错诊断" },
+  { word: "illustrate", meaning: "说明；阐明", phrase: "illustrate the idea", example: "Examples can illustrate abstract ideas.", mnemonic: "illuminate 照亮：把意思照亮。", category: "学术阅读" },
+  { word: "independent", meaning: "独立的", phrase: "independent thinking", example: "Students need independent thinking.", mnemonic: "in 不 + depend 依赖：不依赖。", category: "人物品质" },
+  { word: "influence", meaning: "影响", phrase: "have an influence on", example: "Friends have a strong influence on teenagers.", mnemonic: "in + flu 流入：流进去产生影响。", category: "写作表达" },
+  { word: "inspire", meaning: "激励；启发", phrase: "inspire students", example: "Good stories inspire us to act.", mnemonic: "spirit 精神：把精神吹进去。", category: "人物品质" },
+  { word: "issue", meaning: "问题；发行", phrase: "a social issue", example: "Environmental protection is a global issue.", mnemonic: "issue 像“议题”：拿出来讨论的问题。", category: "社会热点" },
+  { word: "majority", meaning: "大多数", phrase: "the majority of", example: "The majority of students prefer visual notes.", mnemonic: "major 主要的：主要部分就是大多数。", category: "图表写作" },
+  { word: "measure", meaning: "措施；测量", phrase: "take measures", example: "We should take measures to protect nature.", mnemonic: "measure 可量也可“措施”，都是为解决问题定尺度。", category: "写作表达" },
+  { word: "mental", meaning: "心理的；精神的", phrase: "mental health", example: "Mental health is as important as grades.", mnemonic: "mind 心智 → mental 心理的。", category: "社会生活" },
+  { word: "occur", meaning: "发生；出现", phrase: "occur to sb.", example: "A good idea occurred to me during reading.", mnemonic: "cur 跑：事情跑到眼前就发生。", category: "高考核心" },
+  { word: "opportunity", meaning: "机会", phrase: "seize an opportunity", example: "Every mistake is an opportunity to improve.", mnemonic: "port 港口：机会像通向外面的港口。", category: "写作表达" },
+  { word: "particular", meaning: "特别的；具体的", phrase: "in particular", example: "This method is useful for reading in particular.", mnemonic: "particle 小颗粒：具体到某一粒。", category: "高考核心" },
+  { word: "process", meaning: "过程；处理", phrase: "in the process of", example: "Learning is a process, not a one-day task.", mnemonic: "pro 向前 + cess 走：向前走的过程。", category: "学习方法" },
+  { word: "recommend", meaning: "推荐；建议", phrase: "recommend doing", example: "I recommend reading aloud every morning.", mnemonic: "re 再 + commend 称赞：反复称赞所以推荐。", category: "写作表达" },
+  { word: "reduce", meaning: "减少", phrase: "reduce stress", example: "A clear plan reduces stress.", mnemonic: "re 向后 + duce 引导：把数量引回去。", category: "写作表达" },
+  { word: "reflect", meaning: "反映；反思", phrase: "reflect on mistakes", example: "Reflect on your mistakes after each test.", mnemonic: "re 回 + flect 弯：把思考弯回自己身上。", category: "学习方法" },
+  { word: "relevant", meaning: "相关的", phrase: "be relevant to", example: "Choose evidence relevant to the question.", mnemonic: "relate 关联：相关的。", category: "阅读题型" },
+  { word: "represent", meaning: "代表；象征", phrase: "represent a culture", example: "The dragon represents Chinese culture.", mnemonic: "re + present 再呈现：替某物呈现。", category: "文化阅读" },
+  { word: "require", meaning: "需要；要求", phrase: "require patience", example: "Mastering English requires patience.", mnemonic: "re + quire 寻求：反复寻求就是需要。", category: "高考核心" },
+  { word: "responsibility", meaning: "责任", phrase: "take responsibility", example: "Students should take responsibility for their choices.", mnemonic: "response 回应：该回应的事就是责任。", category: "人物品质" },
+  { word: "solution", meaning: "解决办法", phrase: "find a solution", example: "A checklist is a simple solution to careless mistakes.", mnemonic: "solve 解决 + tion 名词。", category: "写作表达" },
+  { word: "specific", meaning: "具体的；特定的", phrase: "specific details", example: "Use specific details to support your point.", mnemonic: "spec 看：看得很具体。", category: "写作表达" },
+  { word: "sustainable", meaning: "可持续的", phrase: "sustainable development", example: "Sustainable habits matter more than short bursts.", mnemonic: "sustain 维持 + able：能维持下去。", category: "社会热点" },
+  { word: "unique", meaning: "独特的", phrase: "a unique experience", example: "Everyone has a unique way of learning.", mnemonic: "uni 一个：只有一个，所以独特。", category: "写作表达" },
+];
+
+const ENGLISH_WORD_BANK =
+  Array.isArray(window.ENGLISH_WORD_BANK) && window.ENGLISH_WORD_BANK.length
+    ? window.ENGLISH_WORD_BANK
+    : ENGLISH_WORD_BANK_FALLBACK;
+
+const wordTrainerState = { index: 0, category: "全部", feedback: "" };
+
 const LEARNING_METHODS = [
   {
     title: "知识学习：闭环式学习",
@@ -2297,6 +2401,339 @@ function containsQuery(...fields) {
   return fields.some((field) => String(field).toLowerCase().includes(q));
 }
 
+function readWordTrainerProgress() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(WORD_TRAINER_STORAGE_KEY) || "{}");
+    return raw && typeof raw === "object" ? raw : {};
+  } catch {
+    return {};
+  }
+}
+
+function saveWordTrainerProgress(progress) {
+  localStorage.setItem(WORD_TRAINER_STORAGE_KEY, JSON.stringify(progress));
+}
+
+function wordKey(item) {
+  return item.word.toLowerCase();
+}
+
+function wordCategories() {
+  return ["全部", "优先复习", ...Array.from(new Set(ENGLISH_WORD_BANK.map((item) => item.category)))];
+}
+
+function wordCategoryCount(category) {
+  if (category === "全部") return ENGLISH_WORD_BANK.length;
+  if (category === "优先复习") {
+    const progress = readWordTrainerProgress();
+    return ENGLISH_WORD_BANK.filter((item) => wordProgressLevel(item, progress) < 2).length;
+  }
+  return ENGLISH_WORD_BANK.filter((item) => item.category === category).length;
+}
+
+function wordMatchesQuery(item) {
+  return containsQuery(item.word, item.meaning, item.phrase, item.example, item.mnemonic, item.category);
+}
+
+function wordTrainerWords() {
+  const progress = readWordTrainerProgress();
+  return ENGLISH_WORD_BANK.filter(
+    (item) =>
+      (wordTrainerState.category === "全部" ||
+        (wordTrainerState.category === "优先复习"
+          ? wordProgressLevel(item, progress) < 2
+          : item.category === wordTrainerState.category)) &&
+      wordMatchesQuery(item),
+  ).sort((left, right) =>
+    wordTrainerState.category === "优先复习" ? wordProgressLevel(left, progress) - wordProgressLevel(right, progress) : 0,
+  );
+}
+
+function currentWordList() {
+  const words = wordTrainerWords();
+  if (!words.length) return words;
+  if (wordTrainerState.index >= words.length) wordTrainerState.index = 0;
+  if (wordTrainerState.index < 0) wordTrainerState.index = words.length - 1;
+  return words;
+}
+
+function wordProgressLevel(item, progress = readWordTrainerProgress()) {
+  return progress[wordKey(item)]?.level || 0;
+}
+
+function wordLevelLabel(level) {
+  if (level >= 2) return "已掌握";
+  if (level === 1) return "模糊";
+  return "未掌握";
+}
+
+function wordLevelClass(level) {
+  if (level >= 2) return "is-known";
+  if (level === 1) return "is-fuzzy";
+  return "is-new";
+}
+
+function wordProgressStats(words, progress) {
+  return words.reduce(
+    (stats, item) => {
+      const level = wordProgressLevel(item, progress);
+      if (level >= 2) stats.known += 1;
+      else if (level === 1) stats.fuzzy += 1;
+      else stats.fresh += 1;
+      return stats;
+    },
+    { known: 0, fuzzy: 0, fresh: 0 },
+  );
+}
+
+function wordQuizOptions(current) {
+  const distractors = ENGLISH_WORD_BANK.filter((item) => item.word !== current.word).map((item) => item.meaning);
+  const seed = current.word.split("").reduce((sum, char) => sum + char.charCodeAt(0), 0);
+  const picked = [];
+  for (let offset = 0; picked.length < 3 && offset < distractors.length; offset += 1) {
+    const meaning = distractors[(seed + offset * 7) % distractors.length];
+    if (!picked.includes(meaning)) picked.push(meaning);
+  }
+  const options = [...picked];
+  options.splice(seed % (options.length + 1), 0, current.meaning);
+  return options;
+}
+
+function setWordProgress(item, level) {
+  const progress = readWordTrainerProgress();
+  const key = wordKey(item);
+  const previous = progress[key] || {};
+  progress[key] = {
+    level,
+    times: (previous.times || 0) + 1,
+    updatedAt: Date.now(),
+  };
+  saveWordTrainerProgress(progress);
+}
+
+function promoteWordProgress(item, level) {
+  setWordProgress(item, Math.max(wordProgressLevel(item), level));
+}
+
+function moveWordTrainer(step) {
+  const words = wordTrainerWords();
+  if (!words.length) return;
+  wordTrainerState.index = (wordTrainerState.index + step + words.length) % words.length;
+  wordTrainerState.feedback = "";
+}
+
+function checkWordSpelling(item) {
+  const input = document.querySelector("#wordSpellingInput");
+  const answer = input?.value.trim().toLowerCase() || "";
+  const target = item.word.toLowerCase();
+  if (!answer) {
+    wordTrainerState.feedback = "先默写英文，再点检查；哪怕写错，也是在暴露可修补的漏洞。";
+    return;
+  }
+  if (answer === target) {
+    promoteWordProgress(item, 2);
+    wordTrainerState.feedback = `✅ 拼写正确：${item.word}。现在把词块“${item.phrase}”读一遍，锁住语境。`;
+  } else {
+    wordTrainerState.feedback = `❌ 拼写还差一点：你写的是 ${answer}，正确是 ${item.word}。建议按音节拆开再默写一次。`;
+  }
+}
+
+function wordTrainerCategoryButtonsHTML() {
+  return wordCategories()
+    .map((category) => {
+      const active = category === wordTrainerState.category ? " is-active" : "";
+      return `
+        <button class="word-category${active}" type="button" data-word-category="${escapeHTML(category)}">
+          ${highlight(category)} <span>${wordCategoryCount(category)}</span>
+        </button>
+      `;
+    })
+    .join("");
+}
+
+function wordTrainerStatsHTML(words, progress) {
+  const allStats = wordProgressStats(ENGLISH_WORD_BANK, progress);
+  const visibleStats = wordProgressStats(words, progress);
+  return `
+    <section class="word-stats">
+      <article><strong>${ENGLISH_WORD_BANK.length}</strong><span>总词数</span></article>
+      <article><strong>${allStats.known}</strong><span>全库已掌握</span></article>
+      <article><strong>${visibleStats.fuzzy}</strong><span>当前模糊</span></article>
+      <article><strong>${visibleStats.fresh}</strong><span>当前未掌握</span></article>
+    </section>
+  `;
+}
+
+function wordTrainerCardHTML(current, words, progress) {
+  const itemProgress = progress[wordKey(current)] || {};
+  const level = itemProgress.level || 0;
+  const options = wordQuizOptions(current);
+  return `
+    <article class="word-card">
+      <div class="word-card__top">
+        <span class="mindmap-root__tag">${highlight(current.category)}</span>
+        <span class="word-level ${wordLevelClass(level)}">${wordLevelLabel(level)} · ${itemProgress.times || 0} 次训练</span>
+      </div>
+      <div class="word-card__main">
+        <span class="word-index">${wordTrainerState.index + 1} / ${words.length}</span>
+        <h3>${highlight(current.word)}</h3>
+        <p class="word-meaning">${highlight(current.meaning)}</p>
+      </div>
+      <div class="word-memory-grid">
+        <article>
+          <b>高频词块</b>
+          <p>${highlight(current.phrase)}</p>
+        </article>
+        <article>
+          <b>例句语境</b>
+          <p>${highlight(current.example)}</p>
+        </article>
+        <article>
+          <b>助记钩子</b>
+          <p>${highlight(current.mnemonic)}</p>
+        </article>
+      </div>
+      <section class="word-quiz">
+        <h4>1 秒选择：这个词最接近哪个意思？</h4>
+        <div class="word-options">
+          ${options
+            .map(
+              (option) => `
+                <button type="button" data-word-option="${escapeHTML(option)}">${highlight(option)}</button>
+              `,
+            )
+            .join("")}
+        </div>
+      </section>
+      <section class="word-spell">
+        <input id="wordSpellingInput" type="text" placeholder="默写：${escapeHTML(current.meaning)} 对应的英文" autocomplete="off" />
+        <button type="button" data-word-action="check-spelling">检查拼写</button>
+      </section>
+      ${
+        wordTrainerState.feedback
+          ? `<div class="word-feedback" role="status">${escapeHTML(wordTrainerState.feedback)}</div>`
+          : ""
+      }
+      <div class="word-actions">
+        <button type="button" data-word-action="prev">上一词</button>
+        <button type="button" data-word-action="next">下一词</button>
+        <button type="button" data-word-action="mark-new">还不会</button>
+        <button type="button" data-word-action="mark-fuzzy">有点模糊</button>
+        <button type="button" data-word-action="mark-known">已掌握</button>
+        <button type="button" data-word-action="reset-progress">重置词训记录</button>
+      </div>
+    </article>
+  `;
+}
+
+function renderWordTrainer() {
+  hideVolumeTabs();
+  const words = currentWordList();
+  const progress = readWordTrainerProgress();
+  const allStats = wordProgressStats(ENGLISH_WORD_BANK, progress);
+  breadcrumb.innerHTML = `
+    <div>
+      <h2>英语必掌握单词训练</h2>
+      <p>${
+        state.query.trim()
+          ? `关键词「${escapeHTML(state.query)}」匹配 ${words.length} 个词`
+          : "词卡助记 · 选择辨义 · 拼写检查 · 本地掌握度记录"
+      }</p>
+    </div>
+    <div class="progress-ring">
+      <strong>${allStats.known}/${ENGLISH_WORD_BANK.length}</strong>
+      <span>已掌握</span>
+    </div>
+  `;
+
+  unitList.innerHTML = `
+    <div class="word-trainer">
+      <article class="word-hero">
+        <span class="mindmap-root__tag">高考英语 · 核心词汇闭环</span>
+        <h3>先认得，再会用，最后能默写</h3>
+        <p>每个词按“意思—词块—例句—助记—小测—熟练度”训练。每天 15 分钟，优先把未掌握和模糊词刷到稳定。</p>
+      </article>
+      <section class="word-category-row">${wordTrainerCategoryButtonsHTML()}</section>
+      ${wordTrainerStatsHTML(words, progress)}
+      ${
+        words.length
+          ? wordTrainerCardHTML(words[wordTrainerState.index], words, progress)
+          : `
+            <div class="empty">
+              <strong>当前没有匹配单词</strong>
+              <p>可以清空搜索，或换“阅读”“写作”“完形”“话题”等关键词。</p>
+            </div>
+          `
+      }
+    </div>
+  `;
+}
+
+function handleWordTrainerClick(event) {
+  const categoryButton = event.target.closest("[data-word-category]");
+  if (categoryButton) {
+    wordTrainerState.category = categoryButton.dataset.wordCategory;
+    wordTrainerState.index = 0;
+    wordTrainerState.feedback = "";
+    render();
+    return true;
+  }
+
+  const optionButton = event.target.closest("[data-word-option]");
+  if (optionButton) {
+    const words = currentWordList();
+    const current = words[wordTrainerState.index];
+    if (!current) return true;
+    const chosen = optionButton.dataset.wordOption;
+    if (chosen === current.meaning) {
+      promoteWordProgress(current, 1);
+      wordTrainerState.feedback = `✅ 选对了：${current.word} = ${current.meaning}。下一步请默写一次。`;
+    } else {
+      wordTrainerState.feedback = `❌ 这次选成了“${chosen}”，正确是“${current.meaning}”。看一眼助记钩子再来。`;
+    }
+    render();
+    return true;
+  }
+
+  const actionButton = event.target.closest("[data-word-action]");
+  if (!actionButton) return false;
+  const words = currentWordList();
+  const current = words[wordTrainerState.index];
+  if (!current && actionButton.dataset.wordAction !== "reset-progress") return true;
+
+  switch (actionButton.dataset.wordAction) {
+    case "prev":
+      moveWordTrainer(-1);
+      break;
+    case "next":
+      moveWordTrainer(1);
+      break;
+    case "mark-new":
+      setWordProgress(current, 0);
+      wordTrainerState.feedback = `已把 ${current.word} 标为“还不会”，它会留在复习重点里。`;
+      break;
+    case "mark-fuzzy":
+      setWordProgress(current, 1);
+      wordTrainerState.feedback = `已把 ${current.word} 标为“有点模糊”，建议明天再刷一次。`;
+      break;
+    case "mark-known":
+      setWordProgress(current, 2);
+      wordTrainerState.feedback = `漂亮，${current.word} 已标为掌握。别飘，隔几天还要抽查。`;
+      break;
+    case "check-spelling":
+      checkWordSpelling(current);
+      break;
+    case "reset-progress":
+      localStorage.removeItem(WORD_TRAINER_STORAGE_KEY);
+      wordTrainerState.feedback = "词训记录已重置，可以重新开始一轮干净的记忆闭环。";
+      break;
+    default:
+      return false;
+  }
+  render();
+  return true;
+}
+
 function biliSearchUrl(keyword) {
   return `https://search.bilibili.com/all?keyword=${encodeURIComponent(keyword)}`;
 }
@@ -2326,6 +2763,7 @@ function renderStats() {
     ["单元 / 章节 / 课", totals.units],
     ["知识导图节点", totals.knowledgeNodes],
     ["学习方法", `${LEARNING_METHODS.length} 板块`],
+    ["英语词训", `${ENGLISH_WORD_BANK.length} 词`],
     ["B站资源", `${BILIBILI_VIDEO_RESOURCES.length} 科`],
     ["完成进度", `${percent}%`],
   ]
@@ -2351,7 +2789,9 @@ function renderSubjects() {
   subjectList.innerHTML = COURSE.map((subject, subjectIndex) => {
     const progress = progressForSubject(subjectIndex);
     const active =
-      subjectIndex === state.subjectIndex && state.mode !== "methods" && (state.mode === "videos" || !state.query)
+      subjectIndex === state.subjectIndex &&
+      !["methods", "wordTrainer"].includes(state.mode) &&
+      (state.mode === "videos" || !state.query)
         ? " is-active"
         : "";
     return `
@@ -3107,6 +3547,11 @@ function renderCurrentVolume() {
     return;
   }
 
+  if (state.mode === "wordTrainer") {
+    renderWordTrainer();
+    return;
+  }
+
   if (state.mode === "videos") {
     renderBilibiliVideos();
     return;
@@ -3228,6 +3673,8 @@ function render() {
   renderSubjects();
   if (state.mode === "methods") {
     renderLearningMethods();
+  } else if (state.mode === "wordTrainer") {
+    renderWordTrainer();
   } else if (state.mode === "videos") {
     renderBilibiliVideos();
   } else if (state.query.trim() && state.mode === "subjectMap") {
@@ -3244,7 +3691,7 @@ subjectList.addEventListener("click", (event) => {
   if (!button) return;
   state.subjectIndex = Number(button.dataset.subjectIndex);
   state.volumeIndex = 0;
-  if (state.mode === "methods") state.mode = "catalog";
+  if (["methods", "wordTrainer"].includes(state.mode)) state.mode = "catalog";
   state.query = "";
   searchInput.value = "";
   render();
@@ -3265,6 +3712,7 @@ modeSwitch.addEventListener("click", (event) => {
 });
 
 unitList.addEventListener("click", (event) => {
+  if (handleWordTrainerClick(event)) return;
   const button = event.target.closest("[data-go-unit]");
   if (!button) return;
   const [subjectIndex, volumeIndex, unitIndex] = button.dataset.goUnit.split("-").map(Number);
