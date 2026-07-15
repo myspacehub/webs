@@ -1857,8 +1857,15 @@ const ENGLISH_WORD_BANK =
     ? window.ENGLISH_WORD_BANK
     : ENGLISH_WORD_BANK_FALLBACK;
 
-const wordTrainerState = { index: 0, category: "全部", feedback: "", step: 0 };
-const WORD_TRAINER_STEPS = ["意思辨认", "词块复述", "例句填空", "助记复述", "拼写确认"];
+const wordTrainerState = {
+  index: 0,
+  category: "全部",
+  feedback: "",
+  exampleFeedback: "",
+  examplePassed: false,
+  step: 0,
+};
+const WORD_TRAINER_STEPS = ["意思辨认", "词汇复述", "例句填空", "助记复述", "拼写确认"];
 
 const LEARNING_METHODS = [
   {
@@ -2521,6 +2528,8 @@ function moveWordTrainer(step) {
   if (!words.length) return;
   wordTrainerState.index = (wordTrainerState.index + step + words.length) % words.length;
   wordTrainerState.feedback = "";
+  wordTrainerState.exampleFeedback = "";
+  wordTrainerState.examplePassed = false;
   wordTrainerState.step = 0;
 }
 
@@ -2575,16 +2584,16 @@ function advanceWordTrainerStep(step, feedback) {
   if (feedback) wordTrainerState.feedback = feedback;
 }
 
-function speakEnglishWord(item) {
+function speakEnglishText(text, { rate = 0.78 } = {}) {
   if (!("speechSynthesis" in window) || typeof SpeechSynthesisUtterance === "undefined") {
     wordTrainerState.feedback = "当前浏览器暂不支持系统朗读，可以换 Chrome / Safari 再试。";
     return false;
   }
-  const text = pronunciationText(item.word);
-  if (!text) return false;
-  const utterance = new SpeechSynthesisUtterance(text);
+  const spokenText = String(text || "").trim();
+  if (!spokenText) return false;
+  const utterance = new SpeechSynthesisUtterance(spokenText);
   utterance.lang = "en-US";
-  utterance.rate = 0.78;
+  utterance.rate = rate;
   utterance.pitch = 1;
   utterance.volume = 1;
   const voices = window.speechSynthesis.getVoices();
@@ -2597,19 +2606,33 @@ function speakEnglishWord(item) {
   return true;
 }
 
+function speakEnglishWord(item) {
+  return speakEnglishText(pronunciationText(item.word), { rate: 0.78 });
+}
+
+function speakEnglishExample(item) {
+  return speakEnglishText(item.example, { rate: 0.82 });
+}
+
 function checkExampleCloze(item) {
   const input = document.querySelector("#wordExampleInput");
   const answer = input?.value.trim().toLowerCase() || "";
   const cloze = wordClozeData(item);
   if (!answer) {
-    wordTrainerState.feedback = "先把例句空格补上；这一步是在训练“看到语境能调出单词”。";
+    wordTrainerState.feedback = "";
+    wordTrainerState.examplePassed = false;
+    wordTrainerState.exampleFeedback = "先把例句空格补上；这一步是在训练“看到语境能调出单词”。";
     return;
   }
   if (answer === cloze.answer || answer === cloze.base) {
     promoteWordProgress(item, 1);
-    advanceWordTrainerStep(3, `✅ 例句填空正确：${item.example}`);
+    wordTrainerState.feedback = "";
+    wordTrainerState.examplePassed = true;
+    wordTrainerState.exampleFeedback = `✅ 例句填空正确：${item.example}`;
   } else {
-    wordTrainerState.feedback = `❌ 例句里应填 ${cloze.answer}。先读完整句，再回到词块“${item.phrase}”。`;
+    wordTrainerState.feedback = "";
+    wordTrainerState.examplePassed = false;
+    wordTrainerState.exampleFeedback = `❌ 例句里应填 ${cloze.answer}。先读完整句，再回到词汇“${item.phrase}”。`;
   }
 }
 
@@ -2668,70 +2691,89 @@ function wordTrainerStepHTML(step) {
 
 function wordTrainerStageHTML(current, step, options) {
   const cloze = wordClozeData(current);
-  const lock = (index) =>
-    step < index
-      ? `<div class="word-stage is-locked"><b>${index + 1}. ${WORD_TRAINER_STEPS[index]}</b><p>先完成上一步，这一步会自动解锁。</p></div>`
-      : "";
+  if (step === 0) {
+    return `
+      <section class="word-stage-grid">
+        <article class="word-stage is-active">
+          <b>1. 意思辨认：先听音，再选义</b>
+          <p>上方释义已隐藏。先点英文读音，再从 4 个选项中选出最贴近的中文意思。</p>
+          <div class="word-options">
+            ${options
+              .map(
+                (option) => `
+                  <button type="button" data-word-option="${escapeHTML(option)}">${highlight(option)}</button>
+                `,
+              )
+              .join("")}
+          </div>
+        </article>
+      </section>
+    `;
+  }
+  if (step === 1) {
+    return `
+      <section class="word-stage-grid">
+        <article class="word-stage is-active">
+          <b>2. 词汇复述：读音、释义、词汇搭配一起说出来</b>
+          <p class="word-focus-line">${highlight(current.word)} · ${highlight(current.phonetic || "")}</p>
+          <p class="word-focus-line">${highlight(current.phrase)}</p>
+          <div class="word-stage-actions">
+            <button type="button" data-word-action="speak-word">🔊 播放词汇</button>
+            <button type="button" data-word-action="phrase-done">我能用这个词汇口头造句</button>
+          </div>
+        </article>
+      </section>
+    `;
+  }
+  if (step === 2) {
+    return `
+      <section class="word-stage-grid">
+        <article class="word-stage is-active">
+          <b>3. 例句填空：从语境里调出单词</b>
+          <p class="word-cloze">${highlight(cloze.text)}</p>
+          <div class="word-spell">
+            <input id="wordExampleInput" type="text" placeholder="填空：输入原词或句中形式" autocomplete="off" />
+            <button type="button" data-word-action="check-example">检查例句</button>
+          </div>
+          ${
+            wordTrainerState.exampleFeedback
+              ? `<div class="word-inline-feedback" role="status">
+                  ${escapeHTML(wordTrainerState.exampleFeedback)}
+                  ${
+                    wordTrainerState.examplePassed
+                      ? `<div class="word-stage-actions">
+                          <button type="button" data-word-action="speak-example">🔊 播放完整句子</button>
+                          <button type="button" data-word-action="example-next">进入助记复述</button>
+                        </div>`
+                      : ""
+                  }
+                </div>`
+              : ""
+          }
+        </article>
+      </section>
+    `;
+  }
+  if (step === 3) {
+    return `
+      <section class="word-stage-grid">
+        <article class="word-stage is-active">
+          <b>4. 助记复述：用一个钩子把它挂住</b>
+          <p>${highlight(current.mnemonic)}</p>
+          <button type="button" data-word-action="mnemonic-done">我已闭眼复述这个钩子</button>
+        </article>
+      </section>
+    `;
+  }
   return `
     <section class="word-stage-grid">
-      <article class="word-stage ${step === 0 ? "is-active" : "is-done"}">
-        <b>1. 意思辨认：先听音，再选义</b>
-        <p>点英文读音后，从 4 个选项中选出最贴近的中文意思。选对才进入词块。</p>
-        <div class="word-options">
-          ${options
-            .map(
-              (option) => `
-                <button type="button" data-word-option="${escapeHTML(option)}">${highlight(option)}</button>
-              `,
-            )
-            .join("")}
+      <article class="word-stage is-active">
+        <b>5. 拼写确认：最后一次主动回忆</b>
+        <div class="word-spell">
+          <input id="wordSpellingInput" type="text" placeholder="默写：${escapeHTML(current.meaning)} 对应的英文" autocomplete="off" />
+          <button type="button" data-word-action="check-spelling">检查拼写并计入熟练度</button>
         </div>
       </article>
-
-      ${
-        step >= 1
-          ? `<article class="word-stage ${step === 1 ? "is-active" : "is-done"}">
-              <b>2. 词块复述：把单词装进常用搭配</b>
-              <p class="word-focus-line">${highlight(current.phrase)}</p>
-              <button type="button" data-word-action="phrase-done">我能用这个词块口头造句</button>
-            </article>`
-          : lock(1)
-      }
-
-      ${
-        step >= 2
-          ? `<article class="word-stage ${step === 2 ? "is-active" : "is-done"}">
-              <b>3. 例句填空：从语境里调出单词</b>
-              <p class="word-cloze">${highlight(cloze.text)}</p>
-              <div class="word-spell">
-                <input id="wordExampleInput" type="text" placeholder="填空：输入原词或句中形式" autocomplete="off" />
-                <button type="button" data-word-action="check-example">检查例句</button>
-              </div>
-            </article>`
-          : lock(2)
-      }
-
-      ${
-        step >= 3
-          ? `<article class="word-stage ${step === 3 ? "is-active" : "is-done"}">
-              <b>4. 助记复述：用一个钩子把它挂住</b>
-              <p>${highlight(current.mnemonic)}</p>
-              <button type="button" data-word-action="mnemonic-done">我已闭眼复述这个钩子</button>
-            </article>`
-          : lock(3)
-      }
-
-      ${
-        step >= 4
-          ? `<article class="word-stage is-active">
-              <b>5. 拼写确认：最后一次主动回忆</b>
-              <div class="word-spell">
-                <input id="wordSpellingInput" type="text" placeholder="默写：${escapeHTML(current.meaning)} 对应的英文" autocomplete="off" />
-                <button type="button" data-word-action="check-spelling">检查拼写并计入熟练度</button>
-              </div>
-            </article>`
-          : lock(4)
-      }
     </section>
   `;
 }
@@ -2756,7 +2798,11 @@ function wordTrainerCardHTML(current, words, progress) {
           </button>
         </h3>
         <p class="word-phonetic">${highlight(current.phonetic || "音标待补充")}</p>
-        <p class="word-meaning">${highlight(current.meaning)}</p>
+        ${
+          step === 0
+            ? `<p class="word-meaning word-meaning--locked">释义已隐藏：先完成“意思辨认”再显示</p>`
+            : `<p class="word-meaning">${highlight(current.meaning)}</p>`
+        }
       </div>
       ${wordTrainerStepHTML(step)}
       ${wordTrainerStageHTML(current, step, options)}
@@ -2788,7 +2834,7 @@ function renderWordTrainer() {
       <p>${
         state.query.trim()
           ? `关键词「${escapeHTML(state.query)}」匹配 ${words.length} 个词`
-          : "音标跟读 · 选择辨义 · 词块复述 · 例句填空 · 拼写确认"
+          : "音标跟读 · 选择辨义 · 词汇复述 · 例句填空 · 拼写确认"
       }</p>
     </div>
     <div class="progress-ring">
@@ -2802,7 +2848,7 @@ function renderWordTrainer() {
       <article class="word-hero">
         <span class="mindmap-root__tag">高考英语 · 核心词汇闭环</span>
         <h3>按记忆规律逐步解锁，不再假装“看过就会”</h3>
-        <p>每个词必须完成：听音辨义 → 词块复述 → 例句填空 → 助记复述 → 闭卷拼写。拼写正确才进入“已掌握”。</p>
+        <p>每个词必须完成：听音辨义 → 词汇复述 → 例句填空 → 助记复述 → 闭卷拼写。拼写正确才进入“已掌握”。</p>
       </article>
       <section class="word-category-row">${wordTrainerCategoryButtonsHTML()}</section>
       ${wordTrainerStatsHTML(words, progress)}
@@ -2826,6 +2872,8 @@ function handleWordTrainerClick(event) {
     wordTrainerState.category = categoryButton.dataset.wordCategory;
     wordTrainerState.index = 0;
     wordTrainerState.feedback = "";
+    wordTrainerState.exampleFeedback = "";
+    wordTrainerState.examplePassed = false;
     wordTrainerState.step = 0;
     render();
     return true;
@@ -2839,7 +2887,9 @@ function handleWordTrainerClick(event) {
     const chosen = optionButton.dataset.wordOption;
     if (chosen === current.meaning) {
       promoteWordProgress(current, 1);
-      advanceWordTrainerStep(1, `✅ 选对了：${current.word} = ${current.meaning}。现在用词块“${current.phrase}”说一句。`);
+      wordTrainerState.exampleFeedback = "";
+      wordTrainerState.examplePassed = false;
+      advanceWordTrainerStep(1, `✅ 选对了：${current.word} = ${current.meaning}。现在进入词汇复述。`);
     } else {
       wordTrainerState.feedback = `❌ 这次选成了“${chosen}”，正确是“${current.meaning}”。看一眼助记钩子再来。`;
     }
@@ -2864,10 +2914,20 @@ function handleWordTrainerClick(event) {
       if (!speakEnglishWord(current)) render();
       return true;
     case "phrase-done":
-      advanceWordTrainerStep(2, `好，词块已过。现在把例句里的空格补出来：${current.phrase}`);
+      wordTrainerState.exampleFeedback = "";
+      wordTrainerState.examplePassed = false;
+      advanceWordTrainerStep(2, `好，词汇复述已过。现在把例句里的空格补出来：${current.phrase}`);
       break;
     case "check-example":
       checkExampleCloze(current);
+      break;
+    case "speak-example":
+      if (!speakEnglishExample(current)) render();
+      return true;
+    case "example-next":
+      wordTrainerState.exampleFeedback = "";
+      wordTrainerState.examplePassed = false;
+      advanceWordTrainerStep(3, "");
       break;
     case "mnemonic-done":
       advanceWordTrainerStep(4, "助记钩子已复述。最后闭卷拼写一次，正确后计入“已掌握”。");
