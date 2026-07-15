@@ -1863,6 +1863,9 @@ const wordTrainerState = {
   feedback: "",
   exampleFeedback: "",
   examplePassed: false,
+  quizCount: 20,
+  sessionKeys: [],
+  sessionTitle: "",
   step: 0,
 };
 const WORD_TRAINER_STEPS = ["意思辨认", "词汇复述", "例句填空", "助记复述", "拼写确认"];
@@ -2426,8 +2429,16 @@ function wordKey(item) {
   return item.word.toLowerCase();
 }
 
+function wordWrongCount(item, progress = readWordTrainerProgress()) {
+  return progress[wordKey(item)]?.wrong || 0;
+}
+
+function wordHasWrongRecord(item, progress = readWordTrainerProgress()) {
+  return wordWrongCount(item, progress) > 0;
+}
+
 function wordCategories() {
-  return ["全部", "优先复习", ...Array.from(new Set(ENGLISH_WORD_BANK.map((item) => item.category)))];
+  return ["全部", "优先复习", "错题回顾", ...Array.from(new Set(ENGLISH_WORD_BANK.map((item) => item.category)))];
 }
 
 function wordCategoryCount(category) {
@@ -2436,6 +2447,10 @@ function wordCategoryCount(category) {
     const progress = readWordTrainerProgress();
     return ENGLISH_WORD_BANK.filter((item) => wordProgressLevel(item, progress) < 2).length;
   }
+  if (category === "错题回顾") {
+    const progress = readWordTrainerProgress();
+    return ENGLISH_WORD_BANK.filter((item) => wordHasWrongRecord(item, progress)).length;
+  }
   return ENGLISH_WORD_BANK.filter((item) => item.category === category).length;
 }
 
@@ -2443,18 +2458,30 @@ function wordMatchesQuery(item) {
   return containsQuery(item.word, item.phonetic, item.meaning, item.phrase, item.example, item.mnemonic, item.category);
 }
 
-function wordTrainerWords() {
+function baseWordTrainerWords() {
   const progress = readWordTrainerProgress();
   return ENGLISH_WORD_BANK.filter(
     (item) =>
       (wordTrainerState.category === "全部" ||
         (wordTrainerState.category === "优先复习"
           ? wordProgressLevel(item, progress) < 2
+          : wordTrainerState.category === "错题回顾"
+            ? wordHasWrongRecord(item, progress)
           : item.category === wordTrainerState.category)) &&
       wordMatchesQuery(item),
   ).sort((left, right) =>
-    wordTrainerState.category === "优先复习" ? wordProgressLevel(left, progress) - wordProgressLevel(right, progress) : 0,
+    wordTrainerState.category === "优先复习"
+      ? wordProgressLevel(left, progress) - wordProgressLevel(right, progress)
+      : wordTrainerState.category === "错题回顾"
+        ? wordWrongCount(right, progress) - wordWrongCount(left, progress)
+        : 0,
   );
+}
+
+function wordTrainerWords() {
+  if (!wordTrainerState.sessionKeys.length) return baseWordTrainerWords();
+  const byKey = new Map(ENGLISH_WORD_BANK.map((item) => [wordKey(item), item]));
+  return wordTrainerState.sessionKeys.map((key) => byKey.get(key)).filter(Boolean);
 }
 
 function currentWordList() {
@@ -2488,9 +2515,10 @@ function wordProgressStats(words, progress) {
       if (level >= 2) stats.known += 1;
       else if (level === 1) stats.fuzzy += 1;
       else stats.fresh += 1;
+      if (wordHasWrongRecord(item, progress)) stats.wrong += 1;
       return stats;
     },
-    { known: 0, fuzzy: 0, fresh: 0 },
+    { known: 0, fuzzy: 0, fresh: 0, wrong: 0 },
   );
 }
 
@@ -2507,20 +2535,81 @@ function wordQuizOptions(current) {
   return options;
 }
 
-function setWordProgress(item, level) {
+function readWordQuizCount() {
+  const input = document.querySelector("#wordQuizCount");
+  const raw = Number.parseInt(input?.value || wordTrainerState.quizCount || 20, 10);
+  const count = Number.isFinite(raw) ? raw : 20;
+  wordTrainerState.quizCount = Math.min(200, Math.max(1, count));
+  return wordTrainerState.quizCount;
+}
+
+function shuffledSample(words, count) {
+  const pool = [...words];
+  for (let index = pool.length - 1; index > 0; index -= 1) {
+    const swapIndex = Math.floor(Math.random() * (index + 1));
+    [pool[index], pool[swapIndex]] = [pool[swapIndex], pool[index]];
+  }
+  return pool.slice(0, Math.min(count, pool.length));
+}
+
+function resetWordTrainerTransientState() {
+  wordTrainerState.feedback = "";
+  wordTrainerState.exampleFeedback = "";
+  wordTrainerState.examplePassed = false;
+  wordTrainerState.step = 0;
+}
+
+function startWordQuizSession(words, title) {
+  if (!words.length) {
+    wordTrainerState.feedback = "当前范围没有可抽取的单词。可以先切换到“全部”，或清空搜索条件。";
+    return;
+  }
+  wordTrainerState.sessionKeys = words.map((item) => wordKey(item));
+  wordTrainerState.sessionTitle = title;
+  wordTrainerState.index = 0;
+  resetWordTrainerTransientState();
+  wordTrainerState.feedback = `已开始：${title}，共 ${words.length} 个词。`;
+}
+
+function endWordQuizSession() {
+  wordTrainerState.sessionKeys = [];
+  wordTrainerState.sessionTitle = "";
+  wordTrainerState.index = 0;
+  resetWordTrainerTransientState();
+  wordTrainerState.feedback = "已退出当前测验，回到普通词训范围。";
+}
+
+function wrongReviewWords() {
+  const progress = readWordTrainerProgress();
+  return ENGLISH_WORD_BANK.filter((item) => wordHasWrongRecord(item, progress) && wordMatchesQuery(item)).sort((left, right) => {
+    const wrongDiff = wordWrongCount(right, progress) - wordWrongCount(left, progress);
+    if (wrongDiff) return wrongDiff;
+    return (progress[wordKey(right)]?.lastWrongAt || 0) - (progress[wordKey(left)]?.lastWrongAt || 0);
+  });
+}
+
+function setWordProgress(item, level, result = "neutral") {
   const progress = readWordTrainerProgress();
   const key = wordKey(item);
   const previous = progress[key] || {};
   progress[key] = {
+    ...previous,
     level,
     times: (previous.times || 0) + 1,
+    correct: (previous.correct || 0) + (result === "correct" ? 1 : 0),
+    wrong: (previous.wrong || 0) + (result === "wrong" ? 1 : 0),
+    lastWrongAt: result === "wrong" ? Date.now() : previous.lastWrongAt,
     updatedAt: Date.now(),
   };
   saveWordTrainerProgress(progress);
 }
 
 function promoteWordProgress(item, level) {
-  setWordProgress(item, Math.max(wordProgressLevel(item), level));
+  setWordProgress(item, Math.max(wordProgressLevel(item), level), "correct");
+}
+
+function recordWordMistake(item) {
+  setWordProgress(item, Math.min(wordProgressLevel(item), 1), "wrong");
 }
 
 function moveWordTrainer(step) {
@@ -2630,6 +2719,7 @@ function checkExampleCloze(item) {
     wordTrainerState.examplePassed = true;
     wordTrainerState.exampleFeedback = `✅ 例句填空正确：${item.example}`;
   } else {
+    recordWordMistake(item);
     wordTrainerState.feedback = "";
     wordTrainerState.examplePassed = false;
     wordTrainerState.exampleFeedback = `❌ 例句里应填 ${cloze.answer}。先读完整句，再回到词汇“${item.phrase}”。`;
@@ -2646,8 +2736,9 @@ function checkWordSpelling(item) {
   }
   if (answer === target) {
     promoteWordProgress(item, 2);
-    wordTrainerState.feedback = `✅ 拼写正确：${item.word}。现在把词块“${item.phrase}”读一遍，锁住语境。`;
+    wordTrainerState.feedback = `✅ 拼写正确：${item.word}。现在把词汇搭配“${item.phrase}”读一遍，锁住语境。`;
   } else {
+    recordWordMistake(item);
     wordTrainerState.feedback = `❌ 拼写还差一点：你写的是 ${answer}，正确是 ${item.word}。建议按音节拆开再默写一次。`;
   }
 }
@@ -2672,8 +2763,34 @@ function wordTrainerStatsHTML(words, progress) {
     <section class="word-stats">
       <article><strong>${ENGLISH_WORD_BANK.length}</strong><span>总词数</span></article>
       <article><strong>${allStats.known}</strong><span>全库已掌握</span></article>
+      <article><strong>${allStats.wrong}</strong><span>错题记录</span></article>
       <article><strong>${visibleStats.fuzzy}</strong><span>当前模糊</span></article>
       <article><strong>${visibleStats.fresh}</strong><span>当前未掌握</span></article>
+    </section>
+  `;
+}
+
+function wordTrainerQuizControlsHTML() {
+  const progress = readWordTrainerProgress();
+  const wrongCount = ENGLISH_WORD_BANK.filter((item) => wordHasWrongRecord(item, progress)).length;
+  const sessionActive = wordTrainerState.sessionKeys.length > 0;
+  return `
+    <section class="word-quiz-controls">
+      <div class="word-quiz-controls__main">
+        <label>
+          <span>随机测验数量</span>
+          <input id="wordQuizCount" type="number" min="1" max="200" value="${wordTrainerState.quizCount || 20}" inputmode="numeric" />
+        </label>
+        <button type="button" data-word-action="start-random-quiz">随机抽词测验</button>
+        <button type="button" data-word-action="review-wrong">错题回顾 <span>${wrongCount}</span></button>
+        <button type="button" data-word-action="retry-wrong">错词重点重测</button>
+        ${sessionActive ? `<button type="button" data-word-action="end-session">退出测验</button>` : ""}
+      </div>
+      ${
+        sessionActive
+          ? `<p class="word-session-note">当前测验：${escapeHTML(wordTrainerState.sessionTitle)} · ${wordTrainerState.sessionKeys.length} 词</p>`
+          : `<p class="word-session-note">随机测验会从当前分类/搜索范围内抽取；错词重测会优先抽取历史答错词。</p>`
+      }
     </section>
   `;
 }
@@ -2787,7 +2904,9 @@ function wordTrainerCardHTML(current, words, progress) {
     <article class="word-card">
       <div class="word-card__top">
         <span class="mindmap-root__tag">${highlight(current.category)}</span>
-        <span class="word-level ${wordLevelClass(level)}">${wordLevelLabel(level)} · ${itemProgress.times || 0} 次训练</span>
+        <span class="word-level ${wordLevelClass(level)}">${wordLevelLabel(level)} · ${itemProgress.times || 0} 次训练${
+          itemProgress.wrong ? ` · 错 ${itemProgress.wrong}` : ""
+        }</span>
       </div>
       <div class="word-card__main">
         <span class="word-index">${wordTrainerState.index + 1} / ${words.length}</span>
@@ -2851,6 +2970,7 @@ function renderWordTrainer() {
         <p>每个词必须完成：听音辨义 → 词汇复述 → 例句填空 → 助记复述 → 闭卷拼写。拼写正确才进入“已掌握”。</p>
       </article>
       <section class="word-category-row">${wordTrainerCategoryButtonsHTML()}</section>
+      ${wordTrainerQuizControlsHTML()}
       ${wordTrainerStatsHTML(words, progress)}
       ${
         words.length
@@ -2870,6 +2990,8 @@ function handleWordTrainerClick(event) {
   const categoryButton = event.target.closest("[data-word-category]");
   if (categoryButton) {
     wordTrainerState.category = categoryButton.dataset.wordCategory;
+    wordTrainerState.sessionKeys = [];
+    wordTrainerState.sessionTitle = "";
     wordTrainerState.index = 0;
     wordTrainerState.feedback = "";
     wordTrainerState.exampleFeedback = "";
@@ -2891,6 +3013,7 @@ function handleWordTrainerClick(event) {
       wordTrainerState.examplePassed = false;
       advanceWordTrainerStep(1, `✅ 选对了：${current.word} = ${current.meaning}。现在进入词汇复述。`);
     } else {
+      recordWordMistake(current);
       wordTrainerState.feedback = `❌ 这次选成了“${chosen}”，正确是“${current.meaning}”。看一眼助记钩子再来。`;
     }
     render();
@@ -2901,9 +3024,36 @@ function handleWordTrainerClick(event) {
   if (!actionButton) return false;
   const words = currentWordList();
   const current = words[wordTrainerState.index];
-  if (!current && actionButton.dataset.wordAction !== "reset-progress") return true;
+  const action = actionButton.dataset.wordAction;
+  const globalActions = new Set(["reset-progress", "start-random-quiz", "review-wrong", "retry-wrong", "end-session"]);
+  if (!current && !globalActions.has(action)) return true;
 
-  switch (actionButton.dataset.wordAction) {
+  switch (action) {
+    case "start-random-quiz": {
+      const count = readWordQuizCount();
+      const sample = shuffledSample(baseWordTrainerWords(), count);
+      startWordQuizSession(sample, `随机抽词测验 ${sample.length}/${count}`);
+      break;
+    }
+    case "review-wrong": {
+      wordTrainerState.sessionKeys = [];
+      wordTrainerState.sessionTitle = "";
+      wordTrainerState.category = "错题回顾";
+      wordTrainerState.index = 0;
+      resetWordTrainerTransientState();
+      const wrongCount = wordCategoryCount("错题回顾");
+      wordTrainerState.feedback = wrongCount ? `已进入错题回顾，共 ${wrongCount} 个历史错词。` : "目前还没有错词记录。";
+      break;
+    }
+    case "retry-wrong": {
+      const count = readWordQuizCount();
+      const sample = shuffledSample(wrongReviewWords(), count);
+      startWordQuizSession(sample, `错词重点重测 ${sample.length}/${count}`);
+      break;
+    }
+    case "end-session":
+      endWordQuizSession();
+      break;
     case "prev":
       moveWordTrainer(-1);
       break;
@@ -2949,6 +3099,9 @@ function handleWordTrainerClick(event) {
       break;
     case "reset-progress":
       localStorage.removeItem(WORD_TRAINER_STORAGE_KEY);
+      wordTrainerState.sessionKeys = [];
+      wordTrainerState.sessionTitle = "";
+      resetWordTrainerTransientState();
       wordTrainerState.feedback = "词训记录已重置，可以重新开始一轮干净的记忆闭环。";
       break;
     default:
