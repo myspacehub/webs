@@ -2638,16 +2638,33 @@ function escapeRegExp(value) {
 }
 
 function wordClozeForms(item) {
-  const base = pronunciationText(item.word).toLowerCase();
-  if (!base || !/^[a-z-]+$/.test(base)) return [];
-  const forms = new Set([base]);
-  if (base.endsWith("e")) forms.add(`${base.slice(0, -1)}ing`);
-  else forms.add(`${base}ing`);
-  if (base.endsWith("y")) forms.add(`${base.slice(0, -1)}ies`);
-  forms.add(`${base}s`);
-  forms.add(`${base}es`);
-  forms.add(`${base}ed`);
-  if (base.endsWith("e")) forms.add(`${base}d`);
+  const rawBases = [item.exampleAnswer, pronunciationText(item.word)]
+    .filter(Boolean)
+    .flatMap((value) =>
+      {
+        const normalized = String(value)
+        .toLowerCase()
+        .replace(/\([^)]*\)/g, "")
+        .trim();
+        return (normalized === "or" ? [normalized] : normalized.split(/=|\/|\bor\b|,/i))
+        .map((part) => part.trim().replace(/\s+/g, " "))
+        .filter(Boolean);
+      },
+    );
+  const forms = new Set();
+  for (const base of rawBases) {
+    if (!/^[a-z]+(?:-[a-z]+)?(?:\s+[a-z]+(?:-[a-z]+)?)*$/.test(base)) continue;
+    forms.add(base);
+    if (base.includes("-")) forms.add(base.replace(/-/g, " "));
+    if (base.includes(" ")) continue;
+    if (base.endsWith("e")) forms.add(`${base.slice(0, -1)}ing`);
+    else forms.add(`${base}ing`);
+    if (base.endsWith("y")) forms.add(`${base.slice(0, -1)}ies`);
+    forms.add(`${base}s`);
+    forms.add(`${base}es`);
+    forms.add(`${base}ed`);
+    if (base.endsWith("e")) forms.add(`${base}d`);
+  }
   return [...forms].sort((left, right) => right.length - left.length);
 }
 
@@ -2858,6 +2875,7 @@ function wordTrainerStageHTML(current, step, options) {
         <article class="word-stage is-active">
           <b>3. 例句填空：从语境里调出单词</b>
           <p class="word-cloze">${highlight(cloze.text)}</p>
+          ${current.exampleSource ? `<p class="word-example-source">来源：${highlight(current.exampleSource)}</p>` : ""}
           <div class="word-spell">
             <input id="wordExampleInput" type="text" placeholder="填空：输入原词或句中形式" autocomplete="off" />
             <button type="button" data-word-action="check-example">检查例句</button>

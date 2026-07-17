@@ -1779,6 +1779,12 @@ h1 {
   font-weight: 900;
 }
 
+.word-example-source {
+  color: var(--muted) !important;
+  font-size: 12px;
+  font-weight: 850;
+}
+
 .word-memory-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
