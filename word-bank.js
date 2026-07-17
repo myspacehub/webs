@@ -1180,7 +1180,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "airline",
-    "phonetic": "[]",
+    "phonetic": "[ˈɛˌrlaɪn]",
     "meaning": "n. 航空公司；航空系统",
     "phrase": "an airline / the airline",
     "example": ", 69 Airline reservations, computer, 58, 183, 184 Algebra, Boolean, 8, 110, 119 Alpha rhythm, 126 Alphanumeric code, 104 American Premium Systems, Inc.",
@@ -1708,7 +1708,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "anchor",
-    "phonetic": "[]",
+    "phonetic": "[ˈæŋkər]",
     "meaning": "v. / n. 锚，抛锚",
     "phrase": "learn to anchor",
     "example": "Mapleson's extensive productions the ballet was another sheet anchor on which he relied.",
@@ -3017,7 +3017,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "autumn",
-    "phonetic": "[ˈɔːtəm]",
+    "phonetic": "[ˈɔtəm]",
     "meaning": "n. 秋天，秋季",
     "phrase": "an autumn / the autumn",
     "example": "It is probable that the autumn tints are of no utility to the plant.",
@@ -3028,7 +3028,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "available",
-    "phonetic": "[ˈɔːtəm]",
+    "phonetic": "[əˈveɪləbəl]",
     "meaning": "a. 可获得的，有空的",
     "phrase": "an available seat",
     "example": "I set off by the first available train for the scene of the disaster.",
@@ -3083,7 +3083,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "award",
-    "phonetic": "[wɔːd]",
+    "phonetic": "[əˈwɔrd]",
     "meaning": "n. 奖品，奖励",
     "phrase": "an award / the award",
     "example": "Some award can be given to the one making the best biography.",
@@ -3479,7 +3479,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "bare",
-    "phonetic": "[beə(r)]",
+    "phonetic": "[bɛr]",
     "meaning": "a. 裸露的，光秃秃的",
     "phrase": "a bare detail",
     "example": "The ground near the mines is usually bare of vegetation in consequence of the \"smoke.",
@@ -3721,7 +3721,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "be",
-    "phonetic": "[biː]",
+    "phonetic": "[bi]",
     "meaning": "v. 是（原形）,其人称和时态形式有(am, is, are, was, were, being, been)；成为",
     "phrase": "grammar signal: be",
     "example": "I had a sudden impulse of terror lest it should all be snatched away.",
@@ -3776,7 +3776,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "bear",
-    "phonetic": "[beə(r)]",
+    "phonetic": "[bɛr]",
     "meaning": "v. 承受，负担，承担；忍受；容忍 n. 熊",
     "phrase": "learn to bear",
     "example": "It needed all Jane's steady mildness to bear these attacks with tolerable tranquillity.",
@@ -3897,7 +3897,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "bee",
-    "phonetic": "[biː]",
+    "phonetic": "[bi]",
     "meaning": "n.. 蜜蜂",
     "phrase": "a bee / the bee",
     "example": "The inflammation caused by the sting of the bee is due to formic acid.",
@@ -4326,7 +4326,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "biochemistry",
-    "phonetic": "[]",
+    "phonetic": "[ˌbaɪoʊˈkɛmɪˌstri]",
     "meaning": "n. 生物化学",
     "phrase": "a biochemistry / the biochemistry",
     "example": "Biochemistry, or biological chemistry, is the study of chemical processes within and relating to living organisms.",
@@ -4590,7 +4590,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "blow",
-    "phonetic": "[bləʊ]",
+    "phonetic": "[bloʊ]",
     "meaning": "n. 击；打击",
     "phrase": "a blow / the blow",
     "example": "It must reach the opponents' court from a blow and not from a bound.",
@@ -5679,7 +5679,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "butterfly",
-    "phonetic": "[ˈbʌtəflaɪ]",
+    "phonetic": "[ˈbətərˌflaɪ]",
     "meaning": "n. 蝴蝶",
     "phrase": "a butterfly / the butterfly",
     "example": "The butterfly verse for Jumping Rope is obviously another late production of the folklore spirit.",
@@ -6394,7 +6394,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "cell",
-    "phonetic": "[sel]",
+    "phonetic": "[sɛl]",
     "meaning": "n.（监狱的）单人牢房；（修道院等的）单人小室；（蜂巢的）小蜂窝，蜂房；［生物］ 细胞",
     "phrase": "a cell / the cell",
     "example": "The top of the cell is sealed with pitch or wax to prevent evaporation.",
@@ -6460,7 +6460,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "centre",
-    "phonetic": "[]",
+    "phonetic": "[ˈsɛntər]",
     "meaning": "n. 中心，中央",
     "phrase": "a centre / the centre",
     "example": "The one who is \"It\" takes his place in the centre of the circle.",
@@ -6493,7 +6493,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "certain",
-    "phonetic": "[ˈsɜːt(ə)n]",
+    "phonetic": "[ˈsərtən]",
     "meaning": "a. （未指明真实名称的）某…；确定的，无疑的；一定会…",
     "phrase": "a certain reason",
     "example": "The animals give off certain nitrogenous wastes of which we shall learn more later.",
@@ -6768,7 +6768,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "check",
-    "phonetic": "[tʃek]",
+    "phonetic": "[ʧɛk]",
     "meaning": "n. 检查；批改 vt. 校对，核对； 检查；批改",
     "phrase": "learn to check",
     "example": "Know the evils of bearing or check reins and of ill-fitting harness or saddlery.",
@@ -6790,7 +6790,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "cheer",
-    "phonetic": "[tʃɪə(r)]",
+    "phonetic": "[ʧɪr]",
     "meaning": "n. & vi.欢呼； 喝彩",
     "phrase": "cheer naturally / cheer in a situation",
     "example": "The abounding good cheer of these English whalers is matter for historical research.",
@@ -6812,7 +6812,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "cheers",
-    "phonetic": "[tʃɪə(r)]",
+    "phonetic": "[ʧɪrz]",
     "meaning": "int. 干杯，(口)谢谢，再见",
     "phrase": "cheers in a real sentence",
     "example": "How much handier could they have but done it by \"tremendous cheers\" alone!",
@@ -6878,7 +6878,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "cheque",
-    "phonetic": "[tʃek]",
+    "phonetic": "[ʧɛk]",
     "meaning": "(美check) n. 支票",
     "phrase": "a cheque / the cheque",
     "example": "A shrewd rogue signed a cheque for gold quartz.",
@@ -7505,7 +7505,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "clothing",
-    "phonetic": "[ˈkləʊðɪŋ]",
+    "phonetic": "[ˈkloʊðɪŋ]",
     "meaning": "n. (总称) 衣服",
     "phrase": "a clothing / the clothing",
     "example": "The clothing worn should be the lightest and the least harmful to the limbs.",
@@ -7516,7 +7516,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "cloud",
-    "phonetic": "[ˈkləʊðɪŋ]",
+    "phonetic": "[klaʊd]",
     "meaning": "n. 云；云状物；阴影",
     "phrase": "a cloud / the cloud",
     "example": "A white dust—tremulous cloud of orris-root it seemed—hung in the panting air.",
@@ -7868,7 +7868,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "commercial",
-    "phonetic": "[]",
+    "phonetic": "[kəˈmərʃəl]",
     "meaning": "a.贸易的，商业的",
     "phrase": "a commercial detail",
     "example": "The commercial article is a dull gray porous substance which contains many impurities.",
@@ -8561,7 +8561,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "consultant",
-    "phonetic": "[kənˈsʌltənt]",
+    "phonetic": "[kənˈsəltənt]",
     "meaning": "n. 顾问",
     "phrase": "a consultant / the consultant",
     "example": "Or you might retain an accountant or computer consultant to run the financial analysis programs you need.",
@@ -8572,7 +8572,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "consume",
-    "phonetic": "[kənˈsʌltənt]",
+    "phonetic": "[kənˈsum]",
     "meaning": "v. 消耗，耗费（燃料，能量，时间等）",
     "phrase": "learn to consume",
     "example": "The animal body also contains potassium compounds, which is natural, since animals consume plants.",
@@ -9507,7 +9507,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "custom",
-    "phonetic": "[ˈkʌstəm]",
+    "phonetic": "[ˈkəstəm]",
     "meaning": "n. 习惯，习俗，风俗习惯",
     "phrase": "a custom / the custom",
     "example": "An Indian custom that has come down to us is the double paddle.",
@@ -9529,7 +9529,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "customs",
-    "phonetic": "[ˈkʌstəm]",
+    "phonetic": "[ˈkəstəmz]",
     "meaning": "n. 海关，关税",
     "phrase": "a customs / the customs",
     "example": "the density of population, the physical stock, and the customs and institutions, or mores.",
@@ -9815,7 +9815,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "dear",
-    "phonetic": "[dɪə(r)]",
+    "phonetic": "[dɪr]",
     "meaning": "int.（表示惊愕）哎呀！唷！ a. 亲爱的；贵的",
     "phrase": "a dear ticket",
     "example": "He may spend the evening with his dear William Larkins now if he likes.",
@@ -9980,7 +9980,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "deer",
-    "phonetic": "[dɪə(r)]",
+    "phonetic": "[dɪr]",
     "meaning": "n. 鹿",
     "phrase": "a deer / the deer",
     "example": "The one who found the dummy is deer for the next hunt.",
@@ -10222,7 +10222,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "desert",
-    "phonetic": "[dɪˈzɜːt]",
+    "phonetic": "[ˈdɛzərt]",
     "meaning": "n. 沙漠 vt. 舍弃； 遗弃",
     "phrase": "learn to desert",
     "example": "The boys cared for him and he told them of the lost desert mine.",
@@ -10288,7 +10288,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "dessert",
-    "phonetic": "[dɪˈzɜːt]",
+    "phonetic": "[dɪˈzərt]",
     "meaning": "n. 甜点",
     "phrase": "a dessert / the dessert",
     "example": "The addition of various fruits will make the dessert still more delicious.",
@@ -10486,7 +10486,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "diet",
-    "phonetic": "[daɪ]",
+    "phonetic": "[daɪət]",
     "meaning": "n. 饮食",
     "phrase": "a diet / the diet",
     "example": "It is most necessary that foods rich in vitamines be included in diet.",
@@ -11190,7 +11190,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "doll",
-    "phonetic": "[dɔl; (US) dɔːl]",
+    "phonetic": "[dɑl]",
     "meaning": "n. 玩偶，玩具娃娃",
     "phrase": "a doll / the doll",
     "example": "The doll's head should reach up, or almost up, to the canopy.",
@@ -11201,7 +11201,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "dollar",
-    "phonetic": "[dɔl; (US) dɔːl]",
+    "phonetic": "[ˈdɔlər]",
     "meaning": "n. 元（美国、加拿大、澳大利亚等国货币单位）",
     "phrase": "a dollar / the dollar",
     "example": "He says: 'Strangers in this town two days ago, passing twenty dollar gold pieces.",
@@ -11311,7 +11311,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "downward",
-    "phonetic": "[ˈdaʊnwəd]",
+    "phonetic": "[ˈdaʊnwərd]",
     "meaning": "ad. 向下",
     "phrase": "downward + action",
     "example": "The operator or flier lay face downward in the center of the lower plane.",
@@ -11322,7 +11322,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "dozen",
-    "phonetic": "[ˈdaʊnwəd]",
+    "phonetic": "[ˈdəzən]",
     "meaning": "n. 十二个；几十，许多",
     "phrase": "a dozen / the dozen",
     "example": "The Indian gave half a dozen twirls to the drill--the smoke burst forth.",
@@ -12642,7 +12642,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "everybody",
-    "phonetic": "[]",
+    "phonetic": "[ˈɛvriˌbɑdi]",
     "meaning": "pron.每人，人人",
     "phrase": "grammar signal: everybody",
     "example": "He had a way of talking to each and doing everybody some particular service.",
@@ -13016,7 +13016,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "exploit",
-    "phonetic": "[]",
+    "phonetic": "[ˌɛkˈsplɔɪt]",
     "meaning": "vt.开采.开发.利用.剥削",
     "phrase": "learn to exploit",
     "example": "Satisfied with the results of their exploit the bombing squadron turns swiftly toward home.",
@@ -13214,7 +13214,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "factory",
-    "phonetic": "[]",
+    "phonetic": "[ˈfæktəri]",
     "meaning": "n. 工厂",
     "phrase": "a factory / the factory",
     "example": "The following shows the number and per cent produced by each factory: Number P.",
@@ -13258,7 +13258,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "fair",
-    "phonetic": "[feə(r)]",
+    "phonetic": "[fɛr]",
     "meaning": "a. 公平的，合理的 a. (肤色)白皙的； （人）白肤金发的 n. 集市；庙会；展览会",
     "phrase": "a fair coat",
     "example": "I have known him too long and too well to be a fair judge.",
@@ -13302,7 +13302,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "fall",
-    "phonetic": "[fɔːl]",
+    "phonetic": "[fɔl]",
     "meaning": "n. （美）秋季",
     "phrase": "a fall / the fall",
     "example": "He saw the writhing body of the shocked man fall from the stockade.",
@@ -13379,7 +13379,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "fantastic",
-    "phonetic": "[]",
+    "phonetic": "[fænˈtæstɪk]",
     "meaning": "a. (口语)极好的，美妙的，很棒的",
     "phrase": "a fantastic detail",
     "example": "I liked the fantastic nature of your position--that's what it was!",
@@ -13412,7 +13412,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "fare",
-    "phonetic": "[feə(r)]",
+    "phonetic": "[fɛr]",
     "meaning": "n.（车或船的）费用，票（价）",
     "phrase": "a fare / the fare",
     "example": "Should she run back to Lindenlea and ask Alison to lend her the fare?",
@@ -13940,7 +13940,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "firefighter",
-    "phonetic": "[]",
+    "phonetic": "[ˈfaɪrˌfaɪtər]",
     "meaning": "n. 消防人员",
     "phrase": "a firefighter / the firefighter",
     "example": "A firefighter is a first responder trained in public safety and emergency response.",
@@ -14127,7 +14127,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "flashlight",
-    "phonetic": "[flæʃ]",
+    "phonetic": "[ˈflæʃˌlaɪt]",
     "meaning": "n. 手电",
     "phrase": "a flashlight / the flashlight",
     "example": "The giant pointed the ray of the flashlight at the ground below the porch.",
@@ -14226,7 +14226,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "flour",
-    "phonetic": "[ˈflaʊə(r)]",
+    "phonetic": "[flaʊər]",
     "meaning": "n. 面粉，粉",
     "phrase": "a flour / the flour",
     "example": "They are almost sure to grow upon flour if it is allowed to get damp.",
@@ -14248,7 +14248,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "flower",
-    "phonetic": "[ˈflaʊə(r)]",
+    "phonetic": "[flaʊər]",
     "meaning": "n. 花",
     "phrase": "a flower / the flower",
     "example": "We must be careful that we do not mistake them for true flower parts.",
@@ -14281,7 +14281,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "fluent",
-    "phonetic": "[ˈfluːənt]",
+    "phonetic": "[fluənt]",
     "meaning": "a. （外语）流利的，流畅",
     "phrase": "a fluent detail",
     "example": "Hercules' explanations always become very fluent when he is not telling the truth.",
@@ -14292,7 +14292,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "fly",
-    "phonetic": "[ˈfluːənt]",
+    "phonetic": "[flaɪ]",
     "meaning": "n. 飞行；苍蝇",
     "phrase": "a fly / the fly",
     "example": "A fly flew up suddenly and struck the window pane with a plaintive buzz.",
@@ -14380,7 +14380,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "fond",
-    "phonetic": "[fɔnd]",
+    "phonetic": "[fɑnd]",
     "meaning": "a. 喜爱的，爱好的",
     "phrase": "a fond detail",
     "example": "He has been so kind and jolly that we all got quite fond of him.",
@@ -14391,7 +14391,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "food",
-    "phonetic": "[fɔnd]",
+    "phonetic": "[fud]",
     "meaning": "n. 食物，食品",
     "phrase": "healthy food",
     "example": "The food taken into the stomach creates an activity of circulation which repels disease.",
@@ -14545,7 +14545,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "forever",
-    "phonetic": "[fəˈrevə(r)]",
+    "phonetic": "[fərˈɛvər]",
     "meaning": "ad. 永远；永恒的",
     "phrase": "forever + action",
     "example": "They chafed her breast, hands, and temples; but the blood had stopped forever.",
@@ -14556,7 +14556,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "forget",
-    "phonetic": "[fəˈrevə(r)]",
+    "phonetic": "[fərˈgɛt]",
     "meaning": "(forgot, forgotten) v. 忘记；忘掉",
     "phrase": "learn to forget",
     "example": "We forget that these matters may require many generations to work themselves out.",
@@ -14732,7 +14732,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "fourteen",
-    "phonetic": "[ˈfɔːˈtiːn]",
+    "phonetic": "[ˌfɔrˈtin]",
     "meaning": "num. 十四",
     "phrase": "grammar signal: fourteen",
     "example": "I have been watching you for exactly three months and fourteen days.",
@@ -14743,7 +14743,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "fourth",
-    "phonetic": "[ˈfɔːˈtiːn]",
+    "phonetic": "[fɔrθ]",
     "meaning": "num. 第四",
     "phrase": "grammar signal: fourth",
     "example": "It is well to change the subject after every fourth or fifth letter.",
@@ -15227,7 +15227,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "garbage",
-    "phonetic": "[ˈɡɑːbɪdʒ]",
+    "phonetic": "[ˈgɑrbɪʤ]",
     "meaning": "n. 垃圾",
     "phrase": "a garbage / the garbage",
     "example": "The garbage pail should be frequently sterilized by rinsing it with boiling water.",
@@ -15678,7 +15678,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "good",
-    "phonetic": "[ɡʊd]",
+    "phonetic": "[gʊd]",
     "meaning": "a. 好；良好",
     "phrase": "a good detail",
     "example": "I'm risking my life and the lives of these good gentlemen every second.",
@@ -15711,7 +15711,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "goods",
-    "phonetic": "[ɡʊd]",
+    "phonetic": "[gʊdz]",
     "meaning": "n. 商品，货物",
     "phrase": "a goods / the goods",
     "example": "They are sold in all sizes by dry goods dealers EXCELSIOR QUILTING CO.",
@@ -16657,7 +16657,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "he",
-    "phonetic": "[heɪ]",
+    "phonetic": "[hi]",
     "meaning": "pron. 他",
     "phrase": "grammar signal: he",
     "example": "It was he who had elected to live those three months in absolute seclusion.",
@@ -16723,7 +16723,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "headteacher",
-    "phonetic": "[]",
+    "phonetic": "[hɛd ˈtiʧər]",
     "meaning": "n. 中小学班主任",
     "phrase": "a headteacher / the headteacher",
     "example": "A head teacher is the most senior teacher and leader of a school.",
@@ -16767,7 +16767,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "hear",
-    "phonetic": "[hɪə(r)]",
+    "phonetic": "[hir]",
     "meaning": "v. 听见；听说,得知",
     "phrase": "learn to hear",
     "example": "I am waiting to hear from you--what would you have done in her place?",
@@ -16954,7 +16954,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "here",
-    "phonetic": "[hɪə(r)]",
+    "phonetic": "[hir]",
     "meaning": "ad. 这里，在这里；向这里",
     "phrase": "here + action",
     "example": "I began to see that here was one of the best of possible shipmates.",
@@ -17218,7 +17218,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "hole",
-    "phonetic": "[həʊl]",
+    "phonetic": "[hoʊl]",
     "meaning": "n. 洞，坑",
     "phrase": "a hole / the hole",
     "example": "A hole is dug in the ground measuring twelve or fifteen inches in diameter.",
@@ -17295,7 +17295,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "honest",
-    "phonetic": "[ˈɔnɪst]",
+    "phonetic": "[ˈɑnəst]",
     "meaning": "a. 诚实的，正直的",
     "phrase": "a honest person",
     "example": "It is the honest truth that the Allen Governor holds it exactly on speed.",
@@ -17306,7 +17306,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "honey",
-    "phonetic": "[ˈɔnɪst]",
+    "phonetic": "[ˈhəni]",
     "meaning": "n. 蜂蜜",
     "phrase": "a honey / the honey",
     "example": "The promised land which \"flowed with milk and honey\" is now almost a desert.",
@@ -17372,7 +17372,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "hopeless",
-    "phonetic": "[]",
+    "phonetic": "[ˈhoʊpləs]",
     "meaning": "a.没有希望,不可救药的",
     "phrase": "a hopeless detail",
     "example": "I did not care to spend more money in a hopeless attempt at recovering them.",
@@ -17460,7 +17460,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "hour",
-    "phonetic": "[ˈaʊə(r)]",
+    "phonetic": "[aʊər]",
     "meaning": "n. 小时",
     "phrase": "a hour / the hour",
     "example": "I believe I was half an hour this morning shut up with my housekeeper.",
@@ -19187,7 +19187,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "know",
-    "phonetic": "[nəʊ]",
+    "phonetic": "[noʊ]",
     "meaning": "v. 知道，了解；认识；懂得",
     "phrase": "learn to know",
     "example": "I will tell you why I know so clearly that I never loved her.",
@@ -19198,7 +19198,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "knowledge",
-    "phonetic": "[ˈnɔlɪdʒ]",
+    "phonetic": "[ˈnɑlɪʤ]",
     "meaning": "n. 知识，学问",
     "phrase": "gain knowledge / basic knowledge",
     "example": "The money-maker will contrast the vanity of knowledge with the solid advantages of wealth.",
@@ -19209,7 +19209,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "lab",
-    "phonetic": "[ˈnɔlɪdʒ]",
+    "phonetic": "[læb]",
     "meaning": "= laboratory n. 实验室",
     "phrase": "a lab / the lab",
     "example": "You might tote this sample of it over to the lab.",
@@ -20463,7 +20463,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "mad",
-    "phonetic": "[]",
+    "phonetic": "[mæd]",
     "meaning": "a. 发疯的；生气的",
     "phrase": "a mad look",
     "example": "They think me mad—Starbuck does; but I'm demoniac, I am madness maddened!",
@@ -20716,7 +20716,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "march",
-    "phonetic": "[mɑːtʃ]",
+    "phonetic": "[mɑrʧ]",
     "meaning": "n. 游行，行进",
     "phrase": "a march / the march",
     "example": "The first time she left her chamber was at the commencement of the following March.",
@@ -20969,7 +20969,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "meat",
-    "phonetic": "[miːt]",
+    "phonetic": "[mit]",
     "meaning": "n.（猪、牛、羊等的）肉",
     "phrase": "a meat / the meat",
     "example": "The meat of a calf less than six weeks old is lacking in color.",
@@ -21035,7 +21035,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "meet",
-    "phonetic": "[miːt]",
+    "phonetic": "[mit]",
     "meaning": "vt./ n. 遇见，见到 会；集会",
     "phrase": "learn to meet",
     "example": "The letter that he has seen and touched must comfort me till we meet.",
@@ -21145,7 +21145,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "mention",
-    "phonetic": "[ˈmenʃ(ə)n]",
+    "phonetic": "[ˈmɛnʃən]",
     "meaning": "n. 提及；记载 vt. 提到，说起；提名表扬",
     "phrase": "a mention / the mention",
     "example": "I shall only just mention the circumstance to the others in a common way.",
@@ -21156,7 +21156,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "menu",
-    "phonetic": "[ˈmenʃ(ə)n]",
+    "phonetic": "[ˈmɛnju]",
     "meaning": "n. 菜单",
     "phrase": "a menu / the menu",
     "example": "Analyze the menu and see that it meets the requirements stated in Lesson CV.",
@@ -22520,7 +22520,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "news",
-    "phonetic": "[njuːz; (US) nuːz]",
+    "phonetic": "[nuz]",
     "meaning": "n. 新闻，消息",
     "phrase": "a news / the news",
     "example": "The news of his cousin Anne's engagement burst on Mr Elliot most unexpectedly.",
@@ -22531,7 +22531,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "newspaper",
-    "phonetic": "[njuːz; (US) nuːz]",
+    "phonetic": "[ˈnuzˌpeɪpər]",
     "meaning": "n. 报纸",
     "phrase": "a newspaper / the newspaper",
     "example": "The newspaper articles had prepared men's minds for the reception of the idea.",
@@ -22641,7 +22641,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "no",
-    "phonetic": "[nəʊ]",
+    "phonetic": "[noʊ]",
     "meaning": "ad. 不,不是 a.没有,无,不",
     "phrase": "no + action",
     "example": "We shall have no peace at Longbourn if Lydia does not go to Brighton.",
@@ -23257,7 +23257,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "oh",
-    "phonetic": "[əʊ]",
+    "phonetic": "[oʊ]",
     "meaning": "int. 哦！啊！",
     "phrase": "oh in a real sentence",
     "example": "He lights his pipe on a star-light night, Oh, have you seen the Shah?",
@@ -23400,7 +23400,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "opener",
-    "phonetic": "[ˈəʊpənə(r)]",
+    "phonetic": "[ˈoʊpənər]",
     "meaning": "n. 开具，启子",
     "phrase": "an opener / the opener",
     "example": "\" She reached for the letter opener and slit the envelope.",
@@ -23565,7 +23565,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "order",
-    "phonetic": "[ˈɔːdə(r)]",
+    "phonetic": "[ˈɔrdər]",
     "meaning": "n. 顺序",
     "phrase": "an order / the order",
     "example": "The back fin must have incisions on each side in order to remove it.",
@@ -23686,7 +23686,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "our",
-    "phonetic": "[ˈaʊə(r)]",
+    "phonetic": "[ɑr]",
     "meaning": "pron.我们的",
     "phrase": "grammar signal: our",
     "example": "The division of the soul throws a new light on our exclusion of imitation.",
@@ -23928,7 +23928,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "owe",
-    "phonetic": "[əʊ]",
+    "phonetic": "[oʊ]",
     "meaning": "vt. 欠（债等）",
     "phrase": "learn to owe",
     "example": "The soda and other mineral waters owe their sparkle to this gas.",
@@ -24115,7 +24115,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "pair",
-    "phonetic": "[peə(r)]",
+    "phonetic": "[pɛr]",
     "meaning": "n. 一双，一对",
     "phrase": "a pair / the pair",
     "example": "The clubs of each pair should be separated by a distance of eighteen inches.",
@@ -24225,7 +24225,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "parallel",
-    "phonetic": "[]",
+    "phonetic": "[ˈpɛrəˌlɛl]",
     "meaning": "n. 极其相似的人,纬线",
     "phrase": "a parallel / the parallel",
     "example": "The needle is deflected by the action of the current parallel to it (Fig.",
@@ -24269,7 +24269,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "park",
-    "phonetic": "[ˈpærɪs]",
+    "phonetic": "[pɑrk]",
     "meaning": "n. 公园",
     "phrase": "a park / the park",
     "example": "I shall never be quite happy till I have been all round the park.",
@@ -24478,7 +24478,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "patience",
-    "phonetic": "[]",
+    "phonetic": "[ˈpeɪʃəns]",
     "meaning": "n. 容忍；耐心",
     "phrase": "a patience / the patience",
     "example": "It requires more philosophy than I possess to bear this injustice with patience.",
@@ -24577,7 +24577,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "pear",
-    "phonetic": "[peə(r)]",
+    "phonetic": "[pɛr]",
     "meaning": "n. 梨子，梨树",
     "phrase": "a pear / the pear",
     "example": "The fruit-trees, cherry, apple, pear, and peach, have lovely white and pink suits.",
@@ -24731,7 +24731,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "perfect",
-    "phonetic": "[kwestʃəˈneə(r)]",
+    "phonetic": "[ˈpərˌfɪkt]",
     "meaning": "a. 完美的，极好的",
     "phrase": "a perfect detail",
     "example": "It shares with hickory and sugar maple the honor of being a perfect firewood.",
@@ -24742,7 +24742,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "perform",
-    "phonetic": "[pəˈfɔːm]",
+    "phonetic": "[pərˈfɔrm]",
     "meaning": "v. 表演，履行；行动",
     "phrase": "learn to perform",
     "example": "This evening I have a hateful duty to perform and I cannot see you.",
@@ -24753,7 +24753,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "performance",
-    "phonetic": "[pəˈfɔːm]",
+    "phonetic": "[pərˈfɔrməns]",
     "meaning": "n. 演出，表演",
     "phrase": "a performance / the performance",
     "example": "They then tag off the next couple who repeat the performance of the first.",
@@ -24874,7 +24874,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "personally",
-    "phonetic": "[ˈpɜːsənəlɪ]",
+    "phonetic": "[ˈpərsənəli]",
     "meaning": "ad. 就自己而言",
     "phrase": "personally + action",
     "example": "The only artists I have ever known who are personally delightful are bad artists.",
@@ -24885,7 +24885,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "persuade",
-    "phonetic": "[ˈpɜːsənəlɪ]",
+    "phonetic": "[pərsˈweɪd]",
     "meaning": "vt. 说服，劝说",
     "phrase": "learn to persuade",
     "example": "I always look upon her as able to persuade a person to anything!",
@@ -25028,7 +25028,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "pianist",
-    "phonetic": "[ˈfɪzɪks]",
+    "phonetic": "[ˈpiənɪst]",
     "meaning": "n. 钢琴家",
     "phrase": "a pianist / the pianist",
     "example": "The victim of the wreck was an innocent pianist, skilled in the elements of science.",
@@ -25094,7 +25094,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "piece",
-    "phonetic": "[paɪ]",
+    "phonetic": "[pis]",
     "meaning": "n. 一块（片，张，件…）",
     "phrase": "a piece / the piece",
     "example": "I bet he took a piece out of me as big as a baseball.",
@@ -25105,7 +25105,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "pig",
-    "phonetic": "[paɪ]",
+    "phonetic": "[pɪg]",
     "meaning": "n. 猪",
     "phrase": "a pig / the pig",
     "example": "The idea of squealing like a little pig at the window into the street!",
@@ -25116,7 +25116,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "pile",
-    "phonetic": "[paɪ]",
+    "phonetic": "[paɪl]",
     "meaning": "n. 堆",
     "phrase": "a pile / the pile",
     "example": "The one wins who has the greatest pile of trophies at the end.",
@@ -25138,7 +25138,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "pillow",
-    "phonetic": "[pɪl]",
+    "phonetic": "[ˈpɪloʊ]",
     "meaning": "n. 枕头",
     "phrase": "a pillow / the pillow",
     "example": "It had fallen off and was lying on the floor near his pillow.",
@@ -25204,7 +25204,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "pink",
-    "phonetic": "[]",
+    "phonetic": "[pɪŋk]",
     "meaning": "a. 粉红色的",
     "phrase": "a pink coat",
     "example": "The pink tips of these florets constitute the showy part of the head.",
@@ -25369,7 +25369,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "playroom",
-    "phonetic": "[]",
+    "phonetic": "[ˈpleɪˌrum]",
     "meaning": "n. 游戏室",
     "phrase": "a playroom / the playroom",
     "example": "\" The five looked around them with interest at this playroom of the two boys of long ago, its treasures living on after they were both dead and gone.",
@@ -25435,7 +25435,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "pleased",
-    "phonetic": "[pliːzd]",
+    "phonetic": "[plizd]",
     "meaning": "a. 高兴的",
     "phrase": "a pleased room",
     "example": "He went out exceedingly pleased with his visit and still more so with himself.",
@@ -25446,7 +25446,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "pleasure",
-    "phonetic": "[pliːzd]",
+    "phonetic": "[ˈplɛʒər]",
     "meaning": "n. 高兴，愉快",
     "phrase": "a pleasure / the pleasure",
     "example": "It's a pleasure to see you and I am glad to say so.",
@@ -25457,7 +25457,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "plenty",
-    "phonetic": "[pliːzd]",
+    "phonetic": "[ˈplɛnti]",
     "meaning": "n. 充足，大量",
     "phrase": "a plenty / the plenty",
     "example": "They can turn it into a picnic if they want to—they brought plenty provisions.",
@@ -25600,7 +25600,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "policy",
-    "phonetic": "[ˈpɔlɪsɪ]",
+    "phonetic": "[ˈpɑləsi]",
     "meaning": "n. 政策，方针，原则",
     "phrase": "a policy / the policy",
     "example": "I no more felt unduly concerned for the landlord's policy of insurance.",
@@ -25611,7 +25611,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "polish",
-    "phonetic": "[ˈpɔlɪsɪ]",
+    "phonetic": "[ˈpɑlɪʃ]",
     "meaning": "v.擦亮 n.擦光剂,亮光剂",
     "phrase": "learn to polish",
     "example": "A very good furniture polish is made by using equal parts linseed oil and turpentine.",
@@ -25809,7 +25809,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "position",
-    "phonetic": "[pəˈzɪʃ(ə)n]",
+    "phonetic": "[pəˈzɪʃən]",
     "meaning": "n. 位置",
     "phrase": "a position / the position",
     "example": "She abandoned her grasp of the handle and came back to her former position.",
@@ -25820,7 +25820,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "possess",
-    "phonetic": "[pəˈzɪʃ(ə)n]",
+    "phonetic": "[pəˈzɛs]",
     "meaning": "vt. 占有；拥有",
     "phrase": "learn to possess",
     "example": "The cathode rays which cause the bright line possess a negative charge of electricity.",
@@ -25864,7 +25864,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "possibly",
-    "phonetic": "[]",
+    "phonetic": "[ˈpɑsəbli]",
     "meaning": "adv. 可能地，也许",
     "phrase": "possibly + action",
     "example": "I think her the very worst sort of companion that Emma could possibly have.",
@@ -25985,7 +25985,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "potential",
-    "phonetic": "[pəˈtenʃ(ə)l]",
+    "phonetic": "[pəˈtɛnʃəl]",
     "meaning": "a. 潜在的，可能的",
     "phrase": "a potential question",
     "example": "The potential energy in the alcohol was transformed into heat or muscular work.",
@@ -25996,7 +25996,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "pound",
-    "phonetic": "[pəˈtenʃ(ə)l]",
+    "phonetic": "[paʊnd]",
     "meaning": "n. 磅；英镑",
     "phrase": "a pound / the pound",
     "example": "A pound of cheese is equal in proteid to two pounds of beef.",
@@ -26018,7 +26018,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "powder",
-    "phonetic": "[ˈpaʊdə(r)]",
+    "phonetic": "[ˈpaʊdər]",
     "meaning": "n. 粉，粉末",
     "phrase": "a powder / the powder",
     "example": "It may be separated from the cotyledon and used in the form of a powder.",
@@ -26029,7 +26029,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "power",
-    "phonetic": "[ˈpaʊdə(r)]",
+    "phonetic": "[paʊər]",
     "meaning": "n. 力，动力，电力",
     "phrase": "a power / the power",
     "example": "We shall have something sweeter than anything which Sylvanus Power's millions could buy.",
@@ -26238,7 +26238,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "presentation",
-    "phonetic": "[prezənˈteɪʃ(ə)n; (US) priːzenˈteʃn]",
+    "phonetic": "[ˌprɛzənˈteɪʃən]",
     "meaning": "n. 演示，演出",
     "phrase": "a presentation / the presentation",
     "example": "Darcy bequeathed me the next presentation of the best living in his gift.",
@@ -26249,7 +26249,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "preserve",
-    "phonetic": "[prezənˈteɪʃ(ə)n; (US) priːzenˈteʃn]",
+    "phonetic": "[prɪˈzərv]",
     "meaning": "v.保护，保留，保存",
     "phrase": "preserve people",
     "example": "Fruit is cooked in a sirup if it is desired to preserve its shape.",
@@ -26260,7 +26260,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "president",
-    "phonetic": "[ˈprezɪdənt]",
+    "phonetic": "[ˈprɛzɪdənt]",
     "meaning": "n. 总统；主席",
     "phrase": "a president / the president",
     "example": "It is a nice day, and they may catch a glimpse of the President.",
@@ -26271,7 +26271,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "press",
-    "phonetic": "[ˈprezɪdənt]",
+    "phonetic": "[prɛs]",
     "meaning": "vt.压,按 n.新闻界,出版社",
     "phrase": "learn to press",
     "example": "Press sharp edges of apples into the dough in parallel rows lengthwise of pan.",
@@ -26282,7 +26282,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "pressure",
-    "phonetic": "[ˈpreʃə(r)]",
+    "phonetic": "[ˈprɛʃər]",
     "meaning": "n. 压迫,压力,压强",
     "phrase": "a pressure / the pressure",
     "example": "An engine of this kind will work well under a steam pressure of 50 lb.",
@@ -26293,7 +26293,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "pretend",
-    "phonetic": "[ˈpreʃə(r)]",
+    "phonetic": "[priˈtɛnd]",
     "meaning": "vi. 假装，装作",
     "phrase": "pretend naturally / pretend in a situation",
     "example": "I do not pretend to Emma's genius for foretelling and guessing.",
@@ -26601,7 +26601,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "programme",
-    "phonetic": "[]",
+    "phonetic": "[ˈproʊˌgræm]",
     "meaning": "n. 节目；项目",
     "phrase": "a programme / the programme",
     "example": "So it was decided to say nothing to anybody about the night's programme.",
@@ -26887,7 +26887,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "punctuation",
-    "phonetic": "[]",
+    "phonetic": "[ˌpəŋkʧuˈeɪʃən]",
     "meaning": "n. 标点符号",
     "phrase": "a punctuation / the punctuation",
     "example": "* * * * * * Transcriber's note: Minor French language errors and punctuation errors have silently been corrected.",
@@ -27008,7 +27008,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "puzzle",
-    "phonetic": "[ˈpʌz(ə)l]",
+    "phonetic": "[ˈpəzəl]",
     "meaning": "n. 难题,（字、画）谜",
     "phrase": "a puzzle / the puzzle",
     "example": "He'd stumbled across a puzzle of which the pieces didn't fit.",
@@ -27019,7 +27019,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "puzzled",
-    "phonetic": "[ˈpʌz(ə)l]",
+    "phonetic": "[ˈpəzəld]",
     "meaning": "a. 迷惑的，困惑的",
     "phrase": "a puzzled detail",
     "example": "We'd be puzzled to be more quiet and easy-going than we are at present.",
@@ -27129,7 +27129,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "questionnaire",
-    "phonetic": "[kwestʃəˈneə(r)]",
+    "phonetic": "[kˌwɛsʧəˈnɛr]",
     "meaning": "n. 调查表，问卷",
     "phrase": "a questionnaire / the questionnaire",
     "example": "One early teaching device, called the Electric Questionnaire, illustrates this built-in knowledge.",
@@ -27547,7 +27547,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "reading",
-    "phonetic": "[ʃɜːt]",
+    "phonetic": "[ˈrɛdɪŋ]",
     "meaning": "n. 阅读；朗读",
     "phrase": "a reading / the reading",
     "example": "I shall not sport with your impatience by reading what he says on that point.",
@@ -27756,7 +27756,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "record",
-    "phonetic": "[ˈrekɔːd; (US) ˈrekərd]",
+    "phonetic": "[ˈrɛkərd]",
     "meaning": "n. 记录；唱片",
     "phrase": "a record / the record",
     "example": "The story told thus baldly does not sound like a record of glorious success.",
@@ -27932,7 +27932,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "refrigerator",
-    "phonetic": "[rɪˈfrɪdʒəreɪtə(r)]",
+    "phonetic": "[rɪˈfrɪʤərˌeɪtər]",
     "meaning": "n. 冰箱",
     "phrase": "a refrigerator / the refrigerator",
     "example": "If the milk used is certified, place in a clean refrigerator until used for feeding.",
@@ -27965,7 +27965,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "regard",
-    "phonetic": "[rɪˈɡɑːd]",
+    "phonetic": "[rɪˈgɑrd]",
     "meaning": "v. 把……看作",
     "phrase": "learn to regard",
     "example": "I hope your father and mother are quite happy with regard to both.",
@@ -27976,7 +27976,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "regards",
-    "phonetic": "[rɪˈɡɑːd]",
+    "phonetic": "[rɪˈgɑrdz]",
     "meaning": "n. 问候，致意",
     "phrase": "a regards / the regards",
     "example": "The hydroaeroplane does not differ fundamentally from the aeroplane as regards flying principles.",
@@ -28119,7 +28119,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "relevant",
-    "phonetic": "[]",
+    "phonetic": "[ˈrɛləvənt]",
     "meaning": "a. 紧密相关,有意义的",
     "phrase": "a relevant detail",
     "example": "\" \"I am glad of all details,\" remarked my friend, \"whether they seem to you to be relevant or not.",
@@ -28262,7 +28262,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "repair",
-    "phonetic": "[rɪˈpeə(r)]",
+    "phonetic": "[rɪˈpɛr]",
     "meaning": "n.& vt. 修理；修补",
     "phrase": "learn to repair",
     "example": "The chief work of the cells is to construct the tissues and repair them.",
@@ -28273,7 +28273,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "repairs",
-    "phonetic": "[rɪˈpeə(r)]",
+    "phonetic": "[rɪˈpɛrz]",
     "meaning": "n. 修理工作",
     "phrase": "a repairs / the repairs",
     "example": "Mechanical equipment permits the execution of repairs to the submarine's machinery and equipment.",
@@ -28493,7 +28493,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "respect",
-    "phonetic": "[rɪˈspekt]",
+    "phonetic": "[rɪˈspɛkt]",
     "meaning": "vt.& n. 尊敬，尊重",
     "phrase": "learn to respect",
     "example": "I want you to lead such a life as will make the world respect you.",
@@ -28504,7 +28504,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "respond",
-    "phonetic": "[rɪˈspekt]",
+    "phonetic": "[rɪˈspɑnd]",
     "meaning": "v.回答,回应,作出反应",
     "phrase": "learn to respond",
     "example": "long closed at one end will respond to what rate of vibration at 10°C.",
@@ -28955,7 +28955,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "rocket",
-    "phonetic": "[]",
+    "phonetic": "[ˈrɑkət]",
     "meaning": "n. 火箭",
     "phrase": "a rocket / the rocket",
     "example": "\" \"Look straight ahead of us when the next rocket goes up,\" Hoskins suggested.",
@@ -28966,7 +28966,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "role",
-    "phonetic": "[rəʊl]",
+    "phonetic": "[roʊl]",
     "meaning": "n. 角色",
     "phrase": "a role / the role",
     "example": "It is queer, isn't it, how naturally you fall into the role?",
@@ -28977,7 +28977,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "roll",
-    "phonetic": "[rəʊl]",
+    "phonetic": "[roʊl]",
     "meaning": "v. 滚动, 打滚 n. 面包圈，小圆面包；卷状物",
     "phrase": "learn to roll",
     "example": "The spherical balloon is apt to sway and roll with every puff of wind.",
@@ -29868,7 +29868,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "sea",
-    "phonetic": "[siː]",
+    "phonetic": "[si]",
     "meaning": "n. 海，海洋",
     "phrase": "a sea / the sea",
     "example": "It is often found in solution in natural waters and in the sea water.",
@@ -30055,7 +30055,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "see",
-    "phonetic": "[siː]",
+    "phonetic": "[si]",
     "meaning": "vt. 看见，看到；领会；拜会",
     "phrase": "learn to see",
     "example": "I want to see how the memory of that afternoon has dealt with you.",
@@ -30176,7 +30176,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "sell",
-    "phonetic": "[sel]",
+    "phonetic": "[sɛl]",
     "meaning": "v. 卖，售",
     "phrase": "learn to sell",
     "example": "A lively milkmaid was walking to market to sell a pail of cream.",
@@ -30462,7 +30462,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "sew",
-    "phonetic": "[səʊ]",
+    "phonetic": "[soʊ]",
     "meaning": "vi. 缝, 缝制；缝补；缝纫",
     "phrase": "sew naturally / sew in a situation",
     "example": "Cut the handle of cardboard one-quarter of an inch wide and sew it in place.",
@@ -30638,7 +30638,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "shaver",
-    "phonetic": "[]",
+    "phonetic": "[ˈʃeɪvər]",
     "meaning": "n. 电动剃须刀",
     "phrase": "a shaver / the shaver",
     "example": "\"Do you mean to say anything, you young shaver?",
@@ -30726,7 +30726,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "shirt",
-    "phonetic": "[ʃɜːt]",
+    "phonetic": "[ʃərt]",
     "meaning": "vn. 男衬衫",
     "phrase": "shirt in a real sentence",
     "example": "With the strength of desperation he held on to the other fellow's shirt.",
@@ -30869,7 +30869,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "shot",
-    "phonetic": "[ʃɔt]",
+    "phonetic": "[ʃɑt]",
     "meaning": "n. 射击，开枪，开炮，射击声；子弹",
     "phrase": "a shot / the shot",
     "example": "A small blue flame shot through the tube with scarcely a particle of noise.",
@@ -30880,7 +30880,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "should",
-    "phonetic": "[ʃɔt]",
+    "phonetic": "[ʃʊd]",
     "meaning": "v. mod. 应当，应该，会 v. aux.会,应该（shall的过去时态）",
     "phrase": "grammar signal: should",
     "example": "I had a sudden impulse of terror lest it should all be snatched away.",
@@ -30891,7 +30891,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "shoulder",
-    "phonetic": "[ˈʃəʊldə(r)]",
+    "phonetic": "[ˈʃoʊldər]",
     "meaning": "n. 肩膀,(道路的)路肩",
     "phrase": "a shoulder / the shoulder",
     "example": "I had left my chair and was gazing at it over his shoulder.",
@@ -30902,7 +30902,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "shout",
-    "phonetic": "[ˈʃəʊldə(r)]",
+    "phonetic": "[ʃaʊt]",
     "meaning": "n.& v. 喊，高声呼喊",
     "phrase": "learn to shout",
     "example": "A shout went up at sight of the glorious strings of fine trout they carried.",
@@ -30913,7 +30913,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "show",
-    "phonetic": "[ʃəʊ]",
+    "phonetic": "[ʃoʊ]",
     "meaning": "n. 展示,展览（会）;演出",
     "phrase": "a show / the show",
     "example": "I only spoke to show you that you need have no remorse even if.",
@@ -30990,7 +30990,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "sickness",
-    "phonetic": "[ˈsɪknɪs]",
+    "phonetic": "[ˈsɪknəs]",
     "meaning": "n. 疾病",
     "phrase": "a sickness / the sickness",
     "example": "The expression of his face was not so much of terror as of mortal sickness.",
@@ -31001,7 +31001,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "side",
-    "phonetic": "[ˈsɪknɪs]",
+    "phonetic": "[saɪd]",
     "meaning": "n. 边，旁边，面，侧面",
     "phrase": "a side / the side",
     "example": "The back fin must have incisions on each side in order to remove it.",
@@ -31023,7 +31023,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "sideways",
-    "phonetic": "[ˈsaɪdweɪz]",
+    "phonetic": "[ˈsaɪdˌweɪz]",
     "meaning": "ad. 斜向一边的",
     "phrase": "sideways + action",
     "example": "The wire at once tends to move sideways across the field away from the crowded side.",
@@ -31045,7 +31045,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "sight",
-    "phonetic": "[saɪ]",
+    "phonetic": "[saɪt]",
     "meaning": "n. 情景，风景；视力",
     "phrase": "a sight / the sight",
     "example": "The sight of his last finished sentence presented itself suddenly in a new light.",
@@ -31089,7 +31089,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "signature",
-    "phonetic": "[ˈsɪɡnətʃə(r)]",
+    "phonetic": "[ˈsɪgnəʧər]",
     "meaning": "n. 签名",
     "phrase": "a signature / the signature",
     "example": "The point about the signature is very suggestive—in fact, we may call it conclusive.",
@@ -31100,7 +31100,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "significance",
-    "phonetic": "[ˈsɪɡnətʃə(r)]",
+    "phonetic": "[sɪgˈnɪfɪkəns]",
     "meaning": "n. 重要性，意义",
     "phrase": "a significance / the significance",
     "example": "The significance of this very important fact will be discussed in a subsequent chapter.",
@@ -31254,7 +31254,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "singer",
-    "phonetic": "[sɪŋ]",
+    "phonetic": "[ˈsɪŋər]",
     "meaning": "n. 歌唱家，歌手",
     "phrase": "a singer / the singer",
     "example": "She is the new singer from the South that has created such a furore.",
@@ -31353,7 +31353,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "sixty",
-    "phonetic": "[ˈsɪkstɪ]",
+    "phonetic": "[ˈsɪksti]",
     "meaning": "num. 六十",
     "phrase": "grammar signal: sixty",
     "example": "The body must be kept motionless, face down, no longer than sixty seconds, however.",
@@ -31364,7 +31364,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "sixteen",
-    "phonetic": "[ˈsɪkstɪ]",
+    "phonetic": "[ˈsɪkˈstin]",
     "meaning": "num. 十六",
     "phrase": "grammar signal: sixteen",
     "example": "She is a handsome girl, about fifteen or sixteen, and, I understand, highly accomplished.",
@@ -31375,7 +31375,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "sixteenth",
-    "phonetic": "[sɪksˈtiːnθ]",
+    "phonetic": "[ˈsɪkˈstinθ]",
     "meaning": "num. 第十六",
     "phrase": "grammar signal: sixteenth",
     "example": "Throughout the fifteenth, sixteenth, and seventeenth centuries the fame of the Italian comedians spread throughout the world.",
@@ -31386,7 +31386,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "size",
-    "phonetic": "[sɪksˈtiːnθ]",
+    "phonetic": "[saɪz]",
     "meaning": "n. 尺寸，大小",
     "phrase": "a size / the size",
     "example": "We must judge of their size and action by the results obtained from experiments.",
@@ -31397,7 +31397,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "skate",
-    "phonetic": "[sɪksˈtiːnθ]",
+    "phonetic": "[skeɪt]",
     "meaning": "vi. 溜冰，滑冰",
     "phrase": "skate naturally / skate in a situation",
     "example": "It is advisable to have the shoe and skate fastened together.",
@@ -31419,7 +31419,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "ski",
-    "phonetic": "[skiː]",
+    "phonetic": "[ski]",
     "meaning": "n.& vi. 滑雪板；滑雪",
     "phrase": "ski naturally / ski in a situation",
     "example": "So the gallant Frenchman who was first to explore the skies came to his unfortunate end.",
@@ -31430,7 +31430,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "skill",
-    "phonetic": "[skiː]",
+    "phonetic": "[skɪl]",
     "meaning": "n. 技能，技巧",
     "phrase": "a skill / the skill",
     "example": "It will be noted that the drill seeks to cultivate equal skill of both hands.",
@@ -31441,7 +31441,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "skilled",
-    "phonetic": "[skiː]",
+    "phonetic": "[skɪld]",
     "meaning": "a. 熟练的；有技能的",
     "phrase": "a skilled detail",
     "example": "A good fellow, a skilled hand, fond of us, and enthusiastic and honourable.",
@@ -31562,7 +31562,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "sleep",
-    "phonetic": "[sliːp]",
+    "phonetic": "[slip]",
     "meaning": "n. 睡觉",
     "phrase": "a sleep / the sleep",
     "example": "I felt I could never sleep again until my bed was secure from them.",
@@ -31573,7 +31573,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "sleepy",
-    "phonetic": "[sliːp]",
+    "phonetic": "[sˈlipi]",
     "meaning": "a. 想睡的,困倦的,瞌睡的",
     "phrase": "a sleepy detail",
     "example": "I am not sleepy, and the work will help to keep me quiet.",
@@ -31584,7 +31584,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "sleeve",
-    "phonetic": "[sliːv]",
+    "phonetic": "[sliv]",
     "meaning": "n. 袖子，袖套",
     "phrase": "a sleeve / the sleeve",
     "example": "It can then easily be removed either by pulling down or up the sleeve.",
@@ -31595,7 +31595,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "slice",
-    "phonetic": "[sliːv]",
+    "phonetic": "[slaɪs]",
     "meaning": "n. 片，切面（薄）片",
     "phrase": "a slice / the slice",
     "example": "A slice of bread should not be cut in pieces at the table.",
@@ -31650,7 +31650,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "slow",
-    "phonetic": "[slɪp]",
+    "phonetic": "[sloʊ]",
     "meaning": "ad. 慢慢地，缓慢地",
     "phrase": "slow + action",
     "example": "The study of exceedingly slow movements offers a very promising field to the patient worker.",
@@ -31716,7 +31716,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "smog",
-    "phonetic": "[smaɪl]",
+    "phonetic": "[smɑg]",
     "meaning": "n. 烟雾(= smoke + fog)",
     "phrase": "a smog / the smog",
     "example": "Smog, or smoke fog, is a type of intense air pollution.",
@@ -31727,7 +31727,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "smoke",
-    "phonetic": "[smaɪl]",
+    "phonetic": "[smoʊk]",
     "meaning": "n. 烟 v. 冒烟；吸烟",
     "phrase": "learn to smoke",
     "example": "A smudge is made by burning things that make little flame and much smoke.",
@@ -31760,7 +31760,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "smoking",
-    "phonetic": "[ˈsməʊkɪŋ]",
+    "phonetic": "[sˈmoʊkɪŋ]",
     "meaning": "n. 吸烟,抽烟;冒烟",
     "phrase": "a smoking / the smoking",
     "example": "I don't want to hurt that smoking room steward's feelings.",
@@ -31771,7 +31771,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "smooth",
-    "phonetic": "[ˈsməʊkɪŋ]",
+    "phonetic": "[smuð]",
     "meaning": "a. 光滑的;平坦的",
     "phrase": "a smooth detail",
     "example": "The surface is smooth and green on both sides and they have no teeth.",
@@ -31804,7 +31804,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "snatch",
-    "phonetic": "[sneɪk]",
+    "phonetic": "[snæʧ]",
     "meaning": "v. 夺，夺得，夺走",
     "phrase": "learn to snatch",
     "example": "It was only a snatch that reached our ears, followed by the former silence.",
@@ -31815,7 +31815,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "sneaker",
-    "phonetic": "[sneɪk]",
+    "phonetic": "[sˈnikər]",
     "meaning": "n. （复）轻便运动鞋（美）",
     "phrase": "a sneaker / the sneaker",
     "example": "\"He probably wore a rubber-soled shoe, like a sneaker, and stepped on some broken glass that went right through the sole into his foot.",
@@ -31826,7 +31826,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "sneeze",
-    "phonetic": "[sneɪk]",
+    "phonetic": "[sniz]",
     "meaning": "v. 打喷嚏",
     "phrase": "learn to sneeze",
     "example": "The elephant sneezed a sneeze that nearly unseated his rider and blew Chapa's hat off.",
@@ -31892,7 +31892,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "so",
-    "phonetic": "[səʊ]",
+    "phonetic": "[soʊ]",
     "meaning": "ad. 如此，这么；非常；同样 conj. 因此，所以",
     "phrase": "grammar signal: so",
     "example": "I will tell you why I know so clearly that I never loved her.",
@@ -31903,7 +31903,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "soap",
-    "phonetic": "[səʊp]",
+    "phonetic": "[soʊp]",
     "meaning": "n. 肥皂",
     "phrase": "a soap / the soap",
     "example": "It is because of these facts that soap is used up by hard waters.",
@@ -31914,7 +31914,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "sob",
-    "phonetic": "[səʊp]",
+    "phonetic": "[sɑb]",
     "meaning": "n.& v. 抽泣，啜泣",
     "phrase": "learn to sob",
     "example": "It died in my lap before she got home,\" cried Beth with a sob.",
@@ -31991,7 +31991,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "socket",
-    "phonetic": "[ˈsɔkɪt]",
+    "phonetic": "[ˈsɑkət]",
     "meaning": "n. （电源）插座",
     "phrase": "a socket / the socket",
     "example": "The candle was burning low in the socket when he rose to his feet.",
@@ -32002,7 +32002,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "sofa",
-    "phonetic": "[ˈsɔkɪt]",
+    "phonetic": "[ˈsoʊfə]",
     "meaning": "n. （长）沙发",
     "phrase": "a sofa / the sofa",
     "example": "Or you could lie on the sofa--any way you would be with us.",
@@ -32123,7 +32123,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "sometimes",
-    "phonetic": "[ˈsʌmtaɪmz]",
+    "phonetic": "[ˈsəmˌtaɪmz]",
     "meaning": "ad. 有时",
     "phrase": "sometimes + action",
     "example": "She would sometimes begin to cry suddenly and was often ill and feverishly delirious.",
@@ -32134,7 +32134,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "somewhere",
-    "phonetic": "[ˈsʌmtaɪmz]",
+    "phonetic": "[ˈsəmˌwɛr]",
     "meaning": "ad. 在某处",
     "phrase": "somewhere + action",
     "example": "I suppose there must be an outlet in the bottom of the lake somewhere.",
@@ -32145,7 +32145,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "son",
-    "phonetic": "[sʌn]",
+    "phonetic": "[sən]",
     "meaning": "n. 儿子",
     "phrase": "a son / the son",
     "example": "He had stood behind that tree during the interview between the father and son.",
@@ -32156,7 +32156,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "song",
-    "phonetic": "[sʌn]",
+    "phonetic": "[sɔŋ]",
     "meaning": "n. 歌唱；歌曲",
     "phrase": "a song / the song",
     "example": "The rest of the children in the room endeavor to guess the song clapped.",
@@ -32167,7 +32167,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "soon",
-    "phonetic": "[sʌn]",
+    "phonetic": "[sun]",
     "meaning": "ad. 不久,很快,一会儿",
     "phrase": "soon + action",
     "example": "I had been too deeply concerned in the mischief to be soon at peace.",
@@ -32255,7 +32255,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "sour",
-    "phonetic": "[ˈsaʊə(r)]",
+    "phonetic": "[saʊər]",
     "meaning": "a. 酸的，馊的",
     "phrase": "sour rain",
     "example": "It changes blue litmus red and has a sour taste in dilute solutions.",
@@ -32266,7 +32266,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "south",
-    "phonetic": "[ˈsaʊə(r)]",
+    "phonetic": "[saʊθ]",
     "meaning": "a. 南(方)的；向南的；从南来的 ad. 在南方；向南方；自南方 n. 南；南方；南风；南部",
     "phrase": "south + action",
     "example": "It is found on the plains from Nebraska to Oregon and south to Mexico.",
@@ -32321,7 +32321,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "sow",
-    "phonetic": "[səʊ]",
+    "phonetic": "[soʊ]",
     "meaning": "vt.播种",
     "phrase": "learn to sow",
     "example": "=The sheep slips and is up again; the sow lies down and wallows.",
@@ -32365,7 +32365,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "spaghetti",
-    "phonetic": "[]",
+    "phonetic": "[spəˈgɛti]",
     "meaning": "n. 意大利式面条",
     "phrase": "a spaghetti / the spaghetti",
     "example": "Spaghetti or other Italian pastas may be substituted for macaroni.",
@@ -32387,7 +32387,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "sparrow",
-    "phonetic": "[ˈspærəʊ]",
+    "phonetic": "[ˈspɛroʊ]",
     "meaning": "n. 麻雀，雀型鸟类",
     "phrase": "a sparrow / the sparrow",
     "example": "=Song Sparrow= The little song sparrow loves the open and the hot summer sunshine.",
@@ -32398,7 +32398,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "speak",
-    "phonetic": "[ˈspærəʊ]",
+    "phonetic": "[spik]",
     "meaning": "v. 说，讲；谈话；发言",
     "phrase": "learn to speak",
     "example": "I must speak to you by such means as are within my reach.",
@@ -32475,7 +32475,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "speed",
-    "phonetic": "[spiːd]",
+    "phonetic": "[spid]",
     "meaning": "n. 速度 v. （使）加速",
     "phrase": "speed the process",
     "example": "The former has a maximum speed of sixty-five miles and the Jandel slightly faster.",
@@ -32486,7 +32486,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "spell",
-    "phonetic": "[spiːd]",
+    "phonetic": "[spɛl]",
     "meaning": "vt. 拼写",
     "phrase": "learn to spell",
     "example": "I never saw anybody in my life spell harder for an invitation.",
@@ -32497,7 +32497,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "spelling",
-    "phonetic": "[ˈspelɪŋ]",
+    "phonetic": "[ˈspɛlɪŋ]",
     "meaning": "n. 拼写，拼读",
     "phrase": "a spelling / the spelling",
     "example": "The captain of one team starts spelling a word containing more than three letters.",
@@ -32508,7 +32508,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "spend",
-    "phonetic": "[ˈspelɪŋ]",
+    "phonetic": "[spɛnd]",
     "meaning": "v. 度过；花费（钱、时间等）",
     "phrase": "learn to spend",
     "example": "He may spend the evening with his dear William Larkins now if he likes.",
@@ -32706,7 +32706,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "squeeze",
-    "phonetic": "[]",
+    "phonetic": "[skwiz]",
     "meaning": "n. 挤压，捏，塞",
     "phrase": "a squeeze / the squeeze",
     "example": "It was our business to squeeze these lumps back into fluid.",
@@ -32805,7 +32805,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "stair",
-    "phonetic": "[steə(r)]",
+    "phonetic": "[stɛr]",
     "meaning": "n. 楼梯",
     "phrase": "a stair / the stair",
     "example": "The solicitor addressed me as he descended the stair.",
@@ -32860,7 +32860,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "stare",
-    "phonetic": "[steə(r)]",
+    "phonetic": "[stɛr]",
     "meaning": "vi. 盯，凝视",
     "phrase": "stare naturally / stare in a situation",
     "example": "\" The man stirred again, and then Chick, with a stare, moved back a step.",
@@ -33003,7 +33003,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "steal",
-    "phonetic": "[stiːl]",
+    "phonetic": "[stil]",
     "meaning": "vt. 偷, 窃取",
     "phrase": "learn to steal",
     "example": "The scarlet would pass away from his lips and the gold steal from his hair.",
@@ -33025,7 +33025,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "steel",
-    "phonetic": "[stiːl]",
+    "phonetic": "[stil]",
     "meaning": "n. 钢，钢铁",
     "phrase": "a steel / the steel",
     "example": "The quality of the steel and iron thus formed depends principally on their uniformity.",
@@ -33696,7 +33696,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "suite",
-    "phonetic": "[swiːt]",
+    "phonetic": "[swit]",
     "meaning": "n. 套间；组曲",
     "phrase": "a suite / the suite",
     "example": "The chief dance of the suite at the Empire was one in which Mlle.",
@@ -33751,7 +33751,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "sun",
-    "phonetic": "[sʌn]",
+    "phonetic": "[sən]",
     "meaning": "n. 太阳，阳光",
     "phrase": "a sun / the sun",
     "example": "The sun that rose on our sorrow this morning guards us in its course.",
@@ -34136,7 +34136,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "sweet",
-    "phonetic": "[swiːt]",
+    "phonetic": "[swit]",
     "meaning": "n.甜食;蜜饯;甜点;糖果;芳香a.甜的;新鲜的;可爱的;亲切的",
     "phrase": "a sweet detail",
     "example": "It is very sweet of you to let me have your last afternoon.",
@@ -34246,7 +34246,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "symphony",
-    "phonetic": "[ˈsɪmfənɪ]",
+    "phonetic": "[ˈsɪmfəni]",
     "meaning": "n. 交响乐",
     "phrase": "a symphony / the symphony",
     "example": "At this moment a melodious symphony attracted the attention of the guests.",
@@ -34257,7 +34257,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "symptom",
-    "phonetic": "[ˈsɪmfənɪ]",
+    "phonetic": "[ˈsɪmptəm]",
     "meaning": "n. 症状",
     "phrase": "a symptom / the symptom",
     "example": "The slums of a city are \"at once symptom, effect, and cause of evil.",
@@ -34301,7 +34301,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "tablet",
-    "phonetic": "[]",
+    "phonetic": "[ˈtæblət]",
     "meaning": "n. 药片",
     "phrase": "a tablet / the tablet",
     "example": "Reduce junket tablet to powder, using a small mallet, add to mixture, with salt and vanilla.",
@@ -34521,7 +34521,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "taxpayer",
-    "phonetic": "[]",
+    "phonetic": "[ˈtækˌspeɪər]",
     "meaning": "n. 纳税人",
     "phrase": "a taxpayer / the taxpayer",
     "example": "The taxpayers want their money's worth of hard facts.",
@@ -34532,7 +34532,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "tea",
-    "phonetic": "[tiː]",
+    "phonetic": "[ti]",
     "meaning": "n. 茶；茶叶",
     "phrase": "a tea / the tea",
     "example": "A lump of sugar in a cup of tea will sweeten the entire contents.",
@@ -34543,7 +34543,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "teach",
-    "phonetic": "[tiː]",
+    "phonetic": "[tiʧ]",
     "meaning": "v. 教书,教",
     "phrase": "read a teach",
     "example": "They teach them that, in pursuit of the Vision, bleeding feet do not count.",
@@ -34620,7 +34620,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "technical",
-    "phonetic": "[ˈteknɪk(ə)l]",
+    "phonetic": "[ˈtɛknɪkəl]",
     "meaning": "a. 技术的，工艺的",
     "phrase": "a technical detail",
     "example": "The language is simple and as free as possible from unusual and technical phrases.",
@@ -34631,7 +34631,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "technique",
-    "phonetic": "[ˈteknɪk(ə)l]",
+    "phonetic": "[tɛkˈnik]",
     "meaning": "n. 技术;技巧,方法",
     "phrase": "a technique / the technique",
     "example": "A technique known as adaptive control was recently presented at a symposium by scientists from IBM.",
@@ -34675,7 +34675,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "telegraph",
-    "phonetic": "[ˈtelɪɡrɑːf; (US) -ɡræf]",
+    "phonetic": "[ˈtɛləˌgræf]",
     "meaning": "v. (拍) 电报",
     "phrase": "learn to telegraph",
     "example": "The expense of making certain telegraph offices along the line into receiving stations will be small.",
@@ -34686,7 +34686,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "telephone",
-    "phonetic": "[ˈtelɪɡrɑːf; (US) -ɡræf]",
+    "phonetic": "[ˈtɛləˌfoʊn]",
     "meaning": "v. 打电话 n. 电话",
     "phrase": "learn to telephone",
     "example": "The wireless telephone can be best understood by comparing it with the common telephone.",
@@ -34697,7 +34697,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "telescope",
-    "phonetic": "[ˈtelɪɡrɑːf; (US) -ɡræf]",
+    "phonetic": "[ˈtɛləˌskoʊp]",
     "meaning": "n. 望远镜",
     "phrase": "a telescope / the telescope",
     "example": "We will now give a short history of the Telescope and its improved construction.",
@@ -34708,7 +34708,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "television",
-    "phonetic": "[ˈtelɪɡrɑːf; (US) -ɡræf]",
+    "phonetic": "[ˈtɛləˌvɪʒən]",
     "meaning": "n. 电视",
     "phrase": "a television / the television",
     "example": "A videotex keyboard terminal can be connected to a telephone jack and any television set.",
@@ -34840,7 +34840,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "tent",
-    "phonetic": "[tent]",
+    "phonetic": "[tɛnt]",
     "meaning": "n. 帐篷",
     "phrase": "a tent / the tent",
     "example": "It is not necessary to wring the tent out when you hang it up.",
@@ -34851,7 +34851,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "tentative",
-    "phonetic": "[tent]",
+    "phonetic": "[ˈtɛntətɪv]",
     "meaning": "a. 不确定的，踌躇的",
     "phrase": "a tentative reason",
     "example": "\"First you start in with a tentative adjustment of the first primary.",
@@ -34862,7 +34862,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "term",
-    "phonetic": "[tɜːm]",
+    "phonetic": "[tərm]",
     "meaning": "n. 学期;术语;条款;项",
     "phrase": "a term / the term",
     "example": "The term azote and symbol Az are still retained by the French chemists.",
@@ -34873,7 +34873,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "terminal",
-    "phonetic": "[tɜːm]",
+    "phonetic": "[ˈtərmənəl]",
     "meaning": "a.(火车汽车飞机)终点站",
     "phrase": "a terminal detail",
     "example": "A videotex keyboard terminal can be connected to a telephone jack and any television set.",
@@ -34939,7 +34939,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "textbook",
-    "phonetic": "[]",
+    "phonetic": "[ˈtɛkstˌbʊk]",
     "meaning": "n. 课本，教科书",
     "phrase": "a textbook / the textbook",
     "example": "For the above reason the laboratory problems, which naturally precede the textbook work, should be separated from the subject matter of the text.",
@@ -35027,7 +35027,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "their",
-    "phonetic": "[ðeə(r)]",
+    "phonetic": "[ðɛr]",
     "meaning": "pron. 他(她,它)们的",
     "phrase": "grammar signal: their",
     "example": "He and Mary had been persuaded to go early to their inn last night.",
@@ -35093,7 +35093,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "theoretical",
-    "phonetic": "[θɪəˈretɪk(ə)l]",
+    "phonetic": "[ˌθiərˈɛtɪkəl]",
     "meaning": "a. 理论的",
     "phrase": "a theoretical detail",
     "example": "The details relating to this must be sought for in treatises on organic and theoretical chemistry.",
@@ -35104,7 +35104,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "theory",
-    "phonetic": "[θɪəˈretɪk(ə)l]",
+    "phonetic": "[ˈθɪri]",
     "meaning": "n. 理论",
     "phrase": "a theory / the theory",
     "example": "The example of sodium sulphate is historically very important for the theory of solutions.",
@@ -35115,7 +35115,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "there",
-    "phonetic": "[ðeə(r)]",
+    "phonetic": "[ðɛr]",
     "meaning": "int. 那！你瞧（表示引起注意） n. 那里，那儿 ad. 在那里，往那里；（作引导词）表”存在\"",
     "phrase": "there + action",
     "example": "I was there with a young woman who is typing the play for me.",
@@ -35137,7 +35137,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "thermos",
-    "phonetic": "[ˈθɜːmɔs]",
+    "phonetic": "[ˈθərməs]",
     "meaning": "n. 热水瓶",
     "phrase": "a thermos / the thermos",
     "example": "\"Sandwiches and coffee from the thermos bottles and chocolate candy tasted fine.",
@@ -35148,7 +35148,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "these",
-    "phonetic": "[ˈθɜːmɔs]",
+    "phonetic": "[ðiz]",
     "meaning": "a. & pron. 这些",
     "phrase": "grammar signal: these",
     "example": "I'm risking my life and the lives of these good gentlemen every second.",
@@ -35236,7 +35236,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "third",
-    "phonetic": "[θɜːd]",
+    "phonetic": "[θərd]",
     "meaning": "num. 第三",
     "phrase": "grammar signal: third",
     "example": "The mouse at once asked what name had been given to the third child.",
@@ -35247,7 +35247,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "thirst",
-    "phonetic": "[θɜːd]",
+    "phonetic": "[θərst]",
     "meaning": "n. 渴； 口渴",
     "phrase": "a thirst / the thirst",
     "example": "It was high time, for I now began to be tortured with thirst.",
@@ -35500,7 +35500,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "tidy",
-    "phonetic": "[ˈtɪkɪt]",
+    "phonetic": "[ˈtaɪdi]",
     "meaning": "a. 整洁的，干净的 vt. 弄整洁，弄干净",
     "phrase": "a tidy room",
     "example": "Always bail out the water after a rain and keep your boat clean and tidy.",
@@ -35632,7 +35632,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "tissue",
-    "phonetic": "[ˈtɪʃuː, ˈtɪsjuː]",
+    "phonetic": "[ˈtɪʃu]",
     "meaning": "n. （人，动植物的）组织，纸巾",
     "phrase": "a tissue / the tissue",
     "example": "The elastic connective tissue allows it to expand as a rubber hose does under pressure.",
@@ -35643,7 +35643,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "title",
-    "phonetic": "[ˈtɪʃuː, ˈtɪsjuː]",
+    "phonetic": "[ˈtaɪtəl]",
     "meaning": "n. 标题，题目",
     "phrase": "a title / the title",
     "example": "The next in importance is the King who wins his title in the same way.",
@@ -35665,7 +35665,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "toast",
-    "phonetic": "[təʊst]",
+    "phonetic": "[toʊst]",
     "meaning": "v./ n. 烤",
     "phrase": "learn to toast",
     "example": "Dextrin is found in small amounts in the crust of bread and in toast.",
@@ -35676,7 +35676,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "tobacco",
-    "phonetic": "[təʊst]",
+    "phonetic": "[təˈbæˌkoʊ]",
     "meaning": "n. 烟草，烟叶",
     "phrase": "a tobacco / the tobacco",
     "example": "It has been demonstrated that tobacco has, too, an important effect on muscular development.",
@@ -35687,7 +35687,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "today",
-    "phonetic": "[təʊst]",
+    "phonetic": "[təˈdeɪ]",
     "meaning": "ad.& n.今天;现在,当前",
     "phrase": "today + action",
     "example": "The world today is going through one of its great periods of change.",
@@ -35698,7 +35698,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "together",
-    "phonetic": "[təʊst]",
+    "phonetic": "[təˈgɛðər]",
     "meaning": "ad. 一起，共同",
     "phrase": "together + action",
     "example": "The chill and the vapour taken together told a poor tale of the island.",
@@ -35753,7 +35753,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "tomorrow",
-    "phonetic": "[təˈmɔrəʊ]",
+    "phonetic": "[təˈmɑˌroʊ]",
     "meaning": "ad. & n.明天",
     "phrase": "tomorrow + action",
     "example": "So with Moby Dick—two days he's floated—tomorrow will be the third.",
@@ -35764,7 +35764,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "ton",
-    "phonetic": "[təˈmɔrəʊ]",
+    "phonetic": "[tən]",
     "meaning": "n. （重量单位）吨",
     "phrase": "a ton / the ton",
     "example": "What weight of tin could be obtained by the reduction of 1 ton of cassiterite?",
@@ -35797,7 +35797,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "too",
-    "phonetic": "[təˈnaɪt]",
+    "phonetic": "[tu]",
     "meaning": "ad.也,还,又,太,过分,很,非常",
     "phrase": "too + action",
     "example": "I had been too deeply concerned in the mischief to be soon at peace.",
@@ -35874,7 +35874,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "topic",
-    "phonetic": "[ˈtɔpɪk]",
+    "phonetic": "[ˈtɑpɪk]",
     "meaning": "n. 题目，话题",
     "phrase": "a topic / the topic",
     "example": "Uniformly accelerated motion will be studied further under the topic of falling bodies.",
@@ -35885,7 +35885,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "tortoise",
-    "phonetic": "[ˈtɔpɪk]",
+    "phonetic": "[ˈtɔrtəs]",
     "meaning": "n. 乌龟",
     "phrase": "a tortoise / the tortoise",
     "example": "Does the tortoise slide its body or lift it when walking on hard ground?",
@@ -35907,7 +35907,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "totally",
-    "phonetic": "[ˈtɔt(ə)lɪ]",
+    "phonetic": "[ˈtoʊtəli]",
     "meaning": "ad. 总合地，完全地",
     "phrase": "totally + action",
     "example": "He is totally beyond the reach of any sentiment of justice or compassion.",
@@ -35929,7 +35929,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "tough",
-    "phonetic": "[ˈtɔt(ə)lɪ]",
+    "phonetic": "[təf]",
     "meaning": "a. 坚硬的；结实的；棘手的，难解的",
     "phrase": "a tough detail",
     "example": "It is tough with congealed tendons—a wad of muscle—but still contains some oil.",
@@ -36072,7 +36072,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "tradition",
-    "phonetic": "[trəˈdɪʃ(ə)n]",
+    "phonetic": "[trəˈdɪʃən]",
     "meaning": "n. 传统，风俗",
     "phrase": "a tradition / the tradition",
     "example": "So Sir Hubert von Herkomer is not likely to be the slave of tradition.",
@@ -36083,7 +36083,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "traditional",
-    "phonetic": "[trəˈdɪʃ(ə)n]",
+    "phonetic": "[trəˈdɪʃənəl]",
     "meaning": "a. 传统的，风俗的",
     "phrase": "a traditional detail",
     "example": "The traditional attitude of the unions toward immigration has been one of opposition.",
@@ -36468,7 +36468,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "truth",
-    "phonetic": "[truːθ]",
+    "phonetic": "[truθ]",
     "meaning": "n. 真理,事实,真相,实际",
     "phrase": "a truth / the truth",
     "example": "He is not unwilling to admit the sensible world into his scheme of truth.",
@@ -36479,7 +36479,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "try",
-    "phonetic": "[truːθ]",
+    "phonetic": "[traɪ]",
     "meaning": "v. 试，试图，努力",
     "phrase": "learn to try",
     "example": "I have got to try the locomotive out on the tracks of the H.",
@@ -36589,7 +36589,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "twin",
-    "phonetic": "[twɪst]",
+    "phonetic": "[twɪn]",
     "meaning": "n. 双胞胎之一",
     "phrase": "a twin / the twin",
     "example": "The French twin Caudron, however, may claim to be the first twin-engined aeroplane.",
@@ -36743,7 +36743,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "uncertain",
-    "phonetic": "[ˈsɜːt(ə)n]",
+    "phonetic": "[ənˈsərtən]",
     "meaning": "a.不确定的",
     "phrase": "an uncertain reason",
     "example": "For two streets he shuffled along with a bent back and an uncertain foot.",
@@ -36930,7 +36930,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "unfold",
-    "phonetic": "[ʌnˈfəʊld]",
+    "phonetic": "[ənˈfoʊld]",
     "meaning": "vt. 展开，打开",
     "phrase": "learn to unfold",
     "example": "The lunger in turn tries to make the hopper put down his second foot or unfold arms.",
@@ -36941,7 +36941,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "unfortunate",
-    "phonetic": "[ʌnˈfəʊld]",
+    "phonetic": "[ənˈfɔrʧənət]",
     "meaning": "a. 不幸的",
     "phrase": "an unfortunate detail",
     "example": "The result is that the fish deliver shock after shock upon the unfortunate quadrupeds.",
@@ -36952,7 +36952,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "unfortunately",
-    "phonetic": "[ʌnˈfɔːtjʊnətlɪ]",
+    "phonetic": "[ənˈfɔrʧənətli]",
     "meaning": "ad. 不幸地",
     "phrase": "unfortunately + action",
     "example": "She had unfortunately not made a very good impression upon her new teacher.",
@@ -36963,7 +36963,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "unhappy",
-    "phonetic": "[ʌnˈfɔːtjʊnətlɪ]",
+    "phonetic": "[ənˈhæpi]",
     "meaning": "a. 不高兴的,伤心的",
     "phrase": "an unhappy room",
     "example": "I am as unhappy as you can ever have meant me to be.",
@@ -37073,7 +37073,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "university",
-    "phonetic": "[juːnɪˈvɜːsɪtɪ]",
+    "phonetic": "[ˌjunəˈvərsəti]",
     "meaning": "n. 大学",
     "phrase": "an university / the university",
     "example": "I fancy the first stage of your derangement coincides with your leaving the university.",
@@ -37084,7 +37084,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "unknown",
-    "phonetic": "[juːnɪˈvɜːsɪtɪ]",
+    "phonetic": "[ənˈnoʊn]",
     "meaning": "a. 不知道的",
     "phrase": "an unknown detail",
     "example": "I believe I have reason to hope that my name is not wholly unknown to you?",
@@ -37326,7 +37326,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "used",
-    "phonetic": "[]",
+    "phonetic": "[juzd]",
     "meaning": "a. 用过的;旧的;二手的",
     "phrase": "an used detail",
     "example": "The terms used in the statement of the problem may be explained as follows.",
@@ -37711,7 +37711,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "villager",
-    "phonetic": "[ˈvilidʒə]",
+    "phonetic": "[ˈvɪlɪʤər]",
     "meaning": "n. 村民",
     "phrase": "a villager / the villager",
     "example": "I learnt all this from Nikolay and from his fellow villagers.",
@@ -37722,7 +37722,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "vinegar",
-    "phonetic": "[ˈvilidʒə]",
+    "phonetic": "[ˈvɪnəgər]",
     "meaning": "n. 醋",
     "phrase": "a vinegar / the vinegar",
     "example": "The amount of acetic acid in vinegar varies from two to seven per cent.",
@@ -37810,7 +37810,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "visa",
-    "phonetic": "[ˈviːzə]",
+    "phonetic": "[ˈvizə]",
     "meaning": "n. 签证，背签",
     "phrase": "a visa / the visa",
     "example": "Some countries no longer issue physical visa evidence, instead recording details only in border security databases.",
@@ -37821,7 +37821,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "visit",
-    "phonetic": "[ˈviːzə]",
+    "phonetic": "[ˈvɪzɪt]",
     "meaning": "n.& vt. 参观，访问，拜访",
     "phrase": "learn to visit",
     "example": "He went out exceedingly pleased with his visit and still more so with himself.",
@@ -37898,7 +37898,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "volcano",
-    "phonetic": "[vɔlˈkeɪnəʊ]",
+    "phonetic": "[vɑlˈkeɪnoʊ]",
     "meaning": "n. 火山",
     "phrase": "a volcano / the volcano",
     "example": "\"He looks like, he swallowed a volcano, and it just got to wo'kin' right.",
@@ -37909,7 +37909,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "volleyball",
-    "phonetic": "[vɔlˈkeɪnəʊ]",
+    "phonetic": "[ˈvɑliˌbɔl]",
     "meaning": "n. 排球",
     "phrase": "a volleyball / the volleyball",
     "example": "The adapted version of volleyball at the Summer Paralympic Games is sitting volleyball.",
@@ -37953,7 +37953,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "voyage",
-    "phonetic": "[ˈvɔɪɪdʒ]",
+    "phonetic": "[vɔɪəʤ]",
     "meaning": "n. 航行，旅行",
     "phrase": "a voyage / the voyage",
     "example": "We knew that the most dangerous moment of our entire voyage was now approaching.",
@@ -37964,7 +37964,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "wag",
-    "phonetic": "[ˈvɔɪɪdʒ]",
+    "phonetic": "[wæg]",
     "meaning": "v. 摇动；摆动",
     "phrase": "learn to wag",
     "example": "A wag once noted that the computer would one day give birth to an electronic baby.",
@@ -38129,7 +38129,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "war",
-    "phonetic": "[wɔː(r)]",
+    "phonetic": "[wɔr]",
     "meaning": "n. 战争",
     "phrase": "a war / the war",
     "example": "The former have had their first employment in this world-wide war of the nations.",
@@ -38140,7 +38140,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "ward",
-    "phonetic": "[wɔːd]",
+    "phonetic": "[wɔrd]",
     "meaning": "n. 保卫,看护,病房,收容所",
     "phrase": "a ward / the ward",
     "example": "It is strange he never mentioned to me that he had a ward.",
@@ -38195,7 +38195,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "warning",
-    "phonetic": "[ˈwɔːnɪŋ]",
+    "phonetic": "[ˈwɔrnɪŋ]",
     "meaning": "n. 警报",
     "phrase": "a warning / the warning",
     "example": "It was the same good friend whose warning I had so foolishly rejected.",
@@ -38206,7 +38206,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "wash",
-    "phonetic": "[ˈwɔːnɪŋ]",
+    "phonetic": "[wɑʃ]",
     "meaning": "n.洗(涤)冲洗,洗剂,泼溅,洗的衣服 v.洗(涤),冲洗,流过,弄湿",
     "phrase": "learn to wash",
     "example": "The storekeeper will have only to wash the windows and pay his electric power bill.",
@@ -38316,7 +38316,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "wayside",
-    "phonetic": "[weɪ]",
+    "phonetic": "[ˈweɪˌsaɪd]",
     "meaning": "a. 路边的",
     "phrase": "a wayside detail",
     "example": "We followed these, expecting to come upon her sitting in the wayside every minute.",
@@ -38360,7 +38360,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "weak",
-    "phonetic": "[wiːk]",
+    "phonetic": "[wik]",
     "meaning": "a. 差的，弱的，淡的",
     "phrase": "a weak detail",
     "example": "They become weak with one or two seasons of flowering and gradually die out.",
@@ -38404,7 +38404,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "wear",
-    "phonetic": "[weə(r)]",
+    "phonetic": "[wɛr]",
     "meaning": "v. 穿，戴",
     "phrase": "learn to wear",
     "example": "The members of each patrol wear bandanas made in the colors of their patrol.",
@@ -38415,7 +38415,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "weather",
-    "phonetic": "[weə(r)]",
+    "phonetic": "[ˈwɛðər]",
     "meaning": "n. 天气",
     "phrase": "weather forecast / sunny weather",
     "example": "A falling barometer indicates the approach of a storm and a rising barometer fair weather.",
@@ -38459,7 +38459,7 @@ window.ENGLISH_WORD_BANK = [
   },
   {
     "word": "week",
-    "phonetic": "[wiːk]",
+    "phonetic": "[wik]",
     "meaning": "n. 星期，周",
     "phrase": "a week / the week",
     "example": "It is on your account that he has been so frequently invited this week.",

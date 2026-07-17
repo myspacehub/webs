@@ -2693,7 +2693,7 @@ function advanceWordTrainerStep(step, feedback) {
   if (feedback) wordTrainerState.feedback = feedback;
 }
 
-function speakEnglishText(text, { rate = 0.78 } = {}) {
+function speakEnglishText(text, { rate = 0.55 } = {}) {
   if (!("speechSynthesis" in window) || typeof SpeechSynthesisUtterance === "undefined") {
     wordTrainerState.feedback = "当前浏览器暂不支持系统朗读，可以换 Chrome / Safari 再试。";
     return false;
@@ -2716,11 +2716,11 @@ function speakEnglishText(text, { rate = 0.78 } = {}) {
 }
 
 function speakEnglishWord(item) {
-  return speakEnglishText(pronunciationText(item.word), { rate: 0.78 });
+  return speakEnglishText(pronunciationText(item.word), { rate: 0.55 });
 }
 
 function speakEnglishExample(item) {
-  return speakEnglishText(item.example, { rate: 0.82 });
+  return speakEnglishText(item.example, { rate: 0.57 });
 }
 
 function checkExampleCloze(item) {
