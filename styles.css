@@ -1731,6 +1731,18 @@ h1 {
   line-height: 1.65;
 }
 
+.word-recall-cue {
+  display: grid;
+  gap: 10px;
+  border: 1px dashed rgba(37, 99, 235, 0.28);
+  border-radius: 16px;
+  padding: 12px;
+  color: #1e3a8a;
+  font-weight: 900;
+  line-height: 1.65;
+  background: rgba(239, 246, 255, 0.72);
+}
+
 .word-stage button {
   width: fit-content;
   border: 1px solid rgba(37, 99, 235, 0.18);

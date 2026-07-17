@@ -1866,6 +1866,7 @@ const wordTrainerState = {
   quizCount: 20,
   sessionKeys: [],
   sessionTitle: "",
+  meaningReady: false,
   step: 0,
 };
 const WORD_TRAINER_STEPS = ["意思辨认", "词汇复述", "例句填空", "助记复述", "拼写确认"];
@@ -2556,6 +2557,7 @@ function resetWordTrainerTransientState() {
   wordTrainerState.feedback = "";
   wordTrainerState.exampleFeedback = "";
   wordTrainerState.examplePassed = false;
+  wordTrainerState.meaningReady = false;
   wordTrainerState.step = 0;
 }
 
@@ -2576,7 +2578,7 @@ function endWordQuizSession() {
   wordTrainerState.sessionTitle = "";
   wordTrainerState.index = 0;
   resetWordTrainerTransientState();
-  wordTrainerState.feedback = "已退出当前测验，回到普通词训范围。";
+  wordTrainerState.feedback = "已退出当前测验，回到普通词汇范围。";
 }
 
 function wrongReviewWords() {
@@ -2619,6 +2621,7 @@ function moveWordTrainer(step) {
   wordTrainerState.feedback = "";
   wordTrainerState.exampleFeedback = "";
   wordTrainerState.examplePassed = false;
+  wordTrainerState.meaningReady = false;
   wordTrainerState.step = 0;
 }
 
@@ -2812,17 +2815,24 @@ function wordTrainerStageHTML(current, step, options) {
     return `
       <section class="word-stage-grid">
         <article class="word-stage is-active">
-          <b>1. 意思辨认：先听音，再选义</b>
-          <p>上方释义已隐藏。先点英文读音，再从 4 个选项中选出最贴近的中文意思。</p>
-          <div class="word-options">
-            ${options
-              .map(
-                (option) => `
-                  <button type="button" data-word-option="${escapeHTML(option)}">${highlight(option)}</button>
-                `,
-              )
-              .join("")}
-          </div>
+          <b>1. 主动回忆 + 意思辨认：先想，再选</b>
+          <p>上方释义已隐藏。先点读音，闭眼在心里说出“意思、词性、常见搭配”，再显示选项验证。</p>
+          ${
+            wordTrainerState.meaningReady
+              ? `<div class="word-options">
+                  ${options
+                    .map(
+                      (option) => `
+                        <button type="button" data-word-option="${escapeHTML(option)}">${highlight(option)}</button>
+                      `,
+                    )
+                    .join("")}
+                </div>`
+              : `<div class="word-recall-cue">
+                  <span>不要先看选项。先主动回忆 3 秒：这个词是什么意思？常和什么词搭配？</span>
+                  <button type="button" data-word-action="meaning-ready">我已先回忆，显示选项</button>
+                </div>`
+          }
         </article>
       </section>
     `;
@@ -2936,7 +2946,7 @@ function wordTrainerCardHTML(current, words, progress) {
         <button type="button" data-word-action="mark-new">还不会</button>
         <button type="button" data-word-action="mark-fuzzy">有点模糊</button>
         <button type="button" data-word-action="mark-known">已掌握</button>
-        <button type="button" data-word-action="reset-progress">重置词训记录</button>
+        <button type="button" data-word-action="reset-progress">重置词汇记录</button>
       </div>
     </article>
   `;
@@ -2953,7 +2963,7 @@ function renderWordTrainer() {
       <p>${
         state.query.trim()
           ? `关键词「${escapeHTML(state.query)}」匹配 ${words.length} 个词`
-          : "音标跟读 · 选择辨义 · 词汇复述 · 例句填空 · 拼写确认"
+          : "主动回忆 · 听音辨义 · 词汇复述 · 语境填空 · 闭卷拼写"
       }</p>
     </div>
     <div class="progress-ring">
@@ -2967,7 +2977,7 @@ function renderWordTrainer() {
       <article class="word-hero">
         <span class="mindmap-root__tag">高考英语 · 核心词汇闭环</span>
         <h3>按记忆规律逐步解锁，不再假装“看过就会”</h3>
-        <p>每个词必须完成：听音辨义 → 词汇复述 → 例句填空 → 助记复述 → 闭卷拼写。拼写正确才进入“已掌握”。</p>
+        <p>每个词必须完成：主动回忆 → 听音辨义 → 词汇复述 → 例句填空 → 助记复述 → 闭卷拼写。错词会自动进入回顾和重点重测。</p>
       </article>
       <section class="word-category-row">${wordTrainerCategoryButtonsHTML()}</section>
       ${wordTrainerQuizControlsHTML()}
@@ -2996,6 +3006,7 @@ function handleWordTrainerClick(event) {
     wordTrainerState.feedback = "";
     wordTrainerState.exampleFeedback = "";
     wordTrainerState.examplePassed = false;
+    wordTrainerState.meaningReady = false;
     wordTrainerState.step = 0;
     render();
     return true;
@@ -3063,6 +3074,10 @@ function handleWordTrainerClick(event) {
     case "speak-word":
       if (!speakEnglishWord(current)) render();
       return true;
+    case "meaning-ready":
+      wordTrainerState.meaningReady = true;
+      wordTrainerState.feedback = "现在再选择中文意思；这一步是在验证刚才的主动回忆。";
+      break;
     case "phrase-done":
       wordTrainerState.exampleFeedback = "";
       wordTrainerState.examplePassed = false;
@@ -3102,7 +3117,7 @@ function handleWordTrainerClick(event) {
       wordTrainerState.sessionKeys = [];
       wordTrainerState.sessionTitle = "";
       resetWordTrainerTransientState();
-      wordTrainerState.feedback = "词训记录已重置，可以重新开始一轮干净的记忆闭环。";
+      wordTrainerState.feedback = "词汇记录已重置，可以重新开始一轮干净的记忆闭环。";
       break;
     default:
       return false;
@@ -3140,7 +3155,7 @@ function renderStats() {
     ["单元 / 章节 / 课", totals.units],
     ["知识导图节点", totals.knowledgeNodes],
     ["学习方法", `${LEARNING_METHODS.length} 板块`],
-    ["英语词训", `${ENGLISH_WORD_BANK.length} 词`],
+    ["英语词汇", `${ENGLISH_WORD_BANK.length} 词`],
     ["B站资源", `${BILIBILI_VIDEO_RESOURCES.length} 科`],
     ["完成进度", `${percent}%`],
   ]
