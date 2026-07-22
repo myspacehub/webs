@@ -67,9 +67,9 @@ const COURSE = [
       {
         name: "必修第一册",
         units: [
-          "第一章 集合与函数概念",
-          "第二章 基本初等函数（Ⅰ）",
-          "第三章 函数的应用",
+          "第一章 集合与常用逻辑用语",
+          "第二章 一元二次函数、方程和不等式",
+          "第三章 函数概念与性质",
           "第四章 指数函数与对数函数",
           "第五章 三角函数",
         ],
@@ -97,12 +97,12 @@ const COURSE = [
         units: [
           "第四章 数列",
           "第五章 一元函数的导数及其应用",
-          "第六章 计数原理",
         ],
       },
       {
         name: "选择性必修第三册",
         units: [
+          "第六章 计数原理",
           "第七章 随机变量及其分布",
           "第八章 成对数据的统计分析",
         ],
@@ -115,7 +115,7 @@ const COURSE = [
       {
         name: "必修第一册",
         units: [
-          "Unit 1 Friendship",
+          "Unit 1 Teenage Life",
           "Unit 2 Travelling Around",
           "Unit 3 Sports and Fitness",
           "Unit 4 Natural Disasters",
@@ -250,10 +250,10 @@ const COURSE = [
       {
         name: "必修第一册",
         units: [
-          "第一章 从实验学化学",
-          "第二章 化学物质及其变化",
-          "第三章 金属及其化合物",
-          "第四章 非金属及其化合物",
+          "第一章 物质及其变化",
+          "第二章 海水中的重要元素 Na、Cl",
+          "第三章 物质的量",
+          "第四章 物质结构 元素周期律",
         ],
       },
       {
@@ -318,17 +318,6 @@ const COURSE = [
           "第5章 基因突变及其他变异",
           "第6章 生物的进化",
           "第7章 现代生物进化理论",
-        ],
-      },
-      {
-        name: "必修3 稳态与环境",
-        units: [
-          "第1章 人体的内环境与稳态",
-          "第2章 动物和人体生命活动的调节",
-          "第3章 植物的激素调节",
-          "第4章 种群和群落",
-          "第5章 生态系统及其稳定性",
-          "第6章 生态环境的保护",
         ],
       },
       {
@@ -1615,6 +1604,19 @@ function buildMindMap(subjectIndex, volumeIndex, unitIndex) {
   const subject = COURSE[subjectIndex];
   const volume = subject.volumes[volumeIndex];
   const unit = volume.units[unitIndex];
+  const curatedBranches =
+    typeof window !== "undefined" && typeof window.createCuratedMindMapBranches === "function"
+      ? window.createCuratedMindMapBranches(subject.name, volume.name, unit)
+      : null;
+
+  if (curatedBranches && curatedBranches.length) {
+    return {
+      title: unit,
+      subtitle: `${subject.name} · ${volume.name} · 福建新高考精细导图`,
+      branches: curatedBranches,
+    };
+  }
+
   const specificBranches =
     typeof window !== "undefined" && typeof window.createSpecificMindMapBranches === "function"
       ? window.createSpecificMindMapBranches({
@@ -1735,12 +1737,17 @@ function countSubjectNetworkNodes(subjectIndex) {
   const unitCount = allUnitsForSubject(subjectIndex).length;
   const relationCount = subjectRelations(subjectIndex).reduce((sum, relation) => sum + 1 + relation.nodes.length + relation.units.length, 0);
   const topicCount = topicGroupsForSubject(subjectIndex).reduce((sum, topic) => sum + 1 + topic.units.length + topic.points.length, 0);
+  const curatedCount =
+    typeof window !== "undefined" && typeof window.countNewGaokaoSubjectNodes === "function"
+      ? window.countNewGaokaoSubjectNodes(subject.name)
+      : 0;
   return (
     1 +
     subject.volumes.length +
     unitCount +
     relationCount +
     topicCount +
+    curatedCount +
     guide.core.length +
     guide.methods.length +
     guide.exam.length +
@@ -3710,6 +3717,62 @@ function subjectMethodLatticeHTML(subjectIndex) {
   `;
 }
 
+function curatedMindMapNodeHTML(item, depth = 0) {
+  if (typeof item === "string") {
+    return `<li class="curated-map-leaf">${highlight(item)}</li>`;
+  }
+  const children = item.children || [];
+  const open = depth < 2 ? " open" : "";
+  return `
+    <li class="curated-map-node curated-map-node--depth-${depth}">
+      <details${open}>
+        <summary>${highlight(item.title)}</summary>
+        ${
+          children.length
+            ? `<ul>${children.map((child) => curatedMindMapNodeHTML(child, depth + 1)).join("")}</ul>`
+            : ""
+        }
+      </details>
+    </li>
+  `;
+}
+
+function subjectCuratedMindMapHTML(subjectIndex) {
+  const subject = COURSE[subjectIndex];
+  const curated =
+    typeof window !== "undefined" && typeof window.getNewGaokaoSubjectMindMap === "function"
+      ? window.getNewGaokaoSubjectMindMap(subject.name)
+      : null;
+  if (!curated) return "";
+  const exportText =
+    typeof window !== "undefined" && typeof window.newGaokaoMindMapText === "function"
+      ? window.newGaokaoMindMapText(subject.name)
+      : "";
+  return `
+    <section class="subject-network-section curated-map-section">
+      <div class="subject-network-section__head">
+        <h3>福建新高考精细化知识点导图</h3>
+        <p>${highlight(curated.title)} · ${highlight(curated.textbook)} · 使用 🔹核心概念、📌重点结论、⚠️高频易错点 标记。</p>
+      </div>
+      <div class="curated-map-layout">
+        <div class="curated-map-tree" aria-label="${escapeHTML(curated.title)}">
+          <ul>
+            ${curated.roots.map((item) => curatedMindMapNodeHTML(item, 0)).join("")}
+          </ul>
+        </div>
+        ${
+          exportText
+            ? `<details class="curated-map-export">
+                <summary>复制到 XMind / ProcessOn / 幕布的文本版</summary>
+                <textarea readonly spellcheck="false">${escapeHTML(exportText)}</textarea>
+              </details>`
+            : ""
+        }
+      </div>
+    </section>
+  `;
+}
+
 function subjectNetworkHTML(subjectIndex) {
   const subject = COURSE[subjectIndex];
   const unitCount = allUnitsForSubject(subjectIndex).length;
@@ -3725,6 +3788,7 @@ function subjectNetworkHTML(subjectIndex) {
           ${topicCount} 个专题群，共 ${countSubjectNetworkNodes(subjectIndex)} 个总图节点。
         </p>
       </article>
+      ${subjectCuratedMindMapHTML(subjectIndex)}
       ${subjectVolumeMapHTML(subjectIndex)}
       ${subjectRelationHTML(subjectIndex)}
       ${subjectTopicGroupsHTML(subjectIndex)}

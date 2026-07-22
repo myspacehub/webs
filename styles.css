@@ -1364,6 +1364,94 @@ h1 {
   padding: 0 0 0 18px;
 }
 
+.curated-map-section {
+  border-color: rgba(124, 58, 237, 0.18);
+  background:
+    radial-gradient(circle at 8% 8%, rgba(124, 58, 237, 0.12), transparent 18rem),
+    radial-gradient(circle at 92% 0%, rgba(14, 165, 233, 0.1), transparent 16rem),
+    rgba(255, 255, 255, 0.82);
+}
+
+.curated-map-layout {
+  display: grid;
+  gap: 14px;
+}
+
+.curated-map-tree {
+  border: 1px solid rgba(124, 58, 237, 0.12);
+  border-radius: 22px;
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.curated-map-tree ul {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0 0 0 18px;
+}
+
+.curated-map-tree > ul {
+  padding-left: 0;
+}
+
+.curated-map-node,
+.curated-map-leaf {
+  color: #263247;
+  line-height: 1.66;
+}
+
+.curated-map-node {
+  list-style: none;
+}
+
+.curated-map-node summary {
+  cursor: pointer;
+  width: fit-content;
+  border: 1px solid rgba(37, 99, 235, 0.12);
+  border-radius: 999px;
+  padding: 8px 12px;
+  color: var(--primary-dark);
+  font-weight: 950;
+  background: linear-gradient(135deg, rgba(239, 246, 255, 0.92), rgba(245, 243, 255, 0.84));
+}
+
+.curated-map-node--depth-0 > details > summary {
+  color: white;
+  background: linear-gradient(135deg, var(--primary), #7c3aed);
+  box-shadow: 0 12px 26px rgba(37, 99, 235, 0.14);
+}
+
+.curated-map-leaf::marker {
+  color: #7c3aed;
+}
+
+.curated-map-export {
+  border: 1px dashed rgba(124, 58, 237, 0.24);
+  border-radius: 18px;
+  padding: 12px;
+  background: rgba(248, 250, 252, 0.86);
+}
+
+.curated-map-export summary {
+  cursor: pointer;
+  color: #5b21b6;
+  font-weight: 950;
+}
+
+.curated-map-export textarea {
+  width: 100%;
+  min-height: 220px;
+  margin-top: 12px;
+  border: 1px solid rgba(124, 58, 237, 0.16);
+  border-radius: 16px;
+  padding: 14px;
+  color: #1f2937;
+  font: 850 13px/1.72 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  background: white;
+  resize: vertical;
+}
+
 .word-trainer {
   display: grid;
   gap: 14px;
