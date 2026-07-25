@@ -2654,6 +2654,26 @@ function baseWordTrainerWords() {
   );
 }
 
+function allLibraryRandomWords() {
+  const progress = readWordTrainerProgress();
+  return ENGLISH_WORD_BANK.filter(
+    (item) =>
+      (wordTrainerState.category === "全部" ||
+        (wordTrainerState.category === "优先复习"
+          ? wordProgressLevel(item, progress) < 2
+          : wordTrainerState.category === "错题回顾"
+            ? wordHasWrongRecord(item, progress)
+            : item.category === wordTrainerState.category)) &&
+      wordMatchesQuery(item),
+  ).sort((left, right) =>
+    wordTrainerState.category === "优先复习"
+      ? wordProgressLevel(left, progress) - wordProgressLevel(right, progress)
+      : wordTrainerState.category === "错题回顾"
+        ? wordWrongCount(right, progress) - wordWrongCount(left, progress)
+        : 0,
+  );
+}
+
 function wordTrainerWords() {
   if (!wordTrainerState.sessionKeys.length) return baseWordTrainerWords();
   const byKey = new Map(ENGLISH_WORD_BANK.map((item) => [wordKey(item), item]));
@@ -3317,7 +3337,7 @@ function wordTrainerQuizControlsHTML() {
           <span>随机测验数量</span>
           <input id="wordQuizCount" type="number" min="1" max="200" value="${wordTrainerState.quizCount || 20}" inputmode="numeric" />
         </label>
-        <button type="button" data-word-action="start-random-quiz">随机抽词测验</button>
+        <button type="button" data-word-action="start-random-quiz">全库随机测验</button>
         <button type="button" data-word-action="start-library-quiz">当前词库测验</button>
         <button type="button" data-word-action="review-wrong">错题回顾 <span>${wrongCount}</span></button>
         <button type="button" data-word-action="retry-wrong">错词重点重测</button>
@@ -3326,7 +3346,7 @@ function wordTrainerQuizControlsHTML() {
       ${
         sessionActive
           ? `<p class="word-session-note">当前测验：${escapeHTML(wordTrainerState.sessionTitle)} · ${wordTrainerState.sessionKeys.length} 词</p>`
-          : `<p class="word-session-note">随机测验会从当前词库 + 当前分类/搜索范围内抽取；“全部词库”会同时包含内置词库和自定义词库。</p>`
+          : `<p class="word-session-note">全库随机测验会从内置词库 + 自定义词库一起抽；当前词库测验才只按上方选中的词库抽。</p>`
       }
     </section>
   `;
@@ -3641,8 +3661,8 @@ function handleWordTrainerClick(event) {
     }
     case "start-random-quiz": {
       const count = readWordQuizCount();
-      const sample = shuffledSample(baseWordTrainerWords(), count);
-      startWordQuizSession(sample, `随机抽词测验 ${sample.length}/${count}`);
+      const sample = shuffledSample(allLibraryRandomWords(), count);
+      startWordQuizSession(sample, `全库随机测验 ${sample.length}/${count}`);
       break;
     }
     case "start-library-quiz":
