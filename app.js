@@ -1763,6 +1763,7 @@ const state = {
 };
 
 const WORD_TRAINER_STORAGE_KEY = `${STORAGE_KEY}-english-word-trainer-v1`;
+const WORD_CUSTOM_LIBRARY_STORAGE_KEY = `${STORAGE_KEY}-english-custom-libraries-v1`;
 
 const ENGLISH_WORD_BANK_FALLBACK = [
   { word: "acquire", meaning: "获得；习得", phrase: "acquire knowledge", example: "Students acquire confidence through steady practice.", mnemonic: "a + quire 像“去取”：主动去取知识就是 acquire。", category: "高考核心" },
@@ -1859,14 +1860,21 @@ const ENGLISH_WORD_BANK_FALLBACK = [
   { word: "unique", meaning: "独特的", phrase: "a unique experience", example: "Everyone has a unique way of learning.", mnemonic: "uni 一个：只有一个，所以独特。", category: "写作表达" },
 ];
 
-const ENGLISH_WORD_BANK =
+const BUILTIN_ENGLISH_WORD_BANK = (
   Array.isArray(window.ENGLISH_WORD_BANK) && window.ENGLISH_WORD_BANK.length
     ? window.ENGLISH_WORD_BANK
-    : ENGLISH_WORD_BANK_FALLBACK;
+    : ENGLISH_WORD_BANK_FALLBACK
+).map((item) => normalizeBuiltInWordItem(item));
+let customWordLibraries = readCustomWordLibraries();
+let ENGLISH_WORD_BANK = mergeEnglishWordBank();
 
 const wordTrainerState = {
   index: 0,
   category: "全部",
+  libraryId: "all",
+  lookupQuery: "",
+  customLibraryName: "",
+  customLibraryRaw: "",
   feedback: "",
   audioFeedback: null,
   exampleFeedback: "",
@@ -2426,6 +2434,147 @@ function containsQuery(...fields) {
   return fields.some((field) => String(field).toLowerCase().includes(q));
 }
 
+function normalizeBuiltInWordItem(item) {
+  const word = String(item.word || "").trim();
+  const meaning = String(item.meaning || "").trim();
+  return {
+    ...item,
+    word,
+    phonetic: String(item.phonetic || "").trim(),
+    meaning,
+    phrase: String(item.phrase || `${word} in context`).trim(),
+    example: String(item.example || `I need to remember the word ${word} in a real sentence.`).trim(),
+    exampleAnswer: String(item.exampleAnswer || word).trim(),
+    mnemonic: String(item.mnemonic || `把 ${word} 和释义“${meaning}”连成一个具体画面，再放进词块里复述。`).trim(),
+    category: String(item.category || "内置词库").trim(),
+    libraryId: "builtin",
+    libraryName: "内置词库",
+  };
+}
+
+function normalizeCustomWordItem(item, library) {
+  const word = String(item.word || "").trim();
+  const meaning = String(item.meaning || "").trim();
+  if (!word || !meaning) return null;
+  const phrase = String(item.phrase || `${word} in context`).trim();
+  const example = String(item.example || `I need to remember the word ${word} in a real sentence.`).trim();
+  return {
+    word,
+    phonetic: String(item.phonetic || "").trim(),
+    meaning,
+    phrase,
+    example,
+    exampleAnswer: String(item.exampleAnswer || word).trim(),
+    exampleSource: String(item.exampleSource || `自定义词库：${library.name}`).trim(),
+    mnemonic: String(item.mnemonic || `把 ${word} 和释义“${meaning}”连成一个具体画面，再用词块“${phrase}”复述。`).trim(),
+    category: String(item.category || `自定义：${library.name}`).trim(),
+    libraryId: library.id,
+    libraryName: library.name,
+    isCustom: true,
+  };
+}
+
+function readCustomWordLibraries() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(WORD_CUSTOM_LIBRARY_STORAGE_KEY) || "[]");
+    if (!Array.isArray(raw)) return [];
+    return raw
+      .map((library) => {
+        const id = String(library.id || `custom-${Date.now().toString(36)}`).trim();
+        const name = String(library.name || "自定义词库").trim();
+        const shell = { id, name };
+        const words = Array.isArray(library.words)
+          ? library.words.map((item) => normalizeCustomWordItem(item, shell)).filter(Boolean)
+          : [];
+        return words.length ? { id, name, createdAt: library.createdAt || Date.now(), updatedAt: library.updatedAt || Date.now(), words } : null;
+      })
+      .filter(Boolean);
+  } catch {
+    return [];
+  }
+}
+
+function saveCustomWordLibraries(libraries = customWordLibraries) {
+  customWordLibraries = libraries;
+  localStorage.setItem(WORD_CUSTOM_LIBRARY_STORAGE_KEY, JSON.stringify(customWordLibraries));
+  ENGLISH_WORD_BANK = mergeEnglishWordBank();
+}
+
+function mergeEnglishWordBank() {
+  return [
+    ...BUILTIN_ENGLISH_WORD_BANK,
+    ...customWordLibraries.flatMap((library) =>
+      library.words.map((item) => normalizeCustomWordItem(item, library)).filter(Boolean),
+    ),
+  ];
+}
+
+function createCustomLibraryId(name) {
+  const slug = String(name || "custom")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "")
+    .slice(0, 24);
+  return `custom-${slug || "words"}-${Date.now().toString(36)}`;
+}
+
+function splitCustomWordLine(line) {
+  if (line.includes("|")) return line.split("|");
+  if (line.includes("\t")) return line.split("\t");
+  if (line.includes(",")) return line.split(",");
+  const parts = line.trim().split(/\s+/);
+  return [parts.shift() || "", parts.join(" ")];
+}
+
+function parseCustomWordLibrary(rawText, libraryName) {
+  const shell = { id: "draft", name: libraryName };
+  return String(rawText || "")
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter((line) => line && !line.startsWith("#"))
+    .map((line) => {
+      const [word, meaning, phonetic, phrase, example, mnemonic] = splitCustomWordLine(line).map((part) => String(part || "").trim());
+      return normalizeCustomWordItem({ word, meaning, phonetic, phrase, example, mnemonic }, shell);
+    })
+    .filter(Boolean);
+}
+
+function wordLibraryOptions() {
+  return [
+    { id: "all", name: "全部词库", count: ENGLISH_WORD_BANK.length },
+    { id: "builtin", name: "内置词库", count: BUILTIN_ENGLISH_WORD_BANK.length },
+    ...customWordLibraries.map((library) => ({ id: library.id, name: library.name, count: library.words.length, isCustom: true })),
+  ];
+}
+
+function currentLibraryOption() {
+  return wordLibraryOptions().find((library) => library.id === wordTrainerState.libraryId) || wordLibraryOptions()[0];
+}
+
+function wordMatchesLibrary(item) {
+  if (wordTrainerState.libraryId === "all") return true;
+  if (wordTrainerState.libraryId === "builtin") return !item.isCustom;
+  return item.libraryId === wordTrainerState.libraryId;
+}
+
+function wordsForSelectedLibrary() {
+  return ENGLISH_WORD_BANK.filter((item) => wordMatchesLibrary(item));
+}
+
+function wordLookupMatchesQuery(item, query = wordTrainerState.lookupQuery) {
+  const q = String(query || "").trim().toLowerCase();
+  if (!q) return false;
+  return [item.word, item.phonetic, item.meaning, item.phrase, item.example, item.mnemonic, item.category, item.libraryName]
+    .some((field) => String(field || "").toLowerCase().includes(q));
+}
+
+function highlightWordLookup(text) {
+  const safe = escapeHTML(text);
+  const q = wordTrainerState.lookupQuery.trim();
+  if (!q) return safe;
+  return safe.replace(new RegExp(escapeRegExp(escapeHTML(q)), "gi"), (match) => `<mark>${match}</mark>`);
+}
+
 function readWordTrainerProgress() {
   try {
     const raw = JSON.parse(localStorage.getItem(WORD_TRAINER_STORAGE_KEY) || "{}");
@@ -2440,7 +2589,8 @@ function saveWordTrainerProgress(progress) {
 }
 
 function wordKey(item) {
-  return item.word.toLowerCase();
+  const base = item.word.toLowerCase();
+  return item.isCustom && item.libraryId ? `${item.libraryId}:${base}` : base;
 }
 
 function wordWrongCount(item, progress = readWordTrainerProgress()) {
@@ -2452,20 +2602,21 @@ function wordHasWrongRecord(item, progress = readWordTrainerProgress()) {
 }
 
 function wordCategories() {
-  return ["全部", "优先复习", "错题回顾", ...Array.from(new Set(ENGLISH_WORD_BANK.map((item) => item.category)))];
+  return ["全部", "优先复习", "错题回顾", ...Array.from(new Set(wordsForSelectedLibrary().map((item) => item.category)))];
 }
 
 function wordCategoryCount(category) {
-  if (category === "全部") return ENGLISH_WORD_BANK.length;
+  const libraryWords = wordsForSelectedLibrary();
+  if (category === "全部") return libraryWords.length;
   if (category === "优先复习") {
     const progress = readWordTrainerProgress();
-    return ENGLISH_WORD_BANK.filter((item) => wordProgressLevel(item, progress) < 2).length;
+    return libraryWords.filter((item) => wordProgressLevel(item, progress) < 2).length;
   }
   if (category === "错题回顾") {
     const progress = readWordTrainerProgress();
-    return ENGLISH_WORD_BANK.filter((item) => wordHasWrongRecord(item, progress)).length;
+    return libraryWords.filter((item) => wordHasWrongRecord(item, progress)).length;
   }
-  return ENGLISH_WORD_BANK.filter((item) => item.category === category).length;
+  return libraryWords.filter((item) => item.category === category).length;
 }
 
 function wordMatchesQuery(item) {
@@ -2474,7 +2625,7 @@ function wordMatchesQuery(item) {
 
 function baseWordTrainerWords() {
   const progress = readWordTrainerProgress();
-  return ENGLISH_WORD_BANK.filter(
+  return wordsForSelectedLibrary().filter(
     (item) =>
       (wordTrainerState.category === "全部" ||
         (wordTrainerState.category === "优先复习"
@@ -2537,7 +2688,12 @@ function wordProgressStats(words, progress) {
 }
 
 function wordQuizOptions(current) {
-  const distractors = ENGLISH_WORD_BANK.filter((item) => item.word !== current.word).map((item) => item.meaning);
+  const distractors = [
+    ...new Set([
+      ...wordsForSelectedLibrary().filter((item) => wordKey(item) !== wordKey(current)).map((item) => item.meaning),
+      ...ENGLISH_WORD_BANK.filter((item) => wordKey(item) !== wordKey(current)).map((item) => item.meaning),
+    ]),
+  ].filter((meaning) => meaning !== current.meaning);
   const seed = current.word.split("").reduce((sum, char) => sum + char.charCodeAt(0), 0);
   const picked = [];
   for (let offset = 0; picked.length < 3 && offset < distractors.length; offset += 1) {
@@ -2598,7 +2754,7 @@ function endWordQuizSession() {
 
 function wrongReviewWords() {
   const progress = readWordTrainerProgress();
-  return ENGLISH_WORD_BANK.filter((item) => wordHasWrongRecord(item, progress) && wordMatchesQuery(item)).sort((left, right) => {
+  return wordsForSelectedLibrary().filter((item) => wordHasWrongRecord(item, progress) && wordMatchesQuery(item)).sort((left, right) => {
     const wrongDiff = wordWrongCount(right, progress) - wordWrongCount(left, progress);
     if (wrongDiff) return wrongDiff;
     return (progress[wordKey(right)]?.lastWrongAt || 0) - (progress[wordKey(left)]?.lastWrongAt || 0);
@@ -2982,14 +3138,152 @@ function wordTrainerCategoryButtonsHTML() {
     .join("");
 }
 
+function wordLibrarySelectorHTML() {
+  const current = currentLibraryOption();
+  return `
+    <section class="word-library-panel">
+      <div>
+        <span class="mindmap-root__tag">词库范围</span>
+        <h3>当前词库：${escapeHTML(current.name)}</h3>
+        <p>查询、随机测验、错题回顾都会优先按当前词库范围执行；选择自定义词库后即可专项训练。</p>
+      </div>
+      <label class="word-library-select">
+        <span>切换词库</span>
+        <select id="wordLibrarySelect">
+          ${wordLibraryOptions()
+            .map(
+              (library) => `
+                <option value="${escapeHTML(library.id)}" ${library.id === wordTrainerState.libraryId ? "selected" : ""}>
+                  ${escapeHTML(library.name)}（${library.count}词）
+                </option>
+              `,
+            )
+            .join("")}
+        </select>
+      </label>
+    </section>
+  `;
+}
+
+function wordLookupResults() {
+  const q = wordTrainerState.lookupQuery.trim();
+  if (!q) return [];
+  const normalized = q.toLowerCase();
+  return wordsForSelectedLibrary().filter((item) => wordLookupMatchesQuery(item, q))
+    .sort((left, right) => {
+      const leftWord = left.word.toLowerCase();
+      const rightWord = right.word.toLowerCase();
+      const leftScore = leftWord === normalized ? 0 : leftWord.startsWith(normalized) ? 1 : 2;
+      const rightScore = rightWord === normalized ? 0 : rightWord.startsWith(normalized) ? 1 : 2;
+      return leftScore - rightScore || leftWord.localeCompare(rightWord);
+    })
+    .slice(0, 24);
+}
+
+function wordLookupHTML() {
+  const results = wordLookupResults();
+  const hasQuery = wordTrainerState.lookupQuery.trim();
+  return `
+    <section class="word-lookup-panel">
+      <div class="word-tool-head">
+        <div>
+          <span class="mindmap-root__tag">词汇查询</span>
+          <h3>查单词、释义、词块、例句</h3>
+          <p>输入英文、中文释义、词块或例句关键词；查到后可以直接用结果开始测验。</p>
+        </div>
+        <div class="word-lookup-form">
+          <input id="wordLookupInput" type="search" value="${escapeHTML(wordTrainerState.lookupQuery)}" placeholder="如：preserve / 保护 / take part in" autocomplete="off" />
+          <button type="button" data-word-action="run-lookup">查询</button>
+          <button type="button" data-word-action="clear-lookup">清空</button>
+        </div>
+      </div>
+      ${
+        hasQuery
+          ? results.length
+            ? `
+              <div class="word-lookup-summary">
+                <strong>找到 ${results.length} 个匹配词</strong>
+                <button type="button" data-word-action="start-lookup-quiz">用查询结果测验</button>
+              </div>
+              <div class="word-lookup-results">
+                ${results
+                  .map(
+                    (item) => `
+                      <article>
+                        <div class="word-lookup-title">
+                          <b>${highlightWordLookup(item.word)}</b>
+                          <small>${highlightWordLookup(item.phonetic || "音标待补充")}</small>
+                        </div>
+                        <p><strong>意思：</strong>${highlightWordLookup(item.meaning)}</p>
+                        <p><strong>词块：</strong>${highlightWordLookup(item.phrase)}</p>
+                        <p><strong>例句：</strong>${highlightWordLookup(item.example)}</p>
+                        <p><strong>助记：</strong>${highlightWordLookup(item.mnemonic)}</p>
+                        <span>${highlightWordLookup(item.libraryName || item.category)}</span>
+                      </article>
+                    `,
+                  )
+                  .join("")}
+              </div>
+            `
+            : `<div class="empty">没有查到匹配词。可以换英文原形、中文释义，或把它加入自定义词库。</div>`
+          : ""
+      }
+    </section>
+  `;
+}
+
+function customWordLibraryHTML() {
+  return `
+    <section class="word-custom-panel">
+      <div class="word-tool-head">
+        <div>
+          <span class="mindmap-root__tag">自定义词库</span>
+          <h3>创建自己的专项词库</h3>
+          <p>格式：每行一个词，推荐用 <code>word | meaning | phonetic | phrase | example | mnemonic</code>。只填前两列也能生成可测词条。</p>
+        </div>
+      </div>
+      <div class="word-custom-form">
+        <input id="customLibraryName" type="text" value="${escapeHTML(wordTrainerState.customLibraryName)}" placeholder="词库名称，如：Unit 1 错词 / 阅读高频词" />
+        <textarea id="customLibraryWords" rows="5" placeholder="preserve | 保护；保存 | [prɪˈzɜːv] | preserve culture | We should preserve local culture. | pre + serve：提前服务就是保护">${escapeHTML(wordTrainerState.customLibraryRaw)}</textarea>
+        <button type="button" data-word-action="save-custom-library">保存词库并切换使用</button>
+      </div>
+      ${
+        customWordLibraries.length
+          ? `<div class="word-custom-list">
+              ${customWordLibraries
+                .map(
+                  (library) => `
+                    <article>
+                      <div>
+                        <b>${escapeHTML(library.name)}</b>
+                        <span>${library.words.length} 词</span>
+                      </div>
+                      <div>
+                        <button type="button" data-word-action="use-custom-library" data-library-id="${escapeHTML(library.id)}">使用</button>
+                        <button type="button" data-word-action="test-custom-library" data-library-id="${escapeHTML(library.id)}">测验</button>
+                        <button type="button" data-word-action="delete-custom-library" data-library-id="${escapeHTML(library.id)}">删除</button>
+                      </div>
+                    </article>
+                  `,
+                )
+                .join("")}
+            </div>`
+          : `<p class="word-session-note">还没有自定义词库。保存后会显示在这里，并自动出现在词库下拉框与分类按钮中。</p>`
+      }
+    </section>
+  `;
+}
+
 function wordTrainerStatsHTML(words, progress) {
-  const allStats = wordProgressStats(ENGLISH_WORD_BANK, progress);
+  const libraryWords = wordsForSelectedLibrary();
+  const libraryStats = wordProgressStats(libraryWords, progress);
   const visibleStats = wordProgressStats(words, progress);
   return `
     <section class="word-stats">
+      <article><strong>${libraryWords.length}</strong><span>当前词库</span></article>
       <article><strong>${ENGLISH_WORD_BANK.length}</strong><span>总词数</span></article>
-      <article><strong>${allStats.known}</strong><span>全库已掌握</span></article>
-      <article><strong>${allStats.wrong}</strong><span>错题记录</span></article>
+      <article><strong>${libraryStats.known}</strong><span>当前已掌握</span></article>
+      <article><strong>${libraryStats.wrong}</strong><span>当前错题</span></article>
       <article><strong>${visibleStats.fuzzy}</strong><span>当前模糊</span></article>
       <article><strong>${visibleStats.fresh}</strong><span>当前未掌握</span></article>
     </section>
@@ -2998,7 +3292,7 @@ function wordTrainerStatsHTML(words, progress) {
 
 function wordTrainerQuizControlsHTML() {
   const progress = readWordTrainerProgress();
-  const wrongCount = ENGLISH_WORD_BANK.filter((item) => wordHasWrongRecord(item, progress)).length;
+  const wrongCount = wordsForSelectedLibrary().filter((item) => wordHasWrongRecord(item, progress)).length;
   const sessionActive = wordTrainerState.sessionKeys.length > 0;
   return `
     <section class="word-quiz-controls">
@@ -3008,6 +3302,7 @@ function wordTrainerQuizControlsHTML() {
           <input id="wordQuizCount" type="number" min="1" max="200" value="${wordTrainerState.quizCount || 20}" inputmode="numeric" />
         </label>
         <button type="button" data-word-action="start-random-quiz">随机抽词测验</button>
+        <button type="button" data-word-action="start-library-quiz">当前词库测验</button>
         <button type="button" data-word-action="review-wrong">错题回顾 <span>${wrongCount}</span></button>
         <button type="button" data-word-action="retry-wrong">错词重点重测</button>
         ${sessionActive ? `<button type="button" data-word-action="end-session">退出测验</button>` : ""}
@@ -3207,7 +3502,8 @@ function renderWordTrainer() {
   hideVolumeTabs();
   const words = currentWordList();
   const progress = readWordTrainerProgress();
-  const allStats = wordProgressStats(ENGLISH_WORD_BANK, progress);
+  const libraryWords = wordsForSelectedLibrary();
+  const libraryStats = wordProgressStats(libraryWords, progress);
   breadcrumb.innerHTML = `
     <div>
       <h2>英语必掌握单词训练</h2>
@@ -3218,8 +3514,8 @@ function renderWordTrainer() {
       }</p>
     </div>
     <div class="progress-ring">
-      <strong>${allStats.known}/${ENGLISH_WORD_BANK.length}</strong>
-      <span>已掌握</span>
+      <strong>${libraryStats.known}/${libraryWords.length}</strong>
+      <span>当前词库已掌握</span>
     </div>
   `;
 
@@ -3230,6 +3526,9 @@ function renderWordTrainer() {
         <h3>按记忆规律逐步解锁，不再假装“看过就会”</h3>
         <p>每个词必须完成：主动回忆 → 听音辨义 → 词汇复述 → 例句填空 → 助记复述 → 闭卷拼写。错词会自动进入回顾和重点重测。</p>
       </article>
+      ${wordLibrarySelectorHTML()}
+      ${wordLookupHTML()}
+      ${customWordLibraryHTML()}
       <section class="word-category-row">${wordTrainerCategoryButtonsHTML()}</section>
       ${wordTrainerQuizControlsHTML()}
       ${wordTrainerStatsHTML(words, progress)}
@@ -3289,14 +3588,126 @@ function handleWordTrainerClick(event) {
   const words = currentWordList();
   const current = words[wordTrainerState.index];
   const action = actionButton.dataset.wordAction;
-  const globalActions = new Set(["reset-progress", "start-random-quiz", "review-wrong", "retry-wrong", "end-session"]);
+  const globalActions = new Set([
+    "reset-progress",
+    "start-random-quiz",
+    "start-library-quiz",
+    "review-wrong",
+    "retry-wrong",
+    "end-session",
+    "run-lookup",
+    "clear-lookup",
+    "start-lookup-quiz",
+    "save-custom-library",
+    "use-custom-library",
+    "test-custom-library",
+    "delete-custom-library",
+  ]);
   if (!current && !globalActions.has(action)) return true;
 
   switch (action) {
+    case "run-lookup": {
+      const input = document.querySelector("#wordLookupInput");
+      wordTrainerState.lookupQuery = input?.value || "";
+      wordTrainerState.feedback = wordTrainerState.lookupQuery.trim()
+        ? `已查询：${wordTrainerState.lookupQuery.trim()}`
+        : "请输入要查询的单词、中文释义或词块。";
+      break;
+    }
+    case "clear-lookup":
+      wordTrainerState.lookupQuery = "";
+      wordTrainerState.feedback = "词汇查询已清空。";
+      break;
+    case "start-lookup-quiz": {
+      const sample = wordLookupResults();
+      startWordQuizSession(sample, `查询结果测验 ${sample.length} 词`);
+      break;
+    }
     case "start-random-quiz": {
       const count = readWordQuizCount();
       const sample = shuffledSample(baseWordTrainerWords(), count);
       startWordQuizSession(sample, `随机抽词测验 ${sample.length}/${count}`);
+      break;
+    }
+    case "start-library-quiz":
+      startWordQuizSession(baseWordTrainerWords(), `${currentLibraryOption().name} · 当前范围测验`);
+      break;
+    case "save-custom-library": {
+      const nameInput = document.querySelector("#customLibraryName");
+      const wordsInput = document.querySelector("#customLibraryWords");
+      const name = (nameInput?.value || "").trim();
+      const raw = wordsInput?.value || "";
+      wordTrainerState.customLibraryName = name;
+      wordTrainerState.customLibraryRaw = raw;
+      if (!name) {
+        wordTrainerState.feedback = "请先给自定义词库起一个名称。";
+        break;
+      }
+      const parsed = parseCustomWordLibrary(raw, name);
+      if (!parsed.length) {
+        wordTrainerState.feedback = "没有识别到有效词条。至少每行写：英文 | 中文意思。";
+        break;
+      }
+      const id = createCustomLibraryId(name);
+      const shell = { id, name };
+      const words = parsed.map((item) => normalizeCustomWordItem(item, shell)).filter(Boolean);
+      const library = { id, name, createdAt: Date.now(), updatedAt: Date.now(), words };
+      saveCustomWordLibraries([...customWordLibraries, library]);
+      wordTrainerState.libraryId = id;
+      wordTrainerState.category = "全部";
+      wordTrainerState.sessionKeys = [];
+      wordTrainerState.sessionTitle = "";
+      wordTrainerState.index = 0;
+      wordTrainerState.customLibraryName = "";
+      wordTrainerState.customLibraryRaw = "";
+      resetWordTrainerTransientState();
+      wordTrainerState.feedback = `已创建自定义词库「${name}」，共 ${words.length} 个词，可直接开始当前词库测验。`;
+      break;
+    }
+    case "use-custom-library": {
+      const libraryId = actionButton.dataset.libraryId;
+      const library = customWordLibraries.find((item) => item.id === libraryId);
+      if (!library) {
+        wordTrainerState.feedback = "没有找到这个自定义词库。";
+        break;
+      }
+      wordTrainerState.libraryId = library.id;
+      wordTrainerState.category = "全部";
+      wordTrainerState.sessionKeys = [];
+      wordTrainerState.sessionTitle = "";
+      wordTrainerState.index = 0;
+      resetWordTrainerTransientState();
+      wordTrainerState.feedback = `已切换到自定义词库「${library.name}」。`;
+      break;
+    }
+    case "test-custom-library": {
+      const libraryId = actionButton.dataset.libraryId;
+      const library = customWordLibraries.find((item) => item.id === libraryId);
+      if (!library) {
+        wordTrainerState.feedback = "没有找到这个自定义词库。";
+        break;
+      }
+      wordTrainerState.libraryId = library.id;
+      wordTrainerState.category = "全部";
+      startWordQuizSession(wordsForSelectedLibrary(), `自定义词库「${library.name}」测验`);
+      break;
+    }
+    case "delete-custom-library": {
+      const libraryId = actionButton.dataset.libraryId;
+      const library = customWordLibraries.find((item) => item.id === libraryId);
+      if (!library) {
+        wordTrainerState.feedback = "没有找到这个自定义词库。";
+        break;
+      }
+      if (!window.confirm(`确认删除自定义词库「${library.name}」吗？`)) return true;
+      saveCustomWordLibraries(customWordLibraries.filter((item) => item.id !== libraryId));
+      if (wordTrainerState.libraryId === libraryId) wordTrainerState.libraryId = "all";
+      wordTrainerState.category = "全部";
+      wordTrainerState.sessionKeys = [];
+      wordTrainerState.sessionTitle = "";
+      wordTrainerState.index = 0;
+      resetWordTrainerTransientState();
+      wordTrainerState.feedback = `已删除自定义词库「${library.name}」。`;
       break;
     }
     case "review-wrong": {
@@ -4433,6 +4844,19 @@ unitList.addEventListener("click", (event) => {
 });
 
 unitList.addEventListener("change", (event) => {
+  const librarySelect = event.target.closest("#wordLibrarySelect");
+  if (librarySelect) {
+    wordTrainerState.libraryId = librarySelect.value || "all";
+    wordTrainerState.category = "全部";
+    wordTrainerState.sessionKeys = [];
+    wordTrainerState.sessionTitle = "";
+    wordTrainerState.index = 0;
+    resetWordTrainerTransientState();
+    wordTrainerState.feedback = `已切换到「${currentLibraryOption().name}」。`;
+    render();
+    return;
+  }
+
   const checkbox = event.target.closest("[data-progress-key]");
   if (!checkbox) return;
   if (checkbox.checked) {
@@ -4441,6 +4865,28 @@ unitList.addEventListener("change", (event) => {
     doneSet.delete(checkbox.dataset.progressKey);
   }
   saveProgress();
+  render();
+});
+
+unitList.addEventListener("input", (event) => {
+  if (event.target?.id === "wordLookupInput") {
+    wordTrainerState.lookupQuery = event.target.value;
+  }
+  if (event.target?.id === "customLibraryName") {
+    wordTrainerState.customLibraryName = event.target.value;
+  }
+  if (event.target?.id === "customLibraryWords") {
+    wordTrainerState.customLibraryRaw = event.target.value;
+  }
+});
+
+unitList.addEventListener("keydown", (event) => {
+  if (event.target?.id !== "wordLookupInput" || event.key !== "Enter") return;
+  event.preventDefault();
+  wordTrainerState.lookupQuery = event.target.value;
+  wordTrainerState.feedback = wordTrainerState.lookupQuery.trim()
+    ? `已查询：${wordTrainerState.lookupQuery.trim()}`
+    : "请输入要查询的单词、中文释义或词块。";
   render();
 });
 

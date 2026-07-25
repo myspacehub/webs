@@ -1459,7 +1459,10 @@ h1 {
 
 .word-hero,
 .word-card,
-.word-stats article {
+.word-stats article,
+.word-library-panel,
+.word-lookup-panel,
+.word-custom-panel {
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   background: rgba(255, 255, 255, 0.86);
@@ -1480,6 +1483,9 @@ h1 {
 }
 
 .word-hero p,
+.word-library-panel p,
+.word-lookup-panel p,
+.word-custom-panel p,
 .word-memory-grid p {
   margin: 0;
   color: #304158;
@@ -1488,7 +1494,10 @@ h1 {
 
 .word-category-row,
 .word-actions,
-.word-options {
+.word-options,
+.word-tool-head,
+.word-lookup-form,
+.word-custom-list article {
   display: flex;
   flex-wrap: wrap;
   gap: 9px;
@@ -1502,7 +1511,11 @@ h1 {
 .word-category,
 .word-actions button,
 .word-options button,
-.word-spell button {
+.word-spell button,
+.word-lookup-form button,
+.word-custom-form button,
+.word-custom-list button,
+.word-lookup-summary button {
   border: 1px solid var(--line);
   border-radius: 999px;
   color: var(--primary-dark);
@@ -1525,15 +1538,161 @@ h1 {
 .word-category.is-active,
 .word-actions button:hover,
 .word-options button:hover,
-.word-spell button {
+.word-spell button,
+.word-lookup-form button:hover,
+.word-custom-form button,
+.word-custom-list button:hover,
+.word-lookup-summary button {
   color: #fff;
   background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   box-shadow: 0 10px 22px rgba(37, 99, 235, 0.18);
 }
 
+.word-library-panel,
+.word-lookup-panel,
+.word-custom-panel {
+  padding: 18px;
+}
+
+.word-library-panel,
+.word-tool-head,
+.word-lookup-summary,
+.word-custom-list article {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.word-library-panel h3,
+.word-tool-head h3 {
+  margin: 8px 0 6px;
+  color: var(--primary-dark);
+}
+
+.word-library-select,
+.word-lookup-form,
+.word-custom-form {
+  display: grid;
+  gap: 8px;
+}
+
+.word-library-select {
+  min-width: min(260px, 100%);
+  color: var(--muted);
+  font-weight: 900;
+}
+
+.word-library-select select,
+.word-lookup-form input,
+.word-custom-form input,
+.word-custom-form textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 800;
+  outline: none;
+}
+
+.word-library-select select,
+.word-lookup-form input,
+.word-custom-form input {
+  min-height: 44px;
+  padding: 0 14px;
+}
+
+.word-custom-form textarea {
+  min-height: 128px;
+  padding: 12px 14px;
+  resize: vertical;
+  line-height: 1.7;
+}
+
+.word-lookup-form {
+  grid-template-columns: minmax(220px, 1fr) auto auto;
+  align-items: center;
+  min-width: min(540px, 100%);
+}
+
+.word-lookup-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-radius: 18px;
+  background: rgba(219, 234, 254, 0.74);
+  color: var(--primary-dark);
+}
+
+.word-lookup-results {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.word-lookup-results article,
+.word-custom-list article {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.74);
+}
+
+.word-lookup-results article {
+  display: grid;
+  gap: 8px;
+  padding: 14px;
+}
+
+.word-lookup-results article p {
+  margin: 0;
+}
+
+.word-lookup-title {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: baseline;
+}
+
+.word-lookup-title b {
+  color: var(--primary-dark);
+  font-size: 20px;
+}
+
+.word-lookup-title small,
+.word-lookup-results article span,
+.word-custom-list article span {
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.word-custom-panel code {
+  padding: 2px 6px;
+  border-radius: 8px;
+  background: rgba(219, 234, 254, 0.88);
+  color: var(--primary-dark);
+}
+
+.word-custom-form {
+  margin-top: 14px;
+}
+
+.word-custom-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.word-custom-list article {
+  padding: 12px 14px;
+}
+
 .word-stats {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
   gap: 10px;
 }
 
@@ -2172,8 +2331,21 @@ h1 {
   }
 
   .word-card,
-  .word-hero {
+  .word-hero,
+  .word-library-panel,
+  .word-lookup-panel,
+  .word-custom-panel {
     padding: 15px;
+  }
+
+  .word-lookup-form {
+    grid-template-columns: 1fr;
+  }
+
+  .word-library-panel,
+  .word-tool-head,
+  .word-custom-list article {
+    align-items: stretch;
   }
 
   .word-card h3 {
