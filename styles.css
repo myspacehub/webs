@@ -1626,6 +1626,17 @@ h1 {
   color: var(--primary-dark);
 }
 
+.word-tool-feedback {
+  margin-top: 12px;
+  padding: 12px 14px;
+  border: 1px solid rgba(37, 99, 235, 0.22);
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(219, 234, 254, 0.92), rgba(255, 255, 255, 0.88));
+  color: var(--primary-dark);
+  font-weight: 900;
+  line-height: 1.65;
+}
+
 .word-lookup-results {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));

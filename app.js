@@ -1875,6 +1875,7 @@ const wordTrainerState = {
   lookupQuery: "",
   customLibraryName: "",
   customLibraryRaw: "",
+  customFeedback: "",
   feedback: "",
   audioFeedback: null,
   exampleFeedback: "",
@@ -2496,8 +2497,14 @@ function readCustomWordLibraries() {
 
 function saveCustomWordLibraries(libraries = customWordLibraries) {
   customWordLibraries = libraries;
-  localStorage.setItem(WORD_CUSTOM_LIBRARY_STORAGE_KEY, JSON.stringify(customWordLibraries));
   ENGLISH_WORD_BANK = mergeEnglishWordBank();
+  try {
+    localStorage.setItem(WORD_CUSTOM_LIBRARY_STORAGE_KEY, JSON.stringify(customWordLibraries));
+    return true;
+  } catch (error) {
+    console.warn("Failed to save custom word libraries", error);
+    return false;
+  }
 }
 
 function mergeEnglishWordBank() {
@@ -2521,6 +2528,10 @@ function createCustomLibraryId(name) {
 function splitCustomWordLine(line) {
   if (line.includes("|")) return line.split("|");
   if (line.includes("\t")) return line.split("\t");
+  if (line.includes("，")) return line.split("，");
+  if (line.includes("：")) return line.split("：");
+  if (line.includes(":")) return line.split(":");
+  if (line.includes("、")) return line.split("、");
   if (line.includes(",")) return line.split(",");
   const parts = line.trim().split(/\s+/);
   return [parts.shift() || "", parts.join(" ")];
@@ -3248,6 +3259,11 @@ function customWordLibraryHTML() {
         <button type="button" data-word-action="save-custom-library">保存词库并切换使用</button>
       </div>
       ${
+        wordTrainerState.customFeedback
+          ? `<div class="word-tool-feedback" role="status">${escapeHTML(wordTrainerState.customFeedback)}</div>`
+          : ""
+      }
+      ${
         customWordLibraries.length
           ? `<div class="word-custom-list">
               ${customWordLibraries
@@ -3268,7 +3284,7 @@ function customWordLibraryHTML() {
                 )
                 .join("")}
             </div>`
-          : `<p class="word-session-note">还没有自定义词库。保存后会显示在这里，并自动出现在词库下拉框与分类按钮中。</p>`
+          : `<p class="word-session-note">还没有自定义词库。保存后会显示在这里，并自动出现在词库下拉框、随机测验、错题回顾和分类按钮中。</p>`
       }
     </section>
   `;
@@ -3310,7 +3326,7 @@ function wordTrainerQuizControlsHTML() {
       ${
         sessionActive
           ? `<p class="word-session-note">当前测验：${escapeHTML(wordTrainerState.sessionTitle)} · ${wordTrainerState.sessionKeys.length} 词</p>`
-          : `<p class="word-session-note">随机测验会从当前分类/搜索范围内抽取；错词重测会优先抽取历史答错词。</p>`
+          : `<p class="word-session-note">随机测验会从当前词库 + 当前分类/搜索范围内抽取；“全部词库”会同时包含内置词库和自定义词库。</p>`
       }
     </section>
   `;
@@ -3640,19 +3656,21 @@ function handleWordTrainerClick(event) {
       wordTrainerState.customLibraryName = name;
       wordTrainerState.customLibraryRaw = raw;
       if (!name) {
-        wordTrainerState.feedback = "请先给自定义词库起一个名称。";
+        wordTrainerState.customFeedback = "请先给自定义词库起一个名称。";
+        wordTrainerState.feedback = wordTrainerState.customFeedback;
         break;
       }
       const parsed = parseCustomWordLibrary(raw, name);
       if (!parsed.length) {
-        wordTrainerState.feedback = "没有识别到有效词条。至少每行写：英文 | 中文意思。";
+        wordTrainerState.customFeedback = "没有识别到有效词条。至少每行写：英文 | 中文意思。也支持 英文，中文意思 或 英文：中文意思。";
+        wordTrainerState.feedback = wordTrainerState.customFeedback;
         break;
       }
       const id = createCustomLibraryId(name);
       const shell = { id, name };
       const words = parsed.map((item) => normalizeCustomWordItem(item, shell)).filter(Boolean);
       const library = { id, name, createdAt: Date.now(), updatedAt: Date.now(), words };
-      saveCustomWordLibraries([...customWordLibraries, library]);
+      const saved = saveCustomWordLibraries([...customWordLibraries, library]);
       wordTrainerState.libraryId = id;
       wordTrainerState.category = "全部";
       wordTrainerState.sessionKeys = [];
@@ -3661,7 +3679,10 @@ function handleWordTrainerClick(event) {
       wordTrainerState.customLibraryName = "";
       wordTrainerState.customLibraryRaw = "";
       resetWordTrainerTransientState();
-      wordTrainerState.feedback = `已创建自定义词库「${name}」，共 ${words.length} 个词，可直接开始当前词库测验。`;
+      wordTrainerState.customFeedback = saved
+        ? `✅ 已创建自定义词库「${name}」，共 ${words.length} 个词；随机测验、当前词库测验和错题回顾都可以使用它。`
+        : `⚠️ 已临时创建「${name}」，但浏览器本地存储写入失败；刷新后可能丢失。`;
+      wordTrainerState.feedback = wordTrainerState.customFeedback;
       break;
     }
     case "use-custom-library": {
@@ -3677,7 +3698,8 @@ function handleWordTrainerClick(event) {
       wordTrainerState.sessionTitle = "";
       wordTrainerState.index = 0;
       resetWordTrainerTransientState();
-      wordTrainerState.feedback = `已切换到自定义词库「${library.name}」。`;
+      wordTrainerState.customFeedback = `已切换到自定义词库「${library.name}」。`;
+      wordTrainerState.feedback = wordTrainerState.customFeedback;
       break;
     }
     case "test-custom-library": {
@@ -3700,14 +3722,17 @@ function handleWordTrainerClick(event) {
         break;
       }
       if (!window.confirm(`确认删除自定义词库「${library.name}」吗？`)) return true;
-      saveCustomWordLibraries(customWordLibraries.filter((item) => item.id !== libraryId));
+      const saved = saveCustomWordLibraries(customWordLibraries.filter((item) => item.id !== libraryId));
       if (wordTrainerState.libraryId === libraryId) wordTrainerState.libraryId = "all";
       wordTrainerState.category = "全部";
       wordTrainerState.sessionKeys = [];
       wordTrainerState.sessionTitle = "";
       wordTrainerState.index = 0;
       resetWordTrainerTransientState();
-      wordTrainerState.feedback = `已删除自定义词库「${library.name}」。`;
+      wordTrainerState.customFeedback = saved
+        ? `已删除自定义词库「${library.name}」。`
+        : `已从当前页面移除「${library.name}」，但本地存储更新失败；刷新后可能恢复。`;
+      wordTrainerState.feedback = wordTrainerState.customFeedback;
       break;
     }
     case "review-wrong": {
