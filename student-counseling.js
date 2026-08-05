@@ -148,6 +148,305 @@
     return `<ul>${items.map((item) => `<li>${paint(highlight, item)}</li>`).join("")}</ul>`;
   }
 
+  const CRISIS_KEYWORDS = [
+    "自杀",
+    "轻生",
+    "不想活",
+    "想死",
+    "活不下去",
+    "结束生命",
+    "自残",
+    "割腕",
+    "伤害自己",
+    "伤害别人",
+    "杀了",
+    "打死",
+    "报复",
+    "家暴",
+    "被打",
+    "被威胁",
+    "侵犯",
+    "性侵",
+    "幻听",
+    "幻觉",
+  ];
+
+  const ANALYSIS_PROFILES = [
+    {
+      id: "exam",
+      label: "考试/学习压力",
+      keywords: ["考试", "成绩", "分数", "排名", "中考", "高考", "月考", "卷子", "作业", "复习", "刷题", "背不完", "上课", "学习", "题目"],
+      emotion: "焦虑、紧张、害怕落后",
+      need: "掌控感、胜任感、清晰计划、被鼓励",
+      intention: "旧反应可能在保护你的成绩和未来，但它用“吓自己”的方式催你努力，成本太高。",
+      method: "90秒稳定身体 + 目标重写 + 24小时小实验",
+      steps: [
+        "先把目标从“不能考差”改成“我先拿回一个可控动作”。",
+        "把任务缩小到 10 分钟：只做会做题、只背 5 个词、只整理 1 道错题。",
+        "写下一个“卡住时退路”：跳过、标记、先拿基础分、课后问一个人。",
+      ],
+      script: "我现在紧张，说明我重视这件事。下一步不是证明我完美，而是先做一个可控的小动作。",
+      action: "今天只修一个漏洞：选一题错题，写清“考点—错因—下次第一步”。",
+    },
+    {
+      id: "family",
+      label: "亲子/师生沟通压力",
+      keywords: ["爸", "妈", "父母", "家长", "老师", "班主任", "批评", "骂", "管我", "手机", "催", "不理解", "吵架", "沟通"],
+      emotion: "委屈、愤怒、压迫感、想被理解",
+      need: "尊重、空间、被听见、具体支持",
+      intention: "旧反应可能在保护你的尊严和自主感，但顶嘴或沉默容易让对方只看见态度，看不见需要。",
+      method: "事实—故事—需要—请求 + 带温度的边界",
+      steps: [
+        "先把对错放一边，写出摄像机能拍到的事实：谁说了什么、做了什么。",
+        "把“他们就是不爱我/看不起我”暂时标成故事，不当作唯一真相。",
+        "用一句具体请求替代争吵：我需要你先听我说完，再一起定改法。",
+      ],
+      script: "我知道你是担心我。刚才那种说法我听了很难受，我更需要一个具体可执行的建议。你可以先听我说完原因吗？",
+      action: "找一个不在争吵中的时间，用 3 句话说：事实、感受、请求。",
+    },
+    {
+      id: "peer",
+      label: "同学关系/社交内耗",
+      keywords: ["同学", "朋友", "室友", "关系", "孤立", "嘲笑", "误会", "讨厌我", "聊天", "群", "班里", "喜欢的人", "恋爱", "分手"],
+      emotion: "不安、委屈、羞耻、害怕被排斥",
+      need: "连接感、尊重、安全感、清晰边界",
+      intention: "反复猜测是在保护你不被关系伤到，但读心会让焦虑不断加码。",
+      method: "事实—故事—需要—行动 + 温和澄清",
+      steps: [
+        "把“对方肯定讨厌我”改成“我现在缺证据，但我很在意这段关系”。",
+        "选择一个最小澄清动作：问一句、解释一次、观察一天。",
+        "如果对方持续越界，用边界保护自己，而不是继续讨好。",
+      ],
+      script: "我可能理解错了，所以想确认一下：你刚才那句话是在开玩笑，还是对我有不舒服的地方？我想把事情说清楚。",
+      action: "把这件事拆成两列：确定发生的事实 / 我脑中补出来的故事。",
+    },
+    {
+      id: "selfWorth",
+      label: "自我否定/低价值感",
+      keywords: ["我不行", "我很差", "没用", "废物", "笨", "自卑", "讨厌自己", "没人喜欢", "不配", "完了", "没救", "失败"],
+      emotion: "羞耻、失落、无力、害怕被否定",
+      need: "被接纳、价值感、可恢复的信心",
+      intention: "自我攻击有时想逼你变好，但它会消耗能量，让你更难行动。",
+      method: "自我价值三肌肉 + 信念/规则更新",
+      steps: [
+        "把“我就是不行”改成“我有一个能力/方法/状态漏洞”。",
+        "同时练三块肌肉：自信=做成一小件事；自爱=照顾一个需要；自尊=守一个小承诺。",
+        "用“还没有”替代“永远不可能”。",
+      ],
+      script: "一次失败不是我的身份，只是一个反馈。我可以先修一个最小漏洞，让自己重新动起来。",
+      action: "今天完成一个 15 分钟小承诺，并记录：我做到了什么，而不是我还差什么。",
+    },
+    {
+      id: "procrastination",
+      label: "拖延/手机/启动困难",
+      keywords: ["拖延", "手机", "刷视频", "短视频", "游戏", "不想学", "动不了", "懒", "摆烂", "熬夜", "计划", "坚持不了", "分心"],
+      emotion: "焦虑、麻木、逃避后的内疚",
+      need: "休息、轻量启动、低压力反馈、环境支持",
+      intention: "拖延可能在帮你躲开失败感、无聊或压力；它不是懒的证明，而是入口设计太重。",
+      method: "正向意图更新 + 环境层最小改变",
+      steps: [
+        "先承认：我需要休息/害怕失败；然后给它一个更低成本的满足方式。",
+        "把任务切到小到不能再小：打开书、写标题、做 1 题、背 3 词。",
+        "改环境：手机离手 2 米，桌面只留当前材料，计时 10 分钟。",
+      ],
+      script: "我不是要立刻自律一整天，我只启动 10 分钟。启动以后，我再决定下一轮。",
+      action: "现在做一个 10 分钟番茄钟，只要求开始，不要求完美。",
+    },
+    {
+      id: "emotion",
+      label: "情绪爆发/压力过载",
+      keywords: ["崩溃", "哭", "生气", "发火", "控制不住", "烦", "压力", "焦虑", "害怕", "紧张", "委屈", "难受", "喘不过气"],
+      emotion: "高强度情绪、身体紧绷、脑中反复转",
+      need: "安全、稳定、被理解、恢复节奏",
+      intention: "情绪在提醒你：某个需要被压太久了。先降低伤害，再处理事情。",
+      method: "90秒稳定身体 + 情绪命名 + 下一步减害",
+      steps: [
+        "先离开继续刺激你的场景 2–5 分钟，喝水或去洗手间都可以。",
+        "慢呼气 6 轮，命名情绪：这是愤怒/害怕/委屈，不等于我整个人失控。",
+        "等强度下降后，只做一个减害动作：暂停、道歉、澄清、求助或休息。",
+      ],
+      script: "我现在情绪太高，继续说会伤人。我先暂停 20 分钟，等我能好好说再回来。",
+      action: "把强度从 0–10 重新打分；下降 1 分就算有效。",
+    },
+    {
+      id: "future",
+      label: "迷茫/目标选择",
+      keywords: ["迷茫", "不知道", "未来", "目标", "方向", "选择", "选科", "志愿", "专业", "怎么办"],
+      emotion: "不确定、担心选错、压力悬空",
+      need: "清晰、可试错、支持、阶段性目标",
+      intention: "迷茫可能在提醒你：不要随便做重大决定；但一直悬着也会消耗能量。",
+      method: "良构目标 + 24小时小实验 + 生态检查",
+      steps: [
+        "把“我要想清一生”降级成“我先弄清下一个月的一个选择”。",
+        "列出可控信息：兴趣、能力、成绩、资源、限制、可咨询的人。",
+        "做一个小实验：访谈一个学长/老师，查一个专业，尝试一套相关题。",
+      ],
+      script: "我不需要今天决定全部未来。我只需要多拿一个真实信息，让下一步更清楚。",
+      action: "今天问一个可信的人：如果你是我，会先补哪一类信息？",
+    },
+  ];
+
+  const DEFAULT_PROFILE = {
+    label: "综合心理困扰",
+    emotion: "混合压力、困惑或反复内耗",
+    need: "被理解、稳定感、清晰下一步",
+    intention: "这个困扰可能在提醒你：有一个重要需要还没有被好好看见。",
+    method: "事实—故事—需要—行动 + 24小时小实验",
+    steps: [
+      "先写事实：谁、何时、说了/做了什么，尽量不加评价。",
+      "再写故事：我脑中最吓人的解释是什么？还有没有第二种解释？",
+      "最后选行动：一个请求、一个边界、一次求助、一个小任务或一次休息。",
+    ],
+    script: "我先不急着评价自己。我把事情拆清楚，再选一个对我和关系都更有帮助的小行动。",
+    action: "用 5 分钟写下：事实 1 句、感受 1 句、需要 1 句、下一步 1 句。",
+  };
+
+  function includesAny(text, words) {
+    return words.some((word) => text.includes(word));
+  }
+
+  function scoreProfile(text, profile) {
+    return profile.keywords.reduce((score, keyword) => score + (text.includes(keyword) ? 1 : 0), 0);
+  }
+
+  function selectedProfiles(text) {
+    return ANALYSIS_PROFILES
+      .map((profile) => ({ profile, score: scoreProfile(text, profile) }))
+      .filter((item) => item.score > 0)
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 3)
+      .map((item) => item.profile);
+  }
+
+  function shortQuote(text) {
+    const clean = text.replace(/\s+/g, " ").trim();
+    return clean.length > 86 ? `${clean.slice(0, 86)}…` : clean;
+  }
+
+  function analysisHTML(text, intensityValue) {
+    const clean = text.trim();
+    const intensity = Number(intensityValue || 5);
+    if (!clean) {
+      return `
+        <div class="support-analysis-placeholder">
+          写下一个具体困扰后，我会按“事实—故事—情绪—需要—行动”给你一份可执行的疏导建议。
+        </div>
+      `;
+    }
+
+    const crisis = includesAny(clean, CRISIS_KEYWORDS);
+    const profiles = selectedProfiles(clean);
+    const main = profiles[0] || DEFAULT_PROFILE;
+    const related = profiles.slice(1).map((profile) => profile.label);
+    const highIntensity = intensity >= 8;
+
+    if (crisis) {
+      return `
+        <div class="analysis-warning analysis-warning--red">
+          <strong>先处理安全，不继续做普通自助分析</strong>
+          <p>你的输入里出现了红色危险信号。现在最重要的不是一个人扛，也不是继续讲道理，而是立刻让现实中的可信成年人知道：家长、班主任、学校心理老师、亲近亲友，或联系所在地紧急服务。请尽量不要独处，远离可能伤害自己或他人的物品和地点。</p>
+        </div>
+        <div class="analysis-grid">
+          <article class="analysis-card">
+            <h4>现在先做 3 件事</h4>
+            <ul>
+              <li>把这段话直接给一个可信成年人看：我现在有危险念头/处在危险处境，需要你马上陪我。</li>
+              <li>把身体放到更安全的位置：坐到有人在的地方，手离开危险物品，慢慢呼气。</li>
+              <li>如果身边没人能立即回应，请联系所在地紧急服务或尽快前往有人值守的安全地点。</li>
+            </ul>
+          </article>
+          <article class="analysis-card">
+            <h4>可以直接说的话</h4>
+            <p class="analysis-script">我现在不是想讲道理，我需要安全陪伴。请你先不要批评我，先陪我待一会儿，并帮我联系能支持我的成年人/专业人员。</p>
+          </article>
+        </div>
+      `;
+    }
+
+    return `
+      ${highIntensity ? `
+        <div class="analysis-warning">
+          <strong>情绪强度 ${intensity}/10：先稳定身体</strong>
+          <p>强度偏高时，先做 6 轮慢呼气、放松肩颈和手指，再看下面建议。现在不适合做重大决定，也不适合硬扛到崩。</p>
+        </div>
+      ` : ""}
+      <div class="analysis-summary">
+        <span class="support-tag">已根据输入生成</span>
+        <h4>我初步识别到：${fallbackEscape(main.label)}</h4>
+        <p>你写的是：“${fallbackEscape(shortQuote(clean))}”${related.length ? `；同时也可能牵涉：${fallbackEscape(related.join("、"))}` : ""}。</p>
+      </div>
+      <div class="analysis-grid">
+        <article class="analysis-card">
+          <h4>1. 先拆结构</h4>
+          <ul>
+            <li><b>可能情绪：</b>${fallbackEscape(main.emotion)}</li>
+            <li><b>未满足需要：</b>${fallbackEscape(main.need)}</li>
+            <li><b>旧模式的正向意图：</b>${fallbackEscape(main.intention)}</li>
+            <li><b>适合方法：</b>${fallbackEscape(main.method)}</li>
+          </ul>
+        </article>
+        <article class="analysis-card">
+          <h4>2. 具体做法</h4>
+          <ul>${main.steps.map((step) => `<li>${fallbackEscape(step)}</li>`).join("")}</ul>
+        </article>
+        <article class="analysis-card">
+          <h4>3. 可以直接对自己说</h4>
+          <p class="analysis-script">${fallbackEscape(main.script)}</p>
+        </article>
+        <article class="analysis-card">
+          <h4>4. 24小时内的小行动</h4>
+          <p>${fallbackEscape(main.action)}</p>
+          <p class="analysis-note">判断有没有进步，不看问题是否彻底消失，只看：强度是否下降 1 分、恢复是否快一点、下一步是否更清楚。</p>
+        </article>
+      </div>
+      <details class="analysis-followup" open>
+        <summary>继续问自己 5 个问题</summary>
+        <ol>
+          <li>这件事里，摄像机能拍到的事实是什么？</li>
+          <li>我脑中最刺痛的解释是什么？它是事实，还是故事？</li>
+          <li>这个情绪想保护我什么？成绩、尊严、安全、连接，还是自主？</li>
+          <li>如果好 20%，下一次我会说什么/做什么？</li>
+          <li>我现在可以找谁支持我，而不是一个人硬扛？</li>
+        </ol>
+      </details>
+    `;
+  }
+
+  function bindInteractiveAnalyzer() {
+    if (window.__studentCounselingAnalyzerBound) return;
+    window.__studentCounselingAnalyzerBound = true;
+
+    document.addEventListener("input", (event) => {
+      if (event.target?.id !== "supportIntensityInput") return;
+      const output = document.getElementById("supportIntensityOutput");
+      if (output) output.textContent = event.target.value;
+    });
+
+    document.addEventListener("click", (event) => {
+      const analyzeButton = event.target.closest("[data-support-analyze]");
+      const clearButton = event.target.closest("[data-support-clear]");
+      if (!analyzeButton && !clearButton) return;
+
+      const textarea = document.getElementById("supportConcernInput");
+      const intensity = document.getElementById("supportIntensityInput");
+      const result = document.getElementById("supportAnalysisResult");
+      if (!textarea || !result) return;
+
+      if (clearButton) {
+        textarea.value = "";
+        if (intensity) intensity.value = "5";
+        const output = document.getElementById("supportIntensityOutput");
+        if (output) output.textContent = "5";
+        result.innerHTML = analysisHTML("", 5);
+        textarea.focus();
+        return;
+      }
+
+      result.innerHTML = analysisHTML(textarea.value, intensity?.value || 5);
+      result.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+  }
+
   function breadcrumbHTML(escapeHTML) {
     return `
       <div>
@@ -173,6 +472,31 @@
         <section class="support-alert">
           <strong>先说安全边界</strong>
           <p>${paint(highlight, GUIDE.safety)}</p>
+        </section>
+
+        <section class="support-section support-input-panel">
+          <div class="support-section__head">
+            <span class="support-tag">心理困惑输入</span>
+            <h3>${paint(highlight, "把当下困扰写出来，立即得到一份疏导分析")}</h3>
+            <p>${paint(highlight, "建议写一个具体场景：发生了什么、你怎么想、身体哪里有反应、最想改变什么。")}</p>
+          </div>
+          <div class="support-form">
+            <label class="support-textarea-label" for="supportConcernInput">
+              <span>我的困惑</span>
+              <textarea id="supportConcernInput" rows="7" placeholder="例如：快考试了我很慌，越想学越刷手机；爸妈一催我就想顶嘴，之后又很后悔……"></textarea>
+            </label>
+            <div class="support-intensity-row">
+              <label for="supportIntensityInput">情绪强度：<output id="supportIntensityOutput">5</output>/10</label>
+              <input id="supportIntensityInput" type="range" min="0" max="10" value="5" />
+            </div>
+            <div class="support-input-actions">
+              <button type="button" data-support-analyze>生成疏导分析</button>
+              <button type="button" data-support-clear>清空</button>
+            </div>
+            <div id="supportAnalysisResult" class="support-analysis-result" aria-live="polite">
+              ${analysisHTML("", 5)}
+            </div>
+          </div>
         </section>
 
         <section class="support-section">
@@ -266,6 +590,8 @@
       </div>
     `;
   }
+
+  bindInteractiveAnalyzer();
 
   window.STUDENT_COUNSELING = {
     breadcrumbHTML,
