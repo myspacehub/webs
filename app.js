@@ -3868,6 +3868,7 @@ function renderStats() {
     ["单元 / 章节 / 课", totals.units],
     ["知识导图节点", totals.knowledgeNodes],
     ["学习方法", `${LEARNING_METHODS.length} 板块`],
+    ["心理疏导", "场景自助"],
     ["英语词汇", `${ENGLISH_WORD_BANK.length} 词`],
     ["B站资源", `${BILIBILI_VIDEO_RESOURCES.length} 科`],
     ["完成进度", `${percent}%`],
@@ -3895,7 +3896,7 @@ function renderSubjects() {
     const progress = progressForSubject(subjectIndex);
     const active =
       subjectIndex === state.subjectIndex &&
-      !["methods", "wordTrainer"].includes(state.mode) &&
+      !["methods", "counseling", "wordTrainer"].includes(state.mode) &&
       (state.mode === "videos" || !state.query)
         ? " is-active"
         : "";
@@ -4424,6 +4425,30 @@ function renderLearningMethods() {
   unitList.innerHTML = learningMethodsHTML(blocks);
 }
 
+function renderCounseling() {
+  hideVolumeTabs();
+  if (window.STUDENT_COUNSELING) {
+    breadcrumb.innerHTML = window.STUDENT_COUNSELING.breadcrumbHTML(escapeHTML);
+    unitList.innerHTML = window.STUDENT_COUNSELING.pageHTML(highlight, escapeHTML);
+    return;
+  }
+
+  breadcrumb.innerHTML = `
+    <div>
+      <h2>心理疏导</h2>
+      <p>身心积极疗法 · 中学生日常自助</p>
+    </div>
+  `;
+  unitList.innerHTML = `
+    <div class="empty">
+      <div>
+        <strong>心理疏导模块暂未加载</strong>
+        <p>请刷新页面重试。</p>
+      </div>
+    </div>
+  `;
+}
+
 function videoResourceSearchFields(resource) {
   return [
     resource.subject,
@@ -4709,6 +4734,11 @@ function renderCurrentVolume() {
     return;
   }
 
+  if (state.mode === "counseling") {
+    renderCounseling();
+    return;
+  }
+
   if (state.mode === "wordTrainer") {
     renderWordTrainer();
     return;
@@ -4835,6 +4865,8 @@ function render() {
   renderSubjects();
   if (state.mode === "methods") {
     renderLearningMethods();
+  } else if (state.mode === "counseling") {
+    renderCounseling();
   } else if (state.mode === "wordTrainer") {
     renderWordTrainer();
   } else if (state.mode === "videos") {
@@ -4853,7 +4885,7 @@ subjectList.addEventListener("click", (event) => {
   if (!button) return;
   state.subjectIndex = Number(button.dataset.subjectIndex);
   state.volumeIndex = 0;
-  if (["methods", "wordTrainer"].includes(state.mode)) state.mode = "catalog";
+  if (["methods", "counseling", "wordTrainer"].includes(state.mode)) state.mode = "catalog";
   state.query = "";
   searchInput.value = "";
   render();
