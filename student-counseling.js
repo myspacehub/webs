@@ -287,6 +287,7 @@
   ];
 
   const DEFAULT_PROFILE = {
+    id: "default",
     label: "综合心理困扰",
     emotion: "混合压力、困惑或反复内耗",
     need: "被理解、稳定感、清晰下一步",
@@ -323,6 +324,157 @@
     return clean.length > 86 ? `${clean.slice(0, 86)}…` : clean;
   }
 
+  const DETAIL_BY_PROFILE = {
+    exam: {
+      level: "能力/行为层优先：先把任务变小、反馈变清楚；若同时出现“我不行/没救”，再处理信念层。",
+      structure: "这类困扰常不是单纯紧张，而是“目标过大 + 反馈模糊 + 失败预演”把身体推到警报状态。",
+      rule: "旧规则可能是：只有不紧张、一次考好，我才算安全。更新成：紧张也能行动，我先拿回一个可控步骤。",
+      interventions: ["把考试目标降为“先拿基础分/先做会做题”。", "把复习拆成“会、半会、不会”三堆，只处理最小一堆。", "用错题闭环替代情绪用力：考点—错因—下次第一步。"],
+      questions: ["我现在最怕失去的是什么：分数、排名、父母评价，还是未来感？", "哪一类题最能让我用 20 分钟拿回掌控感？", "如果允许紧张存在，我仍然能完成哪个动作？"],
+    },
+    family: {
+      level: "关系系统 + 行为语言层优先：先让对话降温，再表达需要；暂时不把一句批评等同于自我价值。",
+      structure: "这类困扰常是“被评价感”触发了尊严和自主需要，顶嘴或沉默都可能是在保护自己。",
+      rule: "旧规则可能是：只有立刻反驳/完全沉默，我才不会受伤。更新成：我可以暂停冲突，同时清楚表达事实、感受和请求。",
+      interventions: ["先区分事实和故事：对方说了什么 vs 我解释成了什么。", "把“你总是”改成“当这件事发生时，我感到……我需要……”。", "选择不在争吵中的时间沟通，降低对方防御。"],
+      questions: ["我最想让对方理解的是哪一句？", "我能提出的具体请求是什么，而不是只说“别管我”？", "如果我既保护边界又保留关系，可以怎么说？"],
+    },
+    peer: {
+      level: "关系边界 + 事实核对层优先：先停止读心，再做最小澄清；若持续越界，再进入边界行动。",
+      structure: "社交内耗往往来自“证据不足但关系很重要”，大脑会用猜测来提前防御受伤。",
+      rule: "旧规则可能是：只要别人反应冷淡，就说明我不被喜欢。更新成：我先核对事实，再决定靠近、解释或拉开距离。",
+      interventions: ["把确定事实和脑补故事分开写。", "先做一次低压力澄清，不在群里升级冲突。", "对嘲笑、隐私传播、持续排挤设置边界。"],
+      questions: ["我手里真正确定的证据有几条？", "如果我是旁观者，会给这件事几个可能解释？", "我需要澄清、道歉、请求，还是拉开边界？"],
+    },
+    selfWorth: {
+      level: "信念/身份层被触发，但入口仍从小行为证据开始：先把“我就是……”改回“我正在经历……”。",
+      structure: "这里的痛点不是某件事本身，而是事件被解释成了“我这个人不够好”。",
+      rule: "旧规则可能是：只有表现好、被认可，我才有价值。更新成：我有价值，同时我也可以修能力漏洞。",
+      interventions: ["把身份句改成状态句：我不是废物，我是这一段没找到方法。", "每天练三块肌肉：自信小证据、自爱小照顾、自尊小承诺。", "用“还没有”替代“永远不可能”。"],
+      questions: ["我把哪件具体事情扩大成了对整个人的判决？", "今天哪一个小行动能证明“我还能往前动一点”？", "如果朋友这样说自己，我会怎样回应他/她？"],
+    },
+    procrastination: {
+      level: "环境/行为层优先：先改入口和刺激，不急着批判自律；拖延背后通常有保护意图。",
+      structure: "拖延常是“压力太大—逃避缓解—更内疚—压力更大”的循环，不是简单懒。",
+      rule: "旧规则可能是：必须准备好、状态好，才能开始。更新成：状态不好也能开始 10 分钟。",
+      interventions: ["把任务切到小到不能再小。", "把手机、游戏、短视频从手边移开，降低诱惑强度。", "只追求启动，不追求一次完成。"],
+      questions: ["我拖延是在躲开失败、无聊、被评价，还是任务太大？", "如果只做 10 分钟，最小动作是什么？", "我能改哪个环境线索，让开始更容易？"],
+    },
+    emotion: {
+      level: "身体/状态层优先：情绪强时先复位神经系统，再谈事实和方案。",
+      structure: "情绪爆发说明某个需要被压得太久，继续争对错会让系统更激活。",
+      rule: "旧规则可能是：我必须马上把这口气说完。更新成：我可以先暂停，等强度下降后再表达。",
+      interventions: ["先慢呼气、放松下巴肩膀和手。", "给情绪命名，不把情绪等同于整个人。", "只做减害动作：暂停、离开现场、求助、喝水、延后沟通。"],
+      questions: ["这个情绪最想保护我什么？", "我的身体哪里最紧？如果松 10%，会发生什么？", "现在继续说/做，会让损失变大还是变小？"],
+    },
+    future: {
+      level: "价值/目标/生态层优先：不是一次决定人生，而是收集真实信息并做小实验。",
+      structure: "迷茫常来自选择太大、信息太少、害怕选错，所以需要把人生题缩成下一步题。",
+      rule: "旧规则可能是：必须一次选对，否则未来就完了。更新成：我可以用小实验让方向逐步变清楚。",
+      interventions: ["把长期焦虑降级为一个月内的问题。", "列出可控信息：兴趣、能力、资源、限制、可咨询对象。", "做一次低成本试错：访谈、查资料、体验任务、做样题。"],
+      questions: ["我现在缺的是兴趣信息、能力信息，还是现实路径信息？", "哪个选择可以先试 1 周，而不是立刻绑定一生？", "这个选择对自己、家人、长期发展分别有什么影响？"],
+    },
+    default: {
+      level: "先从事实—故事—需要—行动层入手：信息不足时，不急着解释成深层问题。",
+      structure: "这段困扰需要先拆清楚，否则容易把事实、猜测、情绪和行动混成一团。",
+      rule: "旧规则可能是：想不清楚就说明我不行。更新成：我可以先拆结构，再找下一步。",
+      interventions: ["先写摄像机能拍到的事实。", "再写脑中的解释和最强情绪。", "最后只选一个请求、边界、求助或小行动。"],
+      questions: ["事实是什么？故事是什么？", "我真正需要什么？", "哪一步最小、最安全、最可执行？"],
+    },
+  };
+
+  const SIGNAL_GROUPS = {
+    body: [
+      { label: "呼吸/胸口紧", words: ["喘不过气", "胸闷", "胸口", "心跳", "窒息", "呼吸"] },
+      { label: "睡眠/精力受影响", words: ["睡不着", "失眠", "困", "累", "没精神", "熬夜"] },
+      { label: "哭泣/崩溃反应", words: ["哭", "崩溃", "发抖", "控制不住", "麻木"] },
+    ],
+    thinking: [
+      { label: "灾难化预演", words: ["完了", "怎么办", "来不及", "毁了", "没救", "考砸"] },
+      { label: "读心/预判他人", words: ["讨厌我", "看不起", "不喜欢我", "肯定", "一定觉得"] },
+      { label: "绝对化规则", words: ["必须", "一定", "不能", "永远", "总是", "从来", "全都"] },
+      { label: "身份化自责", words: ["我就是", "我不行", "我很差", "废物", "笨", "不配"] },
+    ],
+    needs: [
+      { label: "掌控感", words: ["计划", "来不及", "不知道怎么办", "乱", "没方向"] },
+      { label: "尊重/自主", words: ["管我", "骂", "批评", "逼", "不理解", "控制"] },
+      { label: "连接/被接纳", words: ["朋友", "同学", "孤立", "讨厌我", "没人", "喜欢的人"] },
+      { label: "休息/恢复", words: ["累", "睡不着", "烦", "压力", "撑不住"] },
+    ],
+    attempts: [
+      { label: "逃避缓解", words: ["刷手机", "游戏", "短视频", "躲", "拖延", "不想学"] },
+      { label: "反击保护", words: ["顶嘴", "吵", "发火", "骂回去", "摔"] },
+      { label: "压抑硬扛", words: ["忍", "憋", "不敢说", "沉默", "一个人"] },
+    ],
+  };
+
+  function collectSignalLabels(text, definitions) {
+    return definitions.filter((group) => includesAny(text, group.words)).map((group) => group.label);
+  }
+
+  function detectSignals(text, intensity) {
+    return {
+      body: collectSignalLabels(text, SIGNAL_GROUPS.body),
+      thinking: collectSignalLabels(text, SIGNAL_GROUPS.thinking),
+      needs: collectSignalLabels(text, SIGNAL_GROUPS.needs),
+      attempts: collectSignalLabels(text, SIGNAL_GROUPS.attempts),
+      intensityBand: intensity >= 8 ? "高强度" : intensity >= 5 ? "中等强度" : "低到中等强度",
+    };
+  }
+
+  function matchedKeywords(text, profiles) {
+    return [...new Set(profiles.flatMap((profile) => profile.keywords || []).filter((keyword) => text.includes(keyword)))].slice(0, 10);
+  }
+
+  function detailFor(profile) {
+    return DETAIL_BY_PROFILE[profile.id] || DETAIL_BY_PROFILE.default;
+  }
+
+  function signalLine(title, items, fallback) {
+    return `<li><b>${fallbackEscape(title)}：</b>${fallbackEscape(items.length ? items.join("、") : fallback)}</li>`;
+  }
+
+  function bridgeFor(profiles) {
+    const ids = profiles.map((profile) => profile.id);
+    if (ids.includes("exam") && ids.includes("procrastination")) return "你这里不只是“懒”，更像“越怕落后→越想逃→越逃越内疚”的学习压力回路。";
+    if (ids.includes("exam") && ids.includes("family")) return "成绩压力和亲子/师生评价绑在一起时，先处理沟通压力，学习行动才容易恢复。";
+    if (ids.includes("family") && ids.includes("selfWorth")) return "外部批评被你接进了身份层，所以要把“被批评”从“我不够好”里拆出来。";
+    if (ids.includes("peer") && ids.includes("selfWorth")) return "关系里的一个信号被放大成了自我价值判断，重点是先核对事实，再保护自尊。";
+    if (ids.includes("emotion") && ids.length > 1) return "情绪强度会盖过理性分析，所以先做身体复位，再处理具体问题。";
+    return "我会按你输入中的线索选择入口，不用“想开点”这种空话处理。";
+  }
+
+  function levelFor(detail, signals, intensity) {
+    if (intensity >= 8 || signals.body.length) {
+      return `身体/状态层先行：${detail.level}`;
+    }
+    return detail.level;
+  }
+
+  function personalizedOutcome(profile, signals) {
+    if (profile.id === "exam") return "我要先恢复一个可控学习动作，而不是逼自己立刻不焦虑。";
+    if (profile.id === "family") return "我要在不升级争吵的前提下，把事实、感受和请求说清楚。";
+    if (profile.id === "peer") return "我要先核对事实，再决定靠近、解释、道歉或设边界。";
+    if (profile.id === "selfWorth") return "我要把一次事件从“身份判决”改回“可修的能力/状态漏洞”。";
+    if (profile.id === "procrastination") return "我要先启动 10 分钟，用环境和小任务降低阻力。";
+    if (profile.id === "emotion") return "我要先把强度降下来，避免继续伤害自己或关系。";
+    if (profile.id === "future") return "我要把人生大题缩成一个可验证的小实验。";
+    return "我要先拆清事实和需要，再做一个小而安全的行动。";
+  }
+
+  function followupQuestionsHTML(profile, detail) {
+    return `
+      <details class="analysis-followup" open>
+        <summary>针对这个问题继续追问</summary>
+        <ol>
+          ${detail.questions.map((question) => `<li>${fallbackEscape(question)}</li>`).join("")}
+          <li>如果这个困扰好 20%，我下一次会有什么可观察的不同？</li>
+          <li>这一步对我、对对方、对关系/家庭/班级系统是否都尽量低伤害？</li>
+        </ol>
+      </details>
+    `;
+  }
+
   function analysisHTML(text, intensityValue) {
     const clean = text.trim();
     const intensity = Number(intensityValue || 5);
@@ -337,8 +489,12 @@
     const crisis = includesAny(clean, CRISIS_KEYWORDS);
     const profiles = selectedProfiles(clean);
     const main = profiles[0] || DEFAULT_PROFILE;
+    const activeProfiles = profiles.length ? profiles : [DEFAULT_PROFILE];
     const related = profiles.slice(1).map((profile) => profile.label);
     const highIntensity = intensity >= 8;
+    const signals = detectSignals(clean, intensity);
+    const detail = detailFor(main);
+    const evidence = matchedKeywords(clean, activeProfiles);
 
     if (crisis) {
       return `
@@ -373,42 +529,47 @@
       <div class="analysis-summary">
         <span class="support-tag">已根据输入生成</span>
         <h4>我初步识别到：${fallbackEscape(main.label)}</h4>
-        <p>你写的是：“${fallbackEscape(shortQuote(clean))}”${related.length ? `；同时也可能牵涉：${fallbackEscape(related.join("、"))}` : ""}。</p>
+        <p>你写的是：“${fallbackEscape(shortQuote(clean))}”${related.length ? `；同时也可能牵涉：${fallbackEscape(related.join("、"))}` : ""}。${fallbackEscape(bridgeFor(activeProfiles))}</p>
       </div>
       <div class="analysis-grid">
         <article class="analysis-card">
-          <h4>1. 先拆结构</h4>
+          <h4>1. 输入里的关键线索</h4>
           <ul>
-            <li><b>可能情绪：</b>${fallbackEscape(main.emotion)}</li>
-            <li><b>未满足需要：</b>${fallbackEscape(main.need)}</li>
-            <li><b>旧模式的正向意图：</b>${fallbackEscape(main.intention)}</li>
-            <li><b>适合方法：</b>${fallbackEscape(main.method)}</li>
+            ${signalLine("命中的具体词", evidence, "线索较综合，先按通用拆解处理")}
+            ${signalLine("身体/状态信号", signals.body, "未明显提到身体反应")}
+            ${signalLine("思维模式信号", signals.thinking, "未明显出现绝对化、读心或身份化")}
+            ${signalLine("已经尝试的应对", signals.attempts, "还没看到明确应对方式")}
           </ul>
         </article>
         <article class="analysis-card">
-          <h4>2. 具体做法</h4>
-          <ul>${main.steps.map((step) => `<li>${fallbackEscape(step)}</li>`).join("")}</ul>
+          <h4>2. Skill 分析：先从哪一层入手</h4>
+          <ul>
+            <li><b>强度判断：</b>${fallbackEscape(signals.intensityBand)}（${intensity}/10）</li>
+            <li><b>优先层级：</b>${fallbackEscape(levelFor(detail, signals, intensity))}</li>
+            <li><b>问题结构：</b>${fallbackEscape(detail.structure)}</li>
+            <li><b>正向目标：</b>${fallbackEscape(personalizedOutcome(main, signals))}</li>
+          </ul>
         </article>
         <article class="analysis-card">
-          <h4>3. 可以直接对自己说</h4>
+          <h4>3. 旧规则更新</h4>
+          <p>${fallbackEscape(detail.rule)}</p>
+          <p class="analysis-note">这一步来自 Skill 的“信念/价值/规则审视”：保留保护意图，但把绝对规则改成更灵活、更低成本的规则。</p>
+        </article>
+        <article class="analysis-card">
+          <h4>4. 具体介入步骤</h4>
+          <ul>${detail.interventions.map((step) => `<li>${fallbackEscape(step)}</li>`).join("")}</ul>
+        </article>
+        <article class="analysis-card">
+          <h4>5. 可以直接说的话</h4>
           <p class="analysis-script">${fallbackEscape(main.script)}</p>
         </article>
         <article class="analysis-card">
-          <h4>4. 24小时内的小行动</h4>
+          <h4>6. 24小时内的小行动</h4>
           <p>${fallbackEscape(main.action)}</p>
           <p class="analysis-note">判断有没有进步，不看问题是否彻底消失，只看：强度是否下降 1 分、恢复是否快一点、下一步是否更清楚。</p>
         </article>
       </div>
-      <details class="analysis-followup" open>
-        <summary>继续问自己 5 个问题</summary>
-        <ol>
-          <li>这件事里，摄像机能拍到的事实是什么？</li>
-          <li>我脑中最刺痛的解释是什么？它是事实，还是故事？</li>
-          <li>这个情绪想保护我什么？成绩、尊严、安全、连接，还是自主？</li>
-          <li>如果好 20%，下一次我会说什么/做什么？</li>
-          <li>我现在可以找谁支持我，而不是一个人硬扛？</li>
-        </ol>
-      </details>
+      ${followupQuestionsHTML(main, detail)}
     `;
   }
 
